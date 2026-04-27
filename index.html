@@ -1,193 +1,38 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CaiCai - 软件工程师 & UI/UX 开发者</title>
+    <meta charset="utf-8">
+    <title>Scrolling Text</title>
     <style>
-        :root {
-            --primary-blue: #0ea5e9;
-            --dark-bg: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-        }
-
         body {
-            background-color: var(--dark-bg);
-            color: var(--text-main);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* 导航栏 */
-        header {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 4rem 2rem 2rem;
-            animation: fadeInDown 0.8s ease-out;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            letter-spacing: 1px;
-        }
-
-        .subtitle {
-            color: var(--primary-blue);
-            font-size: 1.2rem;
-            font-weight: 500;
-            margin-bottom: 2rem;
-        }
-
-        /* 主体内容 */
-        main {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 2rem 4rem;
-        }
-
-        section {
-            margin-bottom: 4rem;
-            animation: fadeIn 1s ease-out forwards;
-            opacity: 0;
-        }
-
-        section:nth-child(1) { animation-delay: 0.2s; }
-        section:nth-child(2) { animation-delay: 0.4s; }
-        section:nth-child(3) { animation-delay: 0.6s; }
-
-        h2 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid var(--card-bg);
-            padding-bottom: 0.5rem;
-            color: var(--text-main);
-        }
-
-        p {
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-        }
-
-        /* 项目卡片 */
-        .project-card {
-            background: var(--card-bg);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-left: 4px solid var(--primary-blue);
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateX(5px);
-        }
-
-        .project-card h3 {
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-        }
-
-        /* 技能标签 */
-        .skills-container {
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+            color: white;
+            overflow: hidden;
         }
-
-        .skill-tag {
-            background: rgba(14, 165, 233, 0.1);
-            color: var(--primary-blue);
-            padding: 0.4rem 1rem;
-            border-radius: 99px;
-            font-size: 0.9rem;
-            border: 1px solid rgba(14, 165, 233, 0.2);
+        @keyframes wave {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
         }
-
-        /* 页脚 */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-muted);
-            border-top: 1px solid var(--card-bg);
-            margin-top: 2rem;
-        }
-
-        a {
-            color: var(--primary-blue);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        a:hover {
-            color: #38bdf8;
-            text-decoration: underline;
-        }
-
-        /* 简单动画 */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .scrolling-text {
+            font-size: 3em;
+            animation: wave 1s infinite;
+            text-shadow: 
+                0 0 5px #ff0000,
+                0 0 10px #ff0000,
+                0 0 20px #00ff00,
+                0 0 30px #00ff00,
+                0 0 40px #0000ff,
+                0 0 50px #0000ff,
+                0 0 60px #ffffff;
         }
     </style>
 </head>
 <body>
-
-    <header>
-        <h1>你好，我是 CaiCai</h1>
-        <div class="subtitle">软件工程师 | 工业级 UI/UX 开发者</div>
-    </header>
-
-    <main>
-        <section id="about">
-            <h2>关于我</h2>
-            <p>专注于高精度工业与医疗软件的架构与交互设计。热衷于打通从 Web 快速原型验证到 WPF/C# 客户端的完整开发闭环，致力于打造兼具严谨逻辑与极致体验的专业级软件系统。</p>
-        </section>
-
-        <section id="projects">
-            <h2>核心项目</h2>
-            
-            <div class="project-card">
-                <h3>六轴运动控制系统 (SAMCS) 客户端</h3>
-                <p>基于 C# 与 WPF 开发的高精度医疗机器人交互界面。打通底层脉冲与物理坐标系的单位转换逻辑，包含全局监控、空间路径规划及 5 点多维标定等核心模块，通过自研 SDK 实现底层硬件的高效串口通信与精准控制。</p>
-            </div>
-
-            <div class="project-card">
-                <h3>医疗级数据监控 Web 原型系统</h3>
-                <p>利用 VS Code 配合前端技术栈（HTML/CSS/JS）构建的高拟真度监控面板。用于在早期阶段快速验证交互逻辑与数据流向，随后将经过验证的设计规范无缝转化为 XAML 代码，大幅提升了开发效率。</p>
-            </div>
-        </section>
-
-        <section id="skills">
-            <h2>技术栈与能力</h2>
-            <div class="skills-container">
-                <span class="skill-tag">C# / WPF (XAML)</span>
-                <span class="skill-tag">UI/UX 交互设计</span>
-                <span class="skill-tag">Web 前端原型开发</span>
-                <span class="skill-tag">六轴空间坐标转换</span>
-                <span class="skill-tag">硬件串口通信 (SDK封装)</span>
-                <span class="skill-tag">Git / GitHub 协作规范</span>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>探索更多代码与工程细节：<a href="https://github.com/caicai1010662" target="_blank">@caicai1010662</a></p>
-        <p style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.6;">© 2026 CaiCai. All rights reserved.</p>
-    </footer>
-
+    <div class="scrolling-text">范李振 - 抽烟🚬 喝酒🍺 搓麻将🀄</div>
 </body>
 </html>

@@ -1,0 +1,23 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false,
+    "files.trimTrailingWhitespace": true,
+    "files.encoding": "utf8",
+    "eslint.format.enable": true,
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "npm.autoDetect": "on"
+  },
+  "extensions": {
+    "recommendations": [
+      "dbaeumer.vscode-eslint",
+      "bradlc.vscode-tailwindcss",
+      "csstools.postcss"
+    ]
+  }
+}

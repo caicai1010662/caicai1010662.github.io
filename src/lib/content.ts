@@ -14,7 +14,7 @@ export const translations = {
       en: "Interdisciplinary Stitching Specialist",
     },
     greeting: { zh: "你好，我是", en: "Hi, I'm" },
-    name: { zh: "范李振", en: "Lizhen Fan" },
+    name: { zh: "李振", en: "Lizhen" },
     description: {
       zh: "跨学科独立研究者，用脑机接口研究烟草与白酒，在网吧、台球厅与 KTV 中做沉浸式田野调查。",
       en: "A cross-disciplinary researcher using brain-computer interfaces to study tobacco and liquor, conducting immersive fieldwork in internet cafés, pool halls, and karaoke venues.",
@@ -56,14 +56,14 @@ export const translations = {
       },
       {
         title: {
-          zh: "基于脑机接口的高粱蒸馏物品尝与鉴别系统",
-          en: "Brain-Computer Interface-Based Sorghum Distillate Tasting and Identification System",
+          zh: "基于侵入式脑机接口的高粱蒸馏物品尝与鉴别系统",
+          en: "Invasive Brain-Computer Interface-Based Sorghum Distillate Tasting and Identification System",
         },
         description: {
           zh: "该系统面向高粱蒸馏物的智能品鉴，通过采集饮用前后神经活动、面部表情及语言输出，综合判断酒体香型、入口刺激、回味长度与受试者是否已经开始重复讲话。系统致力于推动传统品酒从“凭感觉”向“带电极凭感觉”转型。",
           en: "This system applies brain-computer interface technology to the intelligent evaluation of sorghum-based distilled beverages. By analyzing neural activity, facial expressions, and verbal output before and after consumption, it estimates aroma profile, initial intensity, aftertaste duration, and whether the participant has begun repeating the same story. The project aims to modernize traditional liquor tasting from “subjective judgment” to “subjective judgment with electrodes.”",
         },
-        tags: ["BCI", "Sorghum Distillate", "Neural Tasting", "Alcohol Evaluation", "Cognitive Fermentation"],
+        tags: ["iBCI", "Sorghum Distillate", "Neural Tasting", "Alcohol Evaluation", "Cognitive Fermentation"],
         gradient: "from-rose-500 to-red-600",
       },
     ],

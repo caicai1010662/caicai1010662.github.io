@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import BackToTop from "@/components/BackToTop";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import "./globals.css";
 
@@ -16,8 +17,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "My Portfolio",
-  description: "Personal portfolio website",
+  title: "范李振 · 学术裁缝",
+  description:
+    "范李振（Lizhen Fan）的个人作品集 —— 跨学科独立研究者，用脑机接口研究烟草与白酒。",
 };
 
 export default function RootLayout({
@@ -47,6 +49,7 @@ export default function RootLayout({
         <LanguageProvider>
           <Navbar />
           <main>{children}</main>
+          <BackToTop />
           <Footer />
         </LanguageProvider>
       </body>

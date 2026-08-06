@@ -1,29 +1,30 @@
 "use client";
 
 import { useLanguage } from "./LanguageProvider";
+import { useScrollReveal, revealProps } from "@/hooks/useScrollReveal";
 import { translations } from "@/lib/content";
 
 export default function Contact() {
   const { locale } = useLanguage();
   const t = translations.contact;
+  const { ref, isVisible } = useScrollReveal();
 
   const links = [
-    { key: "email", href: "mailto:your-email@example.com", icon: "✉️" },
-    { key: "github", href: "https://github.com/your-username", icon: "🐙" },
-    { key: "resume", href: "/resume.pdf", icon: "📄" },
+    { key: "email", href: "mailto:17685537369@163.com", icon: "✉️" },
+    { key: "github", href: "https://github.com/caicai1010662", icon: "🐙" },
   ] as const;
 
   return (
     <section id="contact" className="scroll-mt-16 px-4 py-24">
-      <div className="mx-auto max-w-3xl text-center">
-        <h2 className="mb-4 text-3xl font-bold tracking-tight md:text-4xl">
+      <div ref={ref} className="mx-auto max-w-3xl text-center">
+        <h2 {...revealProps(isVisible, 0)} className="mb-4 text-3xl font-bold tracking-tight md:text-4xl">
           {t.title[locale]}
         </h2>
-        <p className="mx-auto mb-10 max-w-xl leading-relaxed text-gray-600 dark:text-gray-400">
+        <p {...revealProps(isVisible, 100)} className="mx-auto mb-10 max-w-xl leading-relaxed text-gray-600 dark:text-gray-400">
           {t.description[locale]}
         </p>
 
-        <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <div {...revealProps(isVisible, 200)} className="flex flex-col items-center justify-center gap-4 sm:flex-row">
           {links.map((link) => (
             <a
               key={link.key}

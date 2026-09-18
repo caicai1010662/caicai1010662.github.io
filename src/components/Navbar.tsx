@@ -9,11 +9,6 @@ export default function Navbar() {
   const { locale, setLocale } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const [dark, setDark] = useState(true);
-
-  useEffect(() => {
-    setDark(document.documentElement.classList.contains("dark"));
-  }, []);
 
   useEffect(() => {
     const handleKey = (event: KeyboardEvent) => {
@@ -26,13 +21,6 @@ export default function Navbar() {
     return () => window.removeEventListener("keydown", handleKey);
   }, []);
 
-  const toggleDark = () => {
-    const next = !dark;
-    setDark(next);
-    document.documentElement.classList.toggle("dark", next);
-    localStorage.setItem("theme", next ? "dark" : "light");
-  };
-
   return (
     <>
       <div className="fixed left-5 top-5 z-[70]">
@@ -40,11 +28,11 @@ export default function Navbar() {
           type="button"
           onClick={() => setMenuOpen((value) => !value)}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
-          className="chrome-button group"
+          className="chrome-button"
         >
-          <span className={`hamburger-line ${menuOpen ? "translate-y-[6px] rotate-45" : ""}`} />
+          <span className={`hamburger-line ${menuOpen ? "translate-y-[6px] rotate-45" : "-translate-y-[6px]"}`} />
           <span className={`hamburger-line ${menuOpen ? "opacity-0" : ""}`} />
-          <span className={`hamburger-line ${menuOpen ? "-translate-y-[6px] -rotate-45" : ""}`} />
+          <span className={`hamburger-line ${menuOpen ? "-translate-y-[6px] -rotate-45" : "translate-y-[6px]"}`} />
         </button>
       </div>
 
@@ -131,15 +119,12 @@ export default function Navbar() {
                 ))}
             </div>
 
-            <div className="mt-5 flex items-center gap-2">
+            <div className="mt-5">
               <button
                 onClick={() => setLocale(locale === "zh" ? "en" : "zh")}
                 className="drawer-control"
               >
-                {locale === "zh" ? "EN" : "中文"}
-              </button>
-              <button onClick={toggleDark} className="drawer-control">
-                {dark ? "Light" : "Dark"}
+                {locale === "zh" ? "Switch to English" : "切换到中文"}
               </button>
             </div>
           </div>

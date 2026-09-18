@@ -141,7 +141,7 @@ export default function Navbar() {
               <span className="text-[10px] uppercase tracking-[0.12em]">Projects</span>
             </a>
             <a
-              href="https://github.com/caicai1010662/Fanlizhen_HNU_Resume"
+              href={profile.links.resume}
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-col items-center gap-2 text-slate-400 transition hover:text-sky-400"
@@ -164,7 +164,7 @@ export default function Navbar() {
 
           <div className="mt-6 flex items-center justify-center gap-4">
             <a
-              href="https://github.com/caicai1010662"
+              href={profile.links.github}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
@@ -173,7 +173,7 @@ export default function Navbar() {
               <GitHubIcon />
             </a>
             <a
-              href="mailto:17685537369@163.com"
+              href={profile.links.email}
               aria-label={locale === "zh" ? "邮箱" : "Email"}
               className="grid h-10 w-10 place-items-center rounded-full border border-white/10 text-slate-400 transition hover:border-sky-400/40 hover:text-sky-400"
             >

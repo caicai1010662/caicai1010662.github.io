@@ -20,7 +20,7 @@ export default function ProjectCard({ project }: { project: Project }) {
               src={project.cover}
               alt={project.coverAlt[locale]}
               loading="lazy"
-              className="absolute inset-0 h-full w-full object-cover object-[72%_center] transition-transform duration-500 group-hover:scale-[1.015]"
+              className="absolute inset-0 h-full w-full origin-right scale-[1.34] object-cover object-right transition-transform duration-500 group-hover:scale-[1.36] md:scale-[1.52] md:group-hover:scale-[1.54]"
             />
           </div>
 

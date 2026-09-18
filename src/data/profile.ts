@@ -10,8 +10,8 @@ export const profile = {
     en: "Automation · Motion Control · Desktop Software",
   } satisfies LocalizedText,
   summary: {
-    zh: "生物医学工程专业硕士，关注多轴运动控制、桌面软件与智能系统的工程实现。这里集中展示我做过的系统、软件和实验，而不是一份网页版简历。",
-    en: "A professional master's student in Biomedical Engineering focused on multi-axis motion control, desktop software, and intelligent systems. This site documents the systems, software, and experiments I have built rather than duplicating a resume.",
+    zh: "生物医学工程专业硕士，关注多轴运动控制、桌面软件与智能系统的工程实现。",
+    en: "A Biomedical Engineering master's student focused on multi-axis motion control, desktop software, and intelligent systems.",
   } satisfies LocalizedText,
   education: {
     zh: "海南大学 · 生物医学工程 · 专业硕士",
@@ -24,9 +24,9 @@ export const profile = {
     { zh: "AI 应用", en: "AI Applications" },
   ] satisfies LocalizedText[],
   stats: [
-    { value: "04", label: { zh: "核心项目", en: "Core Projects" } },
-    { value: "03", label: { zh: "发明专利申请", en: "Patent Applications" } },
-    { value: "6-DOF", label: { zh: "旗舰运动系统", en: "Flagship Motion System" } },
+    { value: "04", label: { zh: "项目", en: "Projects" } },
+    { value: "04", label: { zh: "工程方向", en: "Areas" } },
+    { value: "20+", label: { zh: "技术栈", en: "Technologies" } },
   ],
   links: [
     {
@@ -40,7 +40,7 @@ export const profile = {
       external: false,
     },
     {
-      label: { zh: "简历仓库", en: "Resume Repo" },
+      label: { zh: "简历", en: "Resume" },
       href: "https://github.com/caicai1010662/Fanlizhen_HNU_Resume",
       external: true,
     },

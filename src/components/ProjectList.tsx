@@ -21,19 +21,19 @@ export default function ProjectList() {
       <div className="mx-auto max-w-[1120px]">
         <header className="mb-9 flex items-end justify-between border-b border-white/10 pb-5">
           <div>
-            <p className="text-[10px] uppercase tracking-[0.22em] text-sky-400/65">
+            <p className="type-body uppercase tracking-[0.14em] text-sky-400/65">
               Selected Projects
             </p>
-            <h2 className="mt-2 text-[1.5rem] font-bold tracking-tight text-white md:text-[1.65rem]">
+            <h2 className="type-heading mt-2 font-bold text-white">
               {locale === "zh" ? "项目" : "Projects"}
             </h2>
-            <p className="mt-2 text-[12px] text-slate-600">
+            <p className="type-body mt-2 text-slate-600">
               {locale === "zh"
                 ? "4 个工程项目，覆盖运动控制、桌面软件、系统集成与 AI Agent 应用。"
                 : "Four engineering projects across motion control, desktop software, system integration, and AI agents."}
             </p>
           </div>
-          <span className="pb-0.5 font-mono text-[11px] text-slate-600">
+          <span className="type-body pb-0.5 font-mono text-slate-600">
             {String(projects.length).padStart(2, "0")}
           </span>
         </header>

@@ -21,6 +21,9 @@ export const metadata: Metadata = {
   title: "小范造物小站",
   description:
     "范李振（Lizhen Fan）的个人造物小站：机械、运动控制、桌面软件与 AI 项目。",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({

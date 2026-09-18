@@ -9,21 +9,16 @@ export default function ProjectList() {
 
   return (
     <section id="projects" className="scroll-mt-24">
-      <div className="mb-8">
-        <p className="mb-2 font-mono text-xs uppercase tracking-[0.22em] text-blue-600 dark:text-blue-400">
-          {locale === "zh" ? "Selected Work" : "Selected Work"}
+      <header className="mb-10 border-b border-gray-200 pb-6 dark:border-gray-800">
+        <p className="text-sm text-gray-400">
+          {locale === "zh" ? "我做过的一些事情" : "Selected engineering work"}
         </p>
-        <h1 className="text-3xl font-semibold tracking-tight md:text-4xl">
-          {locale === "zh" ? "项目作品" : "Projects"}
-        </h1>
-        <p className="mt-4 max-w-2xl text-sm leading-7 text-gray-600 dark:text-gray-400">
-          {locale === "zh"
-            ? "每个项目都按 Case Study 组织，重点说明问题、方案、我的职责与工程结果。"
-            : "Each project is organized as a case study covering the problem, solution, my responsibilities, and engineering outcomes."}
-        </p>
-      </div>
+        <h2 className="mt-2 text-3xl font-semibold tracking-tight md:text-4xl">
+          {locale === "zh" ? "项目" : "Projects"}
+        </h2>
+      </header>
 
-      <div className="space-y-8">
+      <div>
         {projects.map((project, index) => (
           <ProjectCard key={project.slug} project={project} index={index} />
         ))}

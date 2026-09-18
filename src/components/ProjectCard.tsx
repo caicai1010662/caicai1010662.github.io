@@ -37,7 +37,7 @@ export default function ProjectCard({
 
           <div className="grid gap-6 px-6 py-7 md:grid-cols-[1fr_auto] md:items-end md:px-8 md:py-8">
             <div className="min-w-0">
-              <div className="mb-3 flex flex-wrap items-center gap-2 text-[10px] uppercase tracking-[0.16em] text-sky-400/70">
+              <div className="type-body mb-3 flex flex-wrap items-center gap-2 uppercase tracking-[0.08em] text-sky-400/70">
                 <span>Featured Project</span>
                 <span className="h-px w-8 bg-sky-400/30" />
                 <span>{project.context[locale]}</span>
@@ -45,17 +45,17 @@ export default function ProjectCard({
                 <span>{statusLabel(project.status, locale)}</span>
               </div>
 
-              <h3 className="max-w-4xl text-[1.65rem] font-black leading-tight tracking-[-0.025em] text-white transition-colors group-hover:text-sky-300 md:text-[2rem]">
+              <h3 className="type-heading max-w-4xl font-black text-white transition-colors group-hover:text-sky-300">
                 {project.title[locale]}
               </h3>
 
-              <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[12px] text-slate-500">
+              <div className="type-body mt-4 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-slate-500">
                 <span>{project.period}</span>
                 <span aria-hidden>·</span>
                 <span>{project.category[locale]}</span>
               </div>
 
-              <p className="mt-5 max-w-4xl text-[14px] leading-7 text-slate-400 md:text-[15px]">
+              <p className="type-body mt-5 max-w-4xl text-slate-400">
                 {project.value[locale]}
               </p>
 
@@ -66,10 +66,10 @@ export default function ProjectCard({
                       key={item.value + item.label.en}
                       className="rounded-xl border border-white/[0.07] bg-white/[0.025] px-4 py-3"
                     >
-                      <div className="font-mono text-sm font-semibold text-sky-300">
+                      <div className="type-body font-mono font-semibold text-sky-300">
                         {item.value}
                       </div>
-                      <div className="mt-1 text-[10px] text-slate-600">
+                      <div className="type-body mt-1 text-slate-600">
                         {item.label[locale]}
                       </div>
                     </div>
@@ -79,7 +79,7 @@ export default function ProjectCard({
             </div>
 
             <div className="shrink-0 text-left md:text-right">
-              <span className="inline-flex items-center gap-2 text-[12px] font-semibold text-sky-400 transition group-hover:text-sky-300">
+              <span className="type-body inline-flex items-center gap-2 font-semibold text-sky-400 transition group-hover:text-sky-300">
                 {locale === "zh" ? "查看项目详情" : "View case study"}
                 <span aria-hidden>→</span>
               </span>
@@ -91,14 +91,14 @@ export default function ProjectCard({
               {project.role.slice(0, 3).map((item) => (
                 <span
                   key={item.en}
-                  className="rounded-full border border-sky-400/15 bg-sky-400/[0.025] px-3 py-1 text-[10px] text-sky-300/80"
+                  className="type-body rounded-full border border-sky-400/15 bg-sky-400/[0.025] px-3 py-1 text-sky-300/80"
                 >
                   {item[locale]}
                 </span>
               ))}
             </div>
 
-            <div className="flex flex-wrap gap-2 text-[10px] text-slate-500">
+            <div className="type-body flex flex-wrap gap-2 text-slate-500">
               {project.stack.slice(0, 6).map((item) => (
                 <span key={item} className="rounded-full border border-white/[0.08] px-3 py-1">
                   {item}
@@ -125,7 +125,7 @@ export default function ProjectCard({
           </div>
 
           <div className="flex min-w-0 flex-col justify-center px-6 py-7 md:px-8">
-            <div className="flex flex-wrap items-center gap-2 text-[10px] uppercase tracking-[0.14em] text-sky-400/55">
+            <div className="type-body flex flex-wrap items-center gap-2 uppercase tracking-[0.08em] text-sky-400/55">
               <span>Project {String(index + 1).padStart(2, "0")}</span>
               <span className="h-px w-7 bg-sky-400/20" />
               <span>{project.context[locale]}</span>
@@ -133,17 +133,17 @@ export default function ProjectCard({
               <span>{statusLabel(project.status, locale)}</span>
             </div>
 
-            <h3 className="mt-3 text-[1.4rem] font-bold leading-snug tracking-[-0.02em] text-sky-400 transition-colors group-hover:text-sky-300 md:text-[1.62rem]">
+            <h3 className="type-heading mt-3 font-bold text-sky-400 transition-colors group-hover:text-sky-300">
               {project.title[locale]}
             </h3>
 
-            <div className="mt-3 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[11px] text-slate-500">
+            <div className="type-body mt-3 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-slate-500">
               <span>{project.period}</span>
               <span aria-hidden>·</span>
               <span>{project.category[locale]}</span>
             </div>
 
-            <p className="mt-5 line-clamp-3 text-[13px] leading-7 text-slate-400 md:text-[14px]">
+            <p className="type-body mt-5 line-clamp-3 text-slate-400">
               {project.value[locale]}
             </p>
 
@@ -152,7 +152,7 @@ export default function ProjectCard({
                 {proof.slice(0, 3).map((item) => (
                   <span
                     key={item.value + item.label.en}
-                    className="rounded-lg border border-white/[0.07] bg-white/[0.02] px-3 py-2 text-[10px] text-slate-500"
+                    className="type-body rounded-lg border border-white/[0.07] bg-white/[0.02] px-3 py-2 text-slate-500"
                   >
                     <strong className="mr-1.5 font-mono text-sky-300/85">{item.value}</strong>
                     {item.label[locale]}
@@ -161,7 +161,7 @@ export default function ProjectCard({
               </div>
             )}
 
-            <div className="mt-6 inline-flex items-center gap-2 text-[11px] font-semibold text-sky-400/80 transition group-hover:text-sky-300">
+            <div className="type-body mt-6 inline-flex items-center gap-2 font-semibold text-sky-400/80 transition group-hover:text-sky-300">
               {locale === "zh" ? "查看详情" : "View project"}
               <span aria-hidden>→</span>
             </div>
@@ -171,13 +171,13 @@ export default function ProjectCard({
         <div className="flex flex-col gap-3 border-t border-white/[0.07] bg-[#1a1e24] px-5 py-3.5 sm:flex-row sm:items-center sm:justify-between md:px-6">
           <div className="flex flex-wrap gap-2">
             {project.role.slice(0, 2).map((item) => (
-              <span key={item.en} className="rounded-full border border-white/10 px-3 py-1 text-[10px] text-slate-400">
+              <span key={item.en} className="type-body rounded-full border border-white/10 px-3 py-1 text-slate-400">
                 {item[locale]}
               </span>
             ))}
           </div>
 
-          <div className="flex flex-wrap gap-2 text-[10px] text-slate-500">
+          <div className="type-body flex flex-wrap gap-2 text-slate-500">
             {project.stack.slice(0, 5).map((item) => (
               <span key={item} className="rounded-full border border-white/[0.08] px-3 py-1">
                 {item}

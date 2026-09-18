@@ -12,55 +12,53 @@ export default function ProjectCard({
   index: number;
 }) {
   const { locale } = useLanguage();
-  const category = project.role[0];
 
   return (
-    <article className="border-b border-gray-200 pb-11 pt-8 first:pt-0 last:border-b-0 dark:border-gray-800">
-      <Link
-        href={`/projects/${project.slug}`}
-        className="group block overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-900"
-      >
-        <div className="relative aspect-[16/9] overflow-hidden">
+    <article className="overflow-hidden rounded-xl border border-white/[0.07] bg-[#171a20]/95 shadow-[0_18px_50px_rgba(0,0,0,0.18)] transition duration-300 hover:-translate-y-0.5 hover:border-sky-500/30">
+      <Link href={`/projects/${project.slug}`} className="grid md:grid-cols-[34%_1fr]">
+        <div className="relative min-h-[190px] overflow-hidden bg-black/30 md:min-h-[215px]">
           <img
             src={project.cover}
             alt={project.coverAlt[locale]}
             loading={index === 0 ? "eager" : "lazy"}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.012]"
+            className="absolute inset-0 h-full w-full object-cover transition duration-500 hover:scale-[1.02]"
           />
-          <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/[0.06] dark:ring-white/[0.06]" />
+          <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-transparent via-transparent to-[#171a20]/30 md:block" />
+        </div>
+
+        <div className="flex min-w-0 flex-col p-5 md:p-6">
+          <div className="flex-1">
+            <h3 className="text-xl font-bold leading-snug tracking-tight text-sky-400 md:text-[1.45rem]">
+              {project.title[locale]}
+            </h3>
+
+            <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs text-slate-400">
+              <span>{project.period}</span>
+              <span aria-hidden>·</span>
+              <span>{project.type[locale]}</span>
+              <span aria-hidden>·</span>
+              <span>{project.role[0]}</span>
+            </div>
+
+            <p className="mt-4 line-clamp-3 text-sm leading-6 text-slate-400">
+              {project.summary[locale]}
+            </p>
+          </div>
+
+          <div className="mt-5 flex flex-col gap-3 border-t border-white/[0.06] pt-3 sm:flex-row sm:items-center sm:justify-between">
+            <span className="inline-flex w-fit rounded-full border border-white/10 px-2.5 py-1 text-[10px] text-slate-400">
+              {project.role[0]}
+            </span>
+            <div className="flex flex-wrap gap-2 text-[10px] text-slate-500">
+              {project.stack.slice(0, 4).map((item) => (
+                <span key={item} className="rounded-full border border-white/[0.08] px-2.5 py-1">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </Link>
-
-      <div className="pt-5">
-        <Link href={`/projects/${project.slug}`} className="group/title block">
-          <h3 className="text-[1.5rem] font-semibold leading-[1.35] tracking-tight text-gray-950 transition-colors group-hover/title:text-blue-600 dark:text-gray-100 dark:group-hover/title:text-blue-400 md:text-[1.7rem]">
-            {project.title[locale]}
-          </h3>
-        </Link>
-
-        <div className="mt-3 flex flex-wrap items-center gap-x-2.5 gap-y-1.5 text-[12px] text-gray-400">
-          <span>{project.period}</span>
-          <span aria-hidden>·</span>
-          <span>{project.type[locale]}</span>
-          <span aria-hidden>·</span>
-          <span>{category}</span>
-        </div>
-
-        <p className="mt-3.5 text-[14px] leading-7 text-gray-500 dark:text-gray-400">
-          {project.summary[locale]}
-        </p>
-
-        <div className="mt-3.5 flex flex-wrap gap-x-3 gap-y-2">
-          {project.stack.slice(0, 6).map((item) => (
-            <span
-              key={item}
-              className="text-[11px] text-gray-400 transition-colors hover:text-gray-700 dark:hover:text-gray-200"
-            >
-              #{item}
-            </span>
-          ))}
-        </div>
-      </div>
     </article>
   );
 }

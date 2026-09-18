@@ -15,7 +15,7 @@ export default function Hero() {
       }}
     >
       <div
-        className="absolute inset-0 opacity-[0.18]"
+        className="absolute inset-0 opacity-[0.14]"
         style={{
           backgroundImage:
             "linear-gradient(rgba(125,211,252,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(125,211,252,0.05) 1px, transparent 1px)",
@@ -27,7 +27,6 @@ export default function Hero() {
 
       <div className="absolute left-[-120px] top-[24%] h-[460px] w-[460px] rounded-full bg-sky-600/20 blur-[110px]" />
       <div className="absolute right-[-90px] top-[8%] h-[400px] w-[400px] rounded-full bg-blue-700/20 blur-[110px]" />
-
       <div className="absolute left-1/2 top-5 h-[19vh] w-px -translate-x-1/2 bg-gradient-to-b from-white/80 via-white/45 to-transparent" />
 
       <div className="relative z-10 flex max-w-5xl flex-col items-center pt-8">
@@ -37,10 +36,6 @@ export default function Hero() {
           className="mb-7 h-28 w-28 rounded-full border-2 border-white/15 object-cover shadow-[0_18px_70px_rgba(0,0,0,0.42)] md:h-32 md:w-32"
         />
 
-        <p className="type-body mb-4 uppercase tracking-[0.24em] text-sky-400/80">
-          Engineering Portfolio
-        </p>
-
         <h1
           className="type-display font-black text-white"
           style={{
@@ -48,20 +43,20 @@ export default function Hero() {
               "4px 4px 0 rgba(14,165,233,0.72), 8px 8px 0 rgba(2,132,199,0.16)",
           }}
         >
-          {locale === "zh" ? "范李振的项目集" : "Lizhen Fan's Portfolio"}
+          {locale === "zh" ? "小范造物小站" : "Lizhen's Workshop"}
         </h1>
 
-        <p className="type-body mt-5 uppercase tracking-[0.12em] text-slate-500">
+        <p className="type-body mt-5 tracking-[0.12em] text-slate-500">
           {locale === "zh"
-            ? "生物医学工程 · 运动控制 · 上位机开发"
-            : "Biomedical Engineering · Motion Control · Desktop Software"}
+            ? "机械 · 控制 · 软件 · AI"
+            : "Mechanics · Control · Software · AI"}
         </p>
 
         <div className="mt-8 rounded-2xl border border-white/[0.08] bg-black/30 px-6 py-3.5 shadow-[0_20px_70px_rgba(0,0,0,0.32)] backdrop-blur-md">
           <p className="type-body font-semibold text-slate-100">
             {locale === "zh"
-              ? "从机械结构到控制软件，我更关注把不同模块整合成可以运行、可以验证的工程系统。"
-              : "From mechanics to control software, I focus on integrating modules into engineering systems that can run and be verified."}
+              ? "把想法做成能真正运行的系统。"
+              : "Turning ideas into systems that actually run."}
           </p>
         </div>
       </div>

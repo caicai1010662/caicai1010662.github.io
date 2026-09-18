@@ -15,7 +15,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
 
   return (
     <article className="min-h-screen bg-[#07101a] px-5 pb-24 pt-24 text-slate-200">
-      <div className="mx-auto max-w-[860px]">
+      <div className="mx-auto max-w-[1080px]">
         <Link
           href="/#projects"
           className="inline-flex text-sm text-slate-500 transition-colors hover:text-sky-400"
@@ -23,7 +23,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
           ← {locale === "zh" ? "返回项目" : "Back to projects"}
         </Link>
 
-        <header className="mt-8 border-b border-white/10 pb-8">
+        <header className="mx-auto mt-8 max-w-[860px] border-b border-white/10 pb-8">
           <p className="text-[11px] uppercase tracking-[0.2em] text-sky-400/70">
             Case Study
           </p>
@@ -57,9 +57,9 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
           </figcaption>
         </figure>
 
-        <p className="mt-8 text-[15px] leading-8 text-slate-300">{project.summary[locale]}</p>
+        <p className="mx-auto mt-8 max-w-[860px] text-[15px] leading-8 text-slate-300">{project.summary[locale]}</p>
 
-        <div className="mt-14 space-y-14">
+        <div className="mx-auto mt-14 max-w-[860px] space-y-14">
           {introSections.map((section) => (
             <section key={section.key}>
               <h2 className="text-2xl font-bold tracking-tight text-white">{section[locale]}</h2>

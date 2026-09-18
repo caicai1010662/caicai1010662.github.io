@@ -8,7 +8,14 @@ export default function ProjectList() {
   const { locale } = useLanguage();
 
   return (
-    <section id="projects" className="project-section relative px-5 py-16 md:py-20">
+    <section
+      id="projects"
+      className="relative bg-[#08111c] px-5 py-16 md:py-20"
+      style={{
+        backgroundImage:
+          "linear-gradient(rgba(5,12,22,0.82), rgba(5,12,22,0.94)), radial-gradient(circle at 20% 0%, rgba(14,165,233,0.16), transparent 28%)",
+      }}
+    >
       <div className="mx-auto max-w-[900px]">
         <header className="mb-8 flex items-end justify-between border-b border-white/10 pb-4">
           <div>

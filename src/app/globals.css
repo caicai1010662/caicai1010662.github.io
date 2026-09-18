@@ -12,13 +12,14 @@ html {
 }
 
 body {
-  background: #f7f8fa;
+  background: #fafafa;
   color: #111827;
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 .dark body {
-  background: #030712;
+  background: #07090d;
   color: #f3f4f6;
 }
 

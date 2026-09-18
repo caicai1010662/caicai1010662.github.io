@@ -1,3 +1,4 @@
+/* Typography v4.1: Display / Heading / Body */
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));

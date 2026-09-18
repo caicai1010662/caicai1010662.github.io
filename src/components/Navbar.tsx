@@ -23,11 +23,11 @@ function FolderIcon() {
   );
 }
 
-function TechIcon() {
+function ResumeIcon() {
   return (
     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.7">
-      <path d="M12 3.5 20 8v8l-8 4.5L4 16V8l8-4.5Z" />
-      <path d="m8.5 10 3.5 2 3.5-2M12 12v4.5" />
+      <path d="M6 3.5h8l4 4V20.5H6z" />
+      <path d="M14 3.5v5h4M9 13h6M9 16h5" />
     </svg>
   );
 }
@@ -45,15 +45,6 @@ function MailIcon() {
     <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="none" stroke="currentColor" strokeWidth="1.7">
       <rect x="3.5" y="5.5" width="17" height="13" rx="2" />
       <path d="m4.5 7 7.5 6 7.5-6" />
-    </svg>
-  );
-}
-
-function ResumeIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="none" stroke="currentColor" strokeWidth="1.7">
-      <path d="M6 3.5h8l4 4V20.5H6z" />
-      <path d="M14 3.5v5h4M9 13h6M9 16h5" />
     </svg>
   );
 }
@@ -95,7 +86,7 @@ export default function Navbar() {
         <button
           type="button"
           onClick={() => setSearchOpen(true)}
-          aria-label={locale === "zh" ? "搜索项目" : "Search projects"}
+          aria-label={locale === "zh" ? "快速导航" : "Quick navigator"}
           className="grid h-12 w-12 place-items-center rounded-full border border-sky-400/30 bg-[#07111d]/88 text-sky-400 shadow-[0_10px_30px_rgba(0,0,0,0.32)] backdrop-blur-md transition hover:scale-[1.04] hover:border-sky-300/60 hover:bg-[#0a1725]"
         >
           <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -124,74 +115,73 @@ export default function Navbar() {
               {profile.name[locale]}
             </h2>
             <p className="mt-1 text-[12px] text-sky-400">Lizhen Fan</p>
-
-            <div className="mt-6">
-              <p className="text-sm font-semibold text-slate-100">Engineering Portfolio</p>
-              <p className="mt-2 text-[12px] leading-6 text-slate-400">
-                {locale === "zh"
-                  ? "自动化 · 运动控制 · 上位机开发"
-                  : "Automation · Motion Control · Desktop Software"}
-              </p>
-              <p className="mt-1 text-[12px] leading-6 text-slate-500">
-                {locale === "zh"
-                  ? "把想法做成可以运行、可以验证的系统。"
-                  : "Turning ideas into systems that can run and be verified."}
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-7 grid grid-cols-3 border-y border-white/10 py-4 text-center">
-            <a href="/#home" onClick={() => setMenuOpen(false)} className="group flex flex-col items-center gap-2 text-slate-400 hover:text-sky-400">
-              <HomeIcon />
-              <span className="text-[10px] uppercase tracking-[0.12em]">Home</span>
-            </a>
-            <a href="/#projects" onClick={() => setMenuOpen(false)} className="group flex flex-col items-center gap-1 text-slate-400 hover:text-sky-400">
-              <FolderIcon />
-              <span className="text-base font-bold text-white">04</span>
-              <span className="text-[9px] uppercase tracking-[0.1em] text-slate-500">Projects</span>
-            </a>
-            <div className="flex flex-col items-center gap-1 text-slate-400">
-              <TechIcon />
-              <span className="text-base font-bold text-white">20+</span>
-              <span className="text-[9px] uppercase tracking-[0.1em] text-slate-500">Tech</span>
-            </div>
-          </div>
-
-          <div className="mt-6">
-            <p className="text-center text-[11px] leading-5 text-slate-500">
+            <p className="mt-5 text-[12px] leading-6 text-slate-400">
               {profile.education[locale]}
+            </p>
+            <p className="mt-1 text-[12px] leading-6 text-slate-500">
+              {profile.title[locale]}
             </p>
           </div>
 
-          <div className="mt-6 flex items-center justify-center gap-4 border-y border-white/10 py-5">
+          <nav className="mt-7 grid grid-cols-3 border-y border-white/10 py-4 text-center">
             <a
-              href="https://github.com/caicai1010662"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-              className="grid h-9 w-9 place-items-center rounded-full border border-white/10 text-slate-400 transition hover:border-sky-400/40 hover:text-sky-400"
+              href="/#home"
+              onClick={() => setMenuOpen(false)}
+              className="flex flex-col items-center gap-2 text-slate-400 transition hover:text-sky-400"
             >
-              <GitHubIcon />
+              <HomeIcon />
+              <span className="text-[10px] uppercase tracking-[0.12em]">Home</span>
+            </a>
+            <a
+              href="/#projects"
+              onClick={() => setMenuOpen(false)}
+              className="flex flex-col items-center gap-2 text-slate-400 transition hover:text-sky-400"
+            >
+              <FolderIcon />
+              <span className="text-[10px] uppercase tracking-[0.12em]">Projects</span>
             </a>
             <a
               href="https://github.com/caicai1010662/Fanlizhen_HNU_Resume"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={locale === "zh" ? "简历" : "Resume"}
-              className="grid h-9 w-9 place-items-center rounded-full border border-white/10 text-slate-400 transition hover:border-sky-400/40 hover:text-sky-400"
+              className="flex flex-col items-center gap-2 text-slate-400 transition hover:text-sky-400"
             >
               <ResumeIcon />
+              <span className="text-[10px] uppercase tracking-[0.12em]">Resume</span>
+            </a>
+          </nav>
+
+          <div className="grid grid-cols-3 border-b border-white/10 py-4 text-center">
+            {profile.stats.map((stat) => (
+              <div key={stat.value}>
+                <div className="text-base font-bold text-white">{stat.value}</div>
+                <div className="mt-1 text-[9px] uppercase tracking-[0.08em] text-slate-500">
+                  {stat.label[locale]}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-6 flex items-center justify-center gap-4">
+            <a
+              href="https://github.com/caicai1010662"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="grid h-10 w-10 place-items-center rounded-full border border-white/10 text-slate-400 transition hover:border-sky-400/40 hover:text-sky-400"
+            >
+              <GitHubIcon />
             </a>
             <a
               href="mailto:17685537369@163.com"
               aria-label={locale === "zh" ? "邮箱" : "Email"}
-              className="grid h-9 w-9 place-items-center rounded-full border border-white/10 text-slate-400 transition hover:border-sky-400/40 hover:text-sky-400"
+              className="grid h-10 w-10 place-items-center rounded-full border border-white/10 text-slate-400 transition hover:border-sky-400/40 hover:text-sky-400"
             >
               <MailIcon />
             </a>
           </div>
 
-          <div className="mt-auto flex items-center justify-center">
+          <div className="mt-auto flex items-center justify-center border-t border-white/10 pt-5">
             <button
               onClick={() => setLocale(locale === "zh" ? "en" : "zh")}
               className="rounded-full border border-white/10 px-4 py-2 text-[11px] text-slate-400 transition hover:border-sky-400/40 hover:text-white"

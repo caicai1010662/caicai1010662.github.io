@@ -2,14 +2,22 @@
 
 import { useEffect, useRef, useState } from "react";
 
+type Ripple = {
+  id: number;
+  x: number;
+  y: number;
+};
+
 export default function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
   const target = useRef({ x: -100, y: -100 });
   const ring = useRef({ x: -100, y: -100 });
+  const rippleId = useRef(0);
   const [enabled, setEnabled] = useState(false);
   const [interactive, setInteractive] = useState(false);
   const [pressed, setPressed] = useState(false);
+  const [ripples, setRipples] = useState<Ripple[]>([]);
 
   useEffect(() => {
     const pointerQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
@@ -41,8 +49,8 @@ export default function CustomCursor() {
     };
 
     const tick = () => {
-      ring.current.x += (target.current.x - ring.current.x) * 0.18;
-      ring.current.y += (target.current.y - ring.current.y) * 0.18;
+      ring.current.x += (target.current.x - ring.current.x) * 0.2;
+      ring.current.y += (target.current.y - ring.current.y) * 0.2;
 
       if (ringRef.current) {
         ringRef.current.style.left = `${ring.current.x}px`;
@@ -52,7 +60,16 @@ export default function CustomCursor() {
       frame = requestAnimationFrame(tick);
     };
 
-    const down = () => setPressed(true);
+    const down = (event: MouseEvent) => {
+      setPressed(true);
+      const id = ++rippleId.current;
+      const ripple = { id, x: event.clientX, y: event.clientY };
+      setRipples((current) => [...current.slice(-4), ripple]);
+      window.setTimeout(() => {
+        setRipples((current) => current.filter((item) => item.id !== id));
+      }, 620);
+    };
+
     const up = () => setPressed(false);
 
     window.addEventListener("mousemove", move, { passive: true });
@@ -85,6 +102,14 @@ export default function CustomCursor() {
           .join(" ")}
         aria-hidden="true"
       />
+      {ripples.map((ripple) => (
+        <span
+          key={ripple.id}
+          className="cursor-click-ripple"
+          style={{ left: ripple.x, top: ripple.y }}
+          aria-hidden="true"
+        />
+      ))}
     </>
   );
 }

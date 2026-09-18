@@ -1,19 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
-    <radialGradient id="g" cx="50%" cy="42%" r="65%">
-      <stop offset="0" stop-color="#38bdf8" stop-opacity=".32"/>
-      <stop offset="1" stop-color="#07101a" stop-opacity="0"/>
+    <linearGradient id="bg" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22d3ee"/>
+      <stop offset=".48" stop-color="#3b82f6"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <radialGradient id="shine" cx="0" cy="0" r="1" gradientTransform="translate(22 18) rotate(42) scale(42)">
+      <stop stop-color="#ffffff" stop-opacity=".52"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
     </radialGradient>
   </defs>
-  <rect width="64" height="64" rx="16" fill="#07101a"/>
-  <rect x="1" y="1" width="62" height="62" rx="15" fill="none" stroke="#0ea5e9" stroke-opacity=".35"/>
-  <circle cx="32" cy="32" r="25" fill="url(#g)"/>
-  <path d="M32 14v36M14 32h36" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" opacity=".35"/>
-  <circle cx="32" cy="32" r="6" fill="#7dd3fc"/>
-  <circle cx="32" cy="32" r="2.4" fill="#e0f2fe"/>
-  <circle cx="22" cy="22" r="3" fill="#0ea5e9"/>
-  <circle cx="44" cy="24" r="2.5" fill="#22d3ee"/>
-  <circle cx="42" cy="43" r="3.2" fill="#0284c7"/>
-  <path d="M25 25l4 4M37 28l5-3M36 37l4 4" stroke="#7dd3fc" stroke-width="1.8" stroke-linecap="round"/>
-  <path d="M32 7l2.2 6.8L41 16l-6.8 2.2L32 25l-2.2-6.8L23 16l6.8-2.2L32 7Z" fill="#e0f2fe" opacity=".92"/>
+  <rect width="64" height="64" rx="17" fill="url(#bg)"/>
+  <rect width="64" height="64" rx="17" fill="url(#shine)"/>
+  <ellipse cx="32" cy="33" rx="20" ry="11" fill="none" stroke="#ffffff" stroke-opacity=".42" stroke-width="1.8" transform="rotate(-18 32 33)"/>
+  <ellipse cx="32" cy="33" rx="19" ry="10" fill="none" stroke="#ffffff" stroke-opacity=".28" stroke-width="1.6" transform="rotate(52 32 33)"/>
+  <circle cx="17.5" cy="34" r="3.2" fill="#ffffff"/>
+  <circle cx="45.5" cy="21.5" r="2.8" fill="#dbeafe"/>
+  <circle cx="44" cy="45" r="3.3" fill="#e0e7ff"/>
+  <circle cx="32" cy="33" r="7.5" fill="#ffffff" fill-opacity=".94"/>
+  <circle cx="32" cy="33" r="3.2" fill="#2563eb"/>
+  <path d="M32 8l2.7 8.3 8.3 2.7-8.3 2.7L32 30l-2.7-8.3L21 19l8.3-2.7L32 8Z" fill="#ffffff"/>
+  <path d="M50 8l1.4 4.3 4.3 1.4-4.3 1.4L50 19.4l-1.4-4.3-4.3-1.4 4.3-1.4L50 8Z" fill="#f5f3ff" fill-opacity=".9"/>
 </svg>

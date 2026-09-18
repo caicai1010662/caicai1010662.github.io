@@ -22,15 +22,15 @@ export default function ProjectList() {
         <header className="mb-9 flex items-end justify-between border-b border-white/10 pb-5">
           <div>
             <p className="text-[10px] uppercase tracking-[0.22em] text-sky-400/65">
-              Engineering Portfolio
+              Selected Projects
             </p>
             <h2 className="mt-2 text-[1.5rem] font-bold tracking-tight text-white md:text-[1.65rem]">
-              {locale === "zh" ? "项目记录" : "Project Notes"}
+              {locale === "zh" ? "项目" : "Projects"}
             </h2>
             <p className="mt-2 text-[12px] text-slate-600">
               {locale === "zh"
-                ? "从系统设计到软件实现，记录能够运行和验证的工程项目。"
-                : "Selected engineering work spanning system design, software, and intelligent applications."}
+                ? "4 个工程项目，覆盖运动控制、桌面软件、系统集成与 AI Agent 应用。"
+                : "Four engineering projects across motion control, desktop software, system integration, and AI agents."}
             </p>
           </div>
           <span className="pb-0.5 font-mono text-[11px] text-slate-600">

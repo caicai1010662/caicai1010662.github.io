@@ -46,19 +46,11 @@ export default function Hero() {
           Lizhen Lab
         </h1>
 
-        <p className="type-body mt-5 tracking-[0.12em] text-slate-500">
+        <p className="type-body mt-5 whitespace-nowrap tracking-[0.08em] text-slate-500 max-sm:whitespace-normal">
           {locale === "zh"
-            ? "机械 · 控制 · 软件 · AI"
-            : "Mechanics · Control · Software · AI"}
+            ? "机械 · 控制 · 软件 · AI · 把想法做成系统"
+            : "Mechanics · Control · Software · AI · Build things that work"}
         </p>
-
-        <div className="mt-8 rounded-2xl border border-white/[0.08] bg-black/30 px-6 py-3.5 shadow-[0_20px_70px_rgba(0,0,0,0.32)] backdrop-blur-md">
-          <p className="type-body font-semibold text-slate-100">
-            {locale === "zh"
-              ? "把想法做成能真正运行的系统。"
-              : "Turning ideas into systems that actually run."}
-          </p>
-        </div>
       </div>
 
       <a

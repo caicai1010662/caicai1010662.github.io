@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import { LanguageProvider } from "@/components/LanguageProvider";
+import ClickBurst from "@/components/ClickBurst";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -38,6 +39,7 @@ export default function RootLayout({
         style={{ backgroundColor: "#07101a" }}
       >
         <LanguageProvider>
+          <ClickBurst />
           <Navbar />
           <main className="bg-[#07101a]">{children}</main>
           <BackToTop />

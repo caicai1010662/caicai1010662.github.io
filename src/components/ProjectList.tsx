@@ -8,25 +8,27 @@ export default function ProjectList() {
   const { locale } = useLanguage();
 
   return (
-    <section id="projects" className="scroll-mt-24">
-      <header className="mb-7 flex items-end justify-between border-b border-gray-200 pb-4 dark:border-gray-800">
-        <div>
-          <p className="text-[11px] uppercase tracking-[0.16em] text-gray-400">
-            Engineering Portfolio
-          </p>
-          <h2 className="mt-1.5 text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">
-            {locale === "zh" ? "项目记录" : "Project Notes"}
-          </h2>
-        </div>
-        <span className="pb-0.5 text-xs text-gray-400">
-          {String(projects.length).padStart(2, "0")}
-        </span>
-      </header>
+    <section id="projects" className="project-section relative px-5 py-16 md:py-20">
+      <div className="mx-auto max-w-[900px]">
+        <header className="mb-8 flex items-end justify-between border-b border-white/10 pb-4">
+          <div>
+            <p className="text-[11px] uppercase tracking-[0.2em] text-sky-400/70">
+              Engineering Portfolio
+            </p>
+            <h2 className="mt-2 text-2xl font-bold tracking-tight text-white">
+              {locale === "zh" ? "项目记录" : "Project Notes"}
+            </h2>
+          </div>
+          <span className="text-xs text-slate-500">
+            {String(projects.length).padStart(2, "0")}
+          </span>
+        </header>
 
-      <div>
-        {projects.map((project, index) => (
-          <ProjectCard key={project.slug} project={project} index={index} />
-        ))}
+        <div className="space-y-4">
+          {projects.map((project, index) => (
+            <ProjectCard key={project.slug} project={project} index={index} />
+          ))}
+        </div>
       </div>
     </section>
   );

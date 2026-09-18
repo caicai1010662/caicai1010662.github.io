@@ -3,19 +3,20 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { projects } from "@/data/projects";
+import { profile } from "@/data/profile";
 import { useLanguage } from "./LanguageProvider";
 
 const quickLinks = [
   { href: "/#home", zh: "首页", en: "Home" },
   { href: "/#projects", zh: "项目", en: "Projects" },
   {
-    href: "https://github.com/caicai1010662/Fanlizhen_HNU_Resume",
+    href: profile.links.resume,
     zh: "简历",
     en: "Resume",
     external: true,
   },
   {
-    href: "https://github.com/caicai1010662",
+    href: profile.links.github,
     zh: "GitHub",
     en: "GitHub",
     external: true,

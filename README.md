@@ -1,15 +1,16 @@
-# 范李振 · Engineering Project Portfolio
+# Lizhen Lab
 
-面向项目展示与技术交流的个人工程作品集。网站不复刻纸面简历，而是把真实项目组织为可展开的 Case Study，方便在面试或技术交流中直接展示系统设计、软件实现与实验工作。
+个人工程项目站，用于展示系统设计、运动控制、桌面软件与 AI 实践。
 
-## 定位
+## 当前结构
 
-- **Project First**：首页优先展示项目，而不是求职口号
-- **Case Study**：每个项目包含问题、方案、职责、关键工作与阶段结果
-- **长期可维护**：项目数据集中在 `src/data/projects.ts`
-- **双语与暗色模式**：保留中英文切换、深色模式与响应式布局
+- **Home**：简洁 Hero + 项目列表
+- **Project Case Study**：每个项目的详细背景、架构、个人贡献、工程细节与验证状态
+- **Drawer**：个人信息、导航、简历与联系方式
+- **Quick Navigator**：项目与常用入口检索
+- **Bilingual**：中文 / English
 
-## 当前项目
+## 项目
 
 1. 多自由度高精度脑立体定向微电极植入系统
 2. SignalViewer · 多通道神经信号实时可视化平台
@@ -18,12 +19,13 @@
 
 ## 技术栈
 
-- Next.js 16 / React 19
+- Next.js 16
+- React 19
 - TypeScript
 - Tailwind CSS 4
-- Static Export
+- GitHub Pages static export
 
-## 目录结构
+## 目录
 
 ```text
 src/
@@ -31,19 +33,21 @@ src/
 │   ├── page.tsx
 │   └── projects/[slug]/page.tsx
 ├── components/
-│   ├── ProfileSidebar.tsx
-│   ├── ProjectCard.tsx
+│   ├── Hero.tsx
+│   ├── Navbar.tsx
 │   ├── ProjectList.tsx
-│   └── ProjectCaseStudy.tsx
+│   ├── ProjectCard.tsx
+│   ├── ProjectCaseStudy.tsx
+│   ├── ProjectSearch.tsx
+│   ├── BackToTop.tsx
+│   └── Footer.tsx
 ├── data/
 │   ├── profile.ts
 │   └── projects.ts
 └── lib/
-    └── content.ts
+    └── i18n.ts
 ```
 
-## 下一阶段
+## 内容原则
 
-- 为旗舰项目补充真实设备照片、SolidWorks 图、WPF 截图和实验照片
-- 为项目详情页增加系统架构图与流程图
-- 根据真实成果继续完善项目结果，不使用未经验证的指标
+首页保持简洁，只负责展示项目入口。技术细节、角色、验证信息与结果统一放入项目详情页。未完成验证的指标不作为确定性结果展示。

@@ -3,8 +3,6 @@ export type LocalizedText = {
   en: string;
 };
 
-export type ProjectStatus = "active" | "completed";
-
 export type ProjectFact = {
   value: string;
   label: LocalizedText;
@@ -21,12 +19,9 @@ export type Project = {
   cover: string;
   coverAlt: LocalizedText;
   title: LocalizedText;
-  shortTitle: LocalizedText;
   period: string;
   context: LocalizedText;
   category: LocalizedText;
-  status: ProjectStatus;
-  featured: boolean;
   value: LocalizedText;
   role: LocalizedText[];
   stack: string[];
@@ -62,10 +57,6 @@ export const projects: Project[] = [
       zh: "多自由度高精度脑立体定向微电极植入系统",
       en: "Multi-DOF Stereotactic Microelectrode Implantation System",
     },
-    shortTitle: {
-      zh: "六自由度脑立体定向植入系统",
-      en: "6-DOF Stereotactic Implantation System",
-    },
     period: "2024.09 — Present",
     context: {
       zh: "硕士课题",
@@ -75,8 +66,6 @@ export const projects: Project[] = [
       zh: "运动控制 · 系统集成",
       en: "Motion Control · System Integration",
     },
-    status: "active",
-    featured: true,
     value: {
       zh: "通过“姿态调整—全局定位—独立植入”的分阶段流程，在复杂植入角度下仍保持清晰、可控的立体定向操作链路。",
       en: "A staged pose-position-insertion workflow that keeps stereotactic positioning clear and controllable under complex insertion angles.",
@@ -206,10 +195,6 @@ export const projects: Project[] = [
       zh: "SignalViewer · 多通道神经信号实时可视化平台",
       en: "SignalViewer · Real-time Multi-channel Neural Signal Viewer",
     },
-    shortTitle: {
-      zh: "SignalViewer",
-      en: "SignalViewer",
-    },
     period: "2026.03 — 2026.06",
     context: {
       zh: "个人开源项目",
@@ -219,8 +204,6 @@ export const projects: Project[] = [
       zh: "桌面软件 · 数据可视化",
       en: "Desktop Software · Data Visualization",
     },
-    status: "completed",
-    featured: false,
     value: {
       zh: "围绕高采样率、多通道神经信号数据，将大文件访问、异步加载和实时渲染拆开优化，提升桌面查看器的交互流畅性。",
       en: "Optimized large-file access, asynchronous loading, and real-time rendering separately to keep a multi-channel neural-signal desktop viewer responsive.",
@@ -316,10 +299,6 @@ export const projects: Project[] = [
       zh: "ShopAgent · 商品询价与费用计算智能助手",
       en: "ShopAgent · Product Inquiry and Cost Calculation Agent",
     },
-    shortTitle: {
-      zh: "ShopAgent",
-      en: "ShopAgent",
-    },
     period: "2026.07 — Present",
     context: {
       zh: "个人项目",
@@ -329,8 +308,6 @@ export const projects: Project[] = [
       zh: "AI Agent · 工具调用",
       en: "AI Agent · Tool Calling",
     },
-    status: "active",
-    featured: false,
     value: {
       zh: "让模型负责理解任务与编排工具，把商品查询和费用计算交给明确的 Tool 执行，并通过 SQLiteSession 保留跨轮次状态。",
       en: "The model handles task interpretation and tool orchestration, while explicit tools perform product lookup and cost calculation and SQLiteSession preserves multi-turn state.",
@@ -423,10 +400,6 @@ export const projects: Project[] = [
       zh: "Image-to-PDF · 桌面图像转 PDF 工具",
       en: "Image-to-PDF · Desktop Image-to-PDF Utility",
     },
-    shortTitle: {
-      zh: "Image-to-PDF",
-      en: "Image-to-PDF",
-    },
     period: "2026.07",
     context: {
       zh: "个人开源项目",
@@ -436,8 +409,6 @@ export const projects: Project[] = [
       zh: "桌面工具 · 图像处理",
       en: "Desktop Utility · Image Processing",
     },
-    status: "completed",
-    featured: false,
     value: {
       zh: "把批量导入、排序、EXIF 方向校正和 PDF 生成整理成可独立运行的桌面工作流，并在 JPEG 场景尽量避免不必要的重复编码。",
       en: "A standalone desktop workflow for batch import, ordering, EXIF correction, and PDF generation while avoiding unnecessary JPEG re-encoding where possible.",

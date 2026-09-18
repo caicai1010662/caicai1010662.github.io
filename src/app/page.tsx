@@ -5,9 +5,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <main>
-        <ProjectList />
-      </main>
+      <ProjectList />
     </>
   );
 }

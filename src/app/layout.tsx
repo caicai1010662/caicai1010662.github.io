@@ -4,7 +4,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import { LanguageProvider } from "@/components/LanguageProvider";
-import ClickBloom from "@/components/ClickBloom";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -21,9 +20,6 @@ export const metadata: Metadata = {
   title: "Lizhen Lab",
   description:
     "Lizhen Lab — 范李振（Lizhen Fan）的个人项目站，记录机械、运动控制、桌面软件与 AI 实践。",
-  icons: {
-    icon: "/favicon.svg",
-  },
 };
 
 export default function RootLayout({
@@ -42,7 +38,6 @@ export default function RootLayout({
         style={{ backgroundColor: "#07101a" }}
       >
         <LanguageProvider>
-          <ClickBloom />
           <Navbar />
           <main className="bg-[#07101a]">{children}</main>
           <BackToTop />

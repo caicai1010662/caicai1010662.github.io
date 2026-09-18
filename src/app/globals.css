@@ -1,7 +1,4 @@
-/* Typography v4.1: Display / Heading / Body */
 @import "tailwindcss";
-
-@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   --font-sans: var(--font-geist-sans), "PingFang SC", "Microsoft YaHei", ui-sans-serif, system-ui, sans-serif;
@@ -52,77 +49,6 @@ img {
   display: block;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-}
-
-
-/* Click bloom interaction */
-.click-bloom {
-  position: fixed;
-  z-index: 9999;
-  width: 1px;
-  height: 1px;
-  pointer-events: none;
-}
-
-.click-bloom-ring {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 24px;
-  height: 24px;
-  border-radius: 999px;
-  border: 2px solid rgba(15, 23, 42, 0.78);
-  transform: translate(-50%, -50%);
-  animation: bloom-ring 720ms ease-out forwards;
-}
-
-.click-bloom-particle {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: var(--size);
-  height: var(--size);
-  border-radius: 999px;
-  background: var(--particle-color);
-  box-shadow: 0 0 10px color-mix(in srgb, var(--particle-color) 70%, transparent);
-  transform: translate(-50%, -50%) rotate(var(--angle)) translateY(0);
-  animation: bloom-particle 680ms cubic-bezier(0.16, 1, 0.3, 1) var(--delay) forwards;
-}
-
-@keyframes bloom-ring {
-  0% {
-    width: 24px;
-    height: 24px;
-    opacity: 0.9;
-  }
-  100% {
-    width: 96px;
-    height: 96px;
-    opacity: 0;
-  }
-}
-
-@keyframes bloom-particle {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(0) scale(0.3);
-  }
-  18% {
-    opacity: 1;
-  }
-  62% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(calc(var(--distance) * -1)) scale(0.72);
-  }
-}
-
 .pressable {
   transition:
     transform 160ms ease,
@@ -137,8 +63,8 @@ img {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .click-bloom {
-    display: none;
+  html {
+    scroll-behavior: auto;
   }
 
   .pressable {

@@ -13,7 +13,8 @@ html {
 
 body {
   background: #f7f8fa;
-  color: #030712;
+  color: #111827;
+  text-rendering: optimizeLegibility;
 }
 
 .dark body {
@@ -22,12 +23,12 @@ body {
 }
 
 ::selection {
-  background: #bfdbfe;
+  background: #dbeafe;
   color: #172554;
 }
 
 .dark ::selection {
-  background: #1e40af;
+  background: #1e3a8a;
   color: #ffffff;
 }
 
@@ -36,28 +37,12 @@ button {
   -webkit-tap-highlight-color: transparent;
 }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition:
-    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-  transition-delay: var(--reveal-delay, 0ms);
-}
-
-.reveal-visible {
-  opacity: 1;
-  transform: translateY(0);
+img {
+  display: block;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
   }
 }

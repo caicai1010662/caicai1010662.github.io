@@ -37,12 +37,12 @@ export default function Hero() {
           className="mb-7 h-28 w-28 rounded-full border-2 border-white/15 object-cover shadow-[0_18px_70px_rgba(0,0,0,0.42)] md:h-32 md:w-32"
         />
 
-        <p className="mb-4 text-[10px] uppercase tracking-[0.38em] text-sky-400/80">
+        <p className="type-body mb-4 uppercase tracking-[0.24em] text-sky-400/80">
           Engineering Portfolio
         </p>
 
         <h1
-          className="text-[clamp(3rem,7.2vw,7rem)] font-black leading-[0.98] tracking-[-0.05em] text-white"
+          className="type-display font-black text-white"
           style={{
             textShadow:
               "4px 4px 0 rgba(14,165,233,0.72), 8px 8px 0 rgba(2,132,199,0.16)",
@@ -51,14 +51,14 @@ export default function Hero() {
           {locale === "zh" ? "范李振的项目集" : "Lizhen Fan's Portfolio"}
         </h1>
 
-        <p className="mt-5 text-[11px] uppercase tracking-[0.2em] text-slate-500">
+        <p className="type-body mt-5 uppercase tracking-[0.12em] text-slate-500">
           {locale === "zh"
             ? "生物医学工程 · 运动控制 · 上位机开发"
             : "Biomedical Engineering · Motion Control · Desktop Software"}
         </p>
 
         <div className="mt-8 rounded-2xl border border-white/[0.08] bg-black/30 px-6 py-3.5 shadow-[0_20px_70px_rgba(0,0,0,0.32)] backdrop-blur-md">
-          <p className="text-sm font-semibold text-slate-100 md:text-[15px]">
+          <p className="type-body font-semibold text-slate-100">
             {locale === "zh"
               ? "从机械结构到控制软件，我更关注把不同模块整合成可以运行、可以验证的工程系统。"
               : "From mechanics to control software, I focus on integrating modules into engineering systems that can run and be verified."}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useLanguage } from "./LanguageProvider";
+import { profile } from "@/data/profile";
 
 export default function Footer() {
   const { locale } = useLanguage();
@@ -12,7 +13,7 @@ export default function Footer() {
 
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
           <a
-            href="https://github.com/caicai1010662"
+            href={profile.links.github}
             target="_blank"
             rel="noopener noreferrer"
             className="transition hover:text-sky-400"
@@ -20,7 +21,7 @@ export default function Footer() {
             GitHub ↗
           </a>
           <a
-            href="https://github.com/caicai1010662/Fanlizhen_HNU_Resume"
+            href={profile.links.resume}
             target="_blank"
             rel="noopener noreferrer"
             className="transition hover:text-sky-400"
@@ -28,7 +29,7 @@ export default function Footer() {
             {locale === "zh" ? "简历" : "Resume"} ↗
           </a>
           <a
-            href="mailto:17685537369@163.com"
+            href={profile.links.email}
             className="transition hover:text-sky-400"
           >
             {locale === "zh" ? "邮箱" : "Email"}

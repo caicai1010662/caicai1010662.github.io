@@ -49,7 +49,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
         </header>
 
         <figure className="mt-8 overflow-hidden rounded-xl border border-white/[0.08] bg-black/20">
-          <img src={project.cover} alt={project.coverAlt[locale]} className="aspect-[16/9] w-full object-cover" />
+          <img src={project.cover} alt={project.coverAlt[locale]} className="aspect-[16/9] w-full bg-[#0c1118] object-contain" />
           <figcaption className="border-t border-white/[0.08] px-4 py-3 text-[11px] leading-5 text-slate-500">
             {locale === "zh"
               ? "概念视觉图，用于项目展示；后续将与真实截图、结构图和实验图共同呈现。"

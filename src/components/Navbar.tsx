@@ -72,7 +72,7 @@ export default function Navbar() {
           type="button"
           onClick={() => setMenuOpen((value) => !value)}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
-          className="grid h-12 w-12 place-items-center rounded-full border border-sky-400/30 bg-[#07111d]/88 text-sky-400 shadow-[0_10px_30px_rgba(0,0,0,0.32)] backdrop-blur-md transition hover:scale-[1.04] hover:border-sky-300/60 hover:bg-[#0a1725]"
+          className="pressable grid h-12 w-12 place-items-center rounded-full border border-sky-400/30 bg-[#07111d]/88 text-sky-400 shadow-[0_10px_30px_rgba(0,0,0,0.32)] backdrop-blur-md transition hover:scale-[1.04] hover:border-sky-300/60 hover:bg-[#0a1725]"
         >
           <span className="relative block h-[18px] w-[22px]">
             <span className={`absolute left-0 top-0 block h-[2px] w-[22px] rounded-full bg-current transition-transform duration-200 ${menuOpen ? "translate-y-[8px] rotate-45" : ""}`} />
@@ -87,7 +87,7 @@ export default function Navbar() {
           type="button"
           onClick={() => setSearchOpen(true)}
           aria-label={locale === "zh" ? "快速导航" : "Quick navigator"}
-          className="grid h-12 w-12 place-items-center rounded-full border border-sky-400/30 bg-[#07111d]/88 text-sky-400 shadow-[0_10px_30px_rgba(0,0,0,0.32)] backdrop-blur-md transition hover:scale-[1.04] hover:border-sky-300/60 hover:bg-[#0a1725]"
+          className="pressable grid h-12 w-12 place-items-center rounded-full border border-sky-400/30 bg-[#07111d]/88 text-sky-400 shadow-[0_10px_30px_rgba(0,0,0,0.32)] backdrop-blur-md transition hover:scale-[1.04] hover:border-sky-300/60 hover:bg-[#0a1725]"
         >
           <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <circle cx="11" cy="11" r="7" />
@@ -127,7 +127,7 @@ export default function Navbar() {
             <a
               href="/#home"
               onClick={() => setMenuOpen(false)}
-              className="flex flex-col items-center gap-2 text-slate-400 transition hover:text-sky-400"
+              className="pressable flex flex-col items-center gap-2 text-slate-400 transition hover:text-sky-400"
             >
               <HomeIcon />
               <span className="type-body uppercase tracking-[0.08em]">Home</span>
@@ -135,7 +135,7 @@ export default function Navbar() {
             <a
               href="/#projects"
               onClick={() => setMenuOpen(false)}
-              className="flex flex-col items-center gap-2 text-slate-400 transition hover:text-sky-400"
+              className="pressable flex flex-col items-center gap-2 text-slate-400 transition hover:text-sky-400"
             >
               <FolderIcon />
               <span className="type-body uppercase tracking-[0.08em]">Projects</span>
@@ -144,7 +144,7 @@ export default function Navbar() {
               href={profile.links.resume}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col items-center gap-2 text-slate-400 transition hover:text-sky-400"
+              className="pressable flex flex-col items-center gap-2 text-slate-400 transition hover:text-sky-400"
             >
               <ResumeIcon />
               <span className="type-body uppercase tracking-[0.08em]">Resume</span>
@@ -168,14 +168,14 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className="grid h-10 w-10 place-items-center rounded-full border border-white/10 text-slate-400 transition hover:border-sky-400/40 hover:text-sky-400"
+              className="pressable grid h-10 w-10 place-items-center rounded-full border border-white/10 text-slate-400 transition hover:border-sky-400/40 hover:text-sky-400"
             >
               <GitHubIcon />
             </a>
             <a
               href={profile.links.email}
               aria-label={locale === "zh" ? "邮箱" : "Email"}
-              className="grid h-10 w-10 place-items-center rounded-full border border-white/10 text-slate-400 transition hover:border-sky-400/40 hover:text-sky-400"
+              className="pressable grid h-10 w-10 place-items-center rounded-full border border-white/10 text-slate-400 transition hover:border-sky-400/40 hover:text-sky-400"
             >
               <MailIcon />
             </a>
@@ -184,7 +184,7 @@ export default function Navbar() {
           <div className="mt-auto flex items-center justify-center border-t border-white/10 pt-5">
             <button
               onClick={() => setLocale(locale === "zh" ? "en" : "zh")}
-              className="type-body rounded-full border border-white/10 px-4 py-2 text-slate-400 transition hover:border-sky-400/40 hover:text-white"
+              className="type-body pressable rounded-full border border-white/10 px-4 py-2 text-slate-400 transition hover:border-sky-400/40 hover:text-white"
             >
               {locale === "zh" ? "EN / English" : "中 / 中文"}
             </button>

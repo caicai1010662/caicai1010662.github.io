@@ -5,6 +5,59 @@ import { useLanguage } from "./LanguageProvider";
 import { profile } from "@/data/profile";
 import ProjectSearch from "./ProjectSearch";
 
+function HomeIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.7">
+      <path d="M3 10.5 12 3l9 7.5" />
+      <path d="M5.5 9.5V21h13V9.5" />
+    </svg>
+  );
+}
+
+function FolderIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.7">
+      <path d="M3.5 6.5h6l2 2h9v10.5a1.5 1.5 0 0 1-1.5 1.5h-14A1.5 1.5 0 0 1 3.5 19V6.5Z" />
+      <path d="M3.5 9h17" />
+    </svg>
+  );
+}
+
+function TechIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.7">
+      <path d="M12 3.5 20 8v8l-8 4.5L4 16V8l8-4.5Z" />
+      <path d="m8.5 10 3.5 2 3.5-2M12 12v4.5" />
+    </svg>
+  );
+}
+
+function GitHubIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="currentColor">
+      <path d="M12 .8a11.5 11.5 0 0 0-3.64 22.41c.58.11.79-.25.79-.56v-2.23c-3.23.7-3.91-1.37-3.91-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.72 1.27 3.38.97.1-.75.41-1.27.74-1.56-2.58-.29-5.29-1.29-5.29-5.73 0-1.27.45-2.3 1.2-3.11-.12-.3-.52-1.48.11-3.08 0 0 .98-.31 3.16 1.19a10.97 10.97 0 0 1 5.76 0c2.18-1.5 3.16-1.19 3.16-1.19.63 1.6.23 2.78.11 3.08.75.81 1.2 1.84 1.2 3.11 0 4.45-2.72 5.43-5.31 5.72.42.36.79 1.07.79 2.16v3.2c0 .31.21.68.8.56A11.5 11.5 0 0 0 12 .8Z" />
+    </svg>
+  );
+}
+
+function MailIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="none" stroke="currentColor" strokeWidth="1.7">
+      <rect x="3.5" y="5.5" width="17" height="13" rx="2" />
+      <path d="m4.5 7 7.5 6 7.5-6" />
+    </svg>
+  );
+}
+
+function ResumeIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="none" stroke="currentColor" strokeWidth="1.7">
+      <path d="M6 3.5h8l4 4V20.5H6z" />
+      <path d="M14 3.5v5h4M9 13h6M9 16h5" />
+    </svg>
+  );
+}
+
 export default function Navbar() {
   const { locale, setLocale } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -31,15 +84,9 @@ export default function Navbar() {
           className="grid h-10 w-10 place-items-center rounded-full border border-sky-400/20 bg-[#07111d]/80 text-sky-400 shadow-lg backdrop-blur-md transition hover:border-sky-300/50 hover:bg-[#0a1725]"
         >
           <span className="relative block h-[15px] w-[18px]">
-            <span
-              className={`absolute left-0 top-0 block h-[1.5px] w-[18px] rounded-full bg-current transition-transform duration-200 ${menuOpen ? "translate-y-[6.75px] rotate-45" : ""}`}
-            />
-            <span
-              className={`absolute left-0 top-[6.75px] block h-[1.5px] w-[18px] rounded-full bg-current transition-opacity duration-200 ${menuOpen ? "opacity-0" : ""}`}
-            />
-            <span
-              className={`absolute left-0 top-[13.5px] block h-[1.5px] w-[18px] rounded-full bg-current transition-transform duration-200 ${menuOpen ? "-translate-y-[6.75px] -rotate-45" : ""}`}
-            />
+            <span className={`absolute left-0 top-0 block h-[1.5px] w-[18px] rounded-full bg-current transition-transform duration-200 ${menuOpen ? "translate-y-[6.75px] rotate-45" : ""}`} />
+            <span className={`absolute left-0 top-[6.75px] block h-[1.5px] w-[18px] rounded-full bg-current transition-opacity duration-200 ${menuOpen ? "opacity-0" : ""}`} />
+            <span className={`absolute left-0 top-[13.5px] block h-[1.5px] w-[18px] rounded-full bg-current transition-transform duration-200 ${menuOpen ? "-translate-y-[6.75px] -rotate-45" : ""}`} />
           </span>
         </button>
       </div>
@@ -64,77 +111,93 @@ export default function Navbar() {
       />
 
       <aside
-        className={`fixed inset-y-0 left-0 z-[65] w-[330px] max-w-[86vw] border-r border-white/10 bg-[#0a111b] p-7 shadow-2xl transition-transform duration-300 ease-out ${menuOpen ? "translate-x-0" : "-translate-x-full"}`}
+        className={`fixed inset-y-0 left-0 z-[65] w-[320px] max-w-[88vw] border-r border-white/10 bg-[#1b1d23] px-6 py-7 shadow-2xl transition-transform duration-300 ease-out ${menuOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
-        <div className="flex h-full flex-col pt-12">
-          <img
-            src="/1.png"
-            alt={profile.name[locale]}
-            className="h-20 w-20 rounded-2xl border border-white/10 object-cover"
-          />
+        <div className="flex h-full flex-col pt-10">
+          <div className="text-center">
+            <img
+              src="/1.png"
+              alt={profile.name[locale]}
+              className="mx-auto h-24 w-24 rounded-full border-2 border-white/10 object-cover shadow-[0_14px_50px_rgba(0,0,0,0.35)]"
+            />
+            <h2 className="mt-4 text-xl font-bold tracking-tight text-white">
+              {profile.name[locale]}
+            </h2>
+            <p className="mt-1 text-[12px] text-sky-400">Lizhen Fan</p>
 
-          <h2 className="mt-5 text-2xl font-bold tracking-tight text-white">
-            {profile.name[locale]}
-          </h2>
-          <p className="mt-2 text-sm font-medium text-sky-400">
-            {profile.title[locale]}
-          </p>
-          <p className="mt-4 text-sm leading-7 text-slate-400">
-            {profile.summary[locale]}
-          </p>
-
-          <div className="mt-5 flex flex-wrap gap-2">
-            {profile.focus.map((item) => (
-              <span key={item.en} className="rounded-full border border-white/10 px-3 py-1 text-[11px] text-slate-400">
-                {item[locale]}
-              </span>
-            ))}
+            <div className="mt-6">
+              <p className="text-sm font-semibold text-slate-100">Engineering Portfolio</p>
+              <p className="mt-2 text-[12px] leading-6 text-slate-400">
+                {locale === "zh"
+                  ? "自动化 · 运动控制 · 上位机开发"
+                  : "Automation · Motion Control · Desktop Software"}
+              </p>
+              <p className="mt-1 text-[12px] leading-6 text-slate-500">
+                {locale === "zh"
+                  ? "把想法做成可以运行、可以验证的系统。"
+                  : "Turning ideas into systems that can run and be verified."}
+              </p>
+            </div>
           </div>
 
-          <div className="mt-7 grid grid-cols-3 border-y border-white/10 py-4">
-            {profile.stats.map((stat) => (
-              <div key={stat.value}>
-                <div className="text-lg font-bold text-white">{stat.value}</div>
-                <div className="mt-1 text-[10px] uppercase tracking-wider text-slate-500">
-                  {stat.label[locale]}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <p className="mt-5 text-xs leading-6 text-slate-500">
-            {profile.education[locale]}
-          </p>
-
-          <div className="mt-auto border-t border-white/10 pt-5">
-            <a href="mailto:17685537369@163.com" className="text-sm text-slate-400 hover:text-sky-400">
-              17685537369@163.com
+          <div className="mt-7 grid grid-cols-3 border-y border-white/10 py-4 text-center">
+            <a href="/#home" onClick={() => setMenuOpen(false)} className="group flex flex-col items-center gap-2 text-slate-400 hover:text-sky-400">
+              <HomeIcon />
+              <span className="text-[10px] uppercase tracking-[0.12em]">Home</span>
             </a>
-
-            <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm">
-              {profile.links
-                .filter((link) => !link.href.startsWith("mailto:"))
-                .map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    target={link.external ? "_blank" : undefined}
-                    rel={link.external ? "noopener noreferrer" : undefined}
-                    className="text-slate-500 transition-colors hover:text-white"
-                  >
-                    {link.label[locale]} ↗
-                  </a>
-                ))}
+            <a href="/#projects" onClick={() => setMenuOpen(false)} className="group flex flex-col items-center gap-1 text-slate-400 hover:text-sky-400">
+              <FolderIcon />
+              <span className="text-base font-bold text-white">04</span>
+              <span className="text-[9px] uppercase tracking-[0.1em] text-slate-500">Projects</span>
+            </a>
+            <div className="flex flex-col items-center gap-1 text-slate-400">
+              <TechIcon />
+              <span className="text-base font-bold text-white">20+</span>
+              <span className="text-[9px] uppercase tracking-[0.1em] text-slate-500">Tech</span>
             </div>
+          </div>
 
-            <div className="mt-5">
-              <button
-                onClick={() => setLocale(locale === "zh" ? "en" : "zh")}
-                className="rounded-full border border-white/10 px-3 py-1.5 text-[11px] text-slate-400 transition hover:border-sky-400/40 hover:text-white"
-              >
-                {locale === "zh" ? "Switch to English" : "切换到中文"}
-              </button>
-            </div>
+          <div className="mt-6">
+            <p className="text-center text-[11px] leading-5 text-slate-500">
+              {profile.education[locale]}
+            </p>
+          </div>
+
+          <div className="mt-6 flex items-center justify-center gap-4 border-y border-white/10 py-5">
+            <a
+              href="https://github.com/caicai1010662"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="grid h-9 w-9 place-items-center rounded-full border border-white/10 text-slate-400 transition hover:border-sky-400/40 hover:text-sky-400"
+            >
+              <GitHubIcon />
+            </a>
+            <a
+              href="https://github.com/caicai1010662/Fanlizhen_HNU_Resume"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={locale === "zh" ? "简历" : "Resume"}
+              className="grid h-9 w-9 place-items-center rounded-full border border-white/10 text-slate-400 transition hover:border-sky-400/40 hover:text-sky-400"
+            >
+              <ResumeIcon />
+            </a>
+            <a
+              href="mailto:17685537369@163.com"
+              aria-label={locale === "zh" ? "邮箱" : "Email"}
+              className="grid h-9 w-9 place-items-center rounded-full border border-white/10 text-slate-400 transition hover:border-sky-400/40 hover:text-sky-400"
+            >
+              <MailIcon />
+            </a>
+          </div>
+
+          <div className="mt-auto flex items-center justify-center">
+            <button
+              onClick={() => setLocale(locale === "zh" ? "en" : "zh")}
+              className="rounded-full border border-white/10 px-4 py-2 text-[11px] text-slate-400 transition hover:border-sky-400/40 hover:text-white"
+            >
+              {locale === "zh" ? "EN / English" : "中 / 中文"}
+            </button>
           </div>
         </div>
       </aside>

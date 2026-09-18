@@ -19,7 +19,7 @@ function BulletList({
   return (
     <ul className="mt-5 space-y-3">
       {items.map((item) => (
-        <li key={item.en} className="flex gap-3 text-[15px] leading-8 text-slate-400">
+        <li key={item.en} className="type-body flex gap-3 text-slate-400">
           <span className="mt-[13px] h-1.5 w-1.5 shrink-0 rounded-full bg-sky-500" />
           <span>{item[locale]}</span>
         </li>
@@ -38,20 +38,20 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
       <div className="mx-auto max-w-[1080px]">
         <Link
           href="/#projects"
-          className="inline-flex text-sm text-slate-500 transition-colors hover:text-sky-400"
+          className="type-body inline-flex text-slate-500 transition-colors hover:text-sky-400"
         >
           ← {locale === "zh" ? "返回项目" : "Back to projects"}
         </Link>
 
         <header className="mx-auto mt-8 max-w-[860px] border-b border-white/10 pb-8">
-          <p className="text-[11px] uppercase tracking-[0.2em] text-sky-400/70">
+          <p className="type-body uppercase tracking-[0.1em] text-sky-400/70">
             Case Study
           </p>
-          <h1 className="mt-3 text-[clamp(2.2rem,5vw,4.4rem)] font-black leading-[1.08] tracking-[-0.04em] text-white">
+          <h1 className="type-display mt-3 font-black text-white">
             {project.title[locale]}
           </h1>
 
-          <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-slate-500">
+          <div className="type-body mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 text-slate-500">
             <span>{project.context[locale]}</span>
             <span aria-hidden>·</span>
             <span>{statusLabel(project.status, locale)}</span>
@@ -61,7 +61,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
             <span>{project.category[locale]}</span>
           </div>
 
-          <p className="mt-6 text-[15px] leading-8 text-slate-300">
+          <p className="type-body mt-6 text-slate-300">
             {project.value[locale]}
           </p>
 
@@ -69,7 +69,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
             {project.role.map((item) => (
               <span
                 key={item.en}
-                className="rounded-full border border-sky-400/15 bg-sky-400/[0.025] px-3 py-1 text-[11px] text-sky-300/80"
+                className="type-body rounded-full border border-sky-400/15 bg-sky-400/[0.025] px-3 py-1 text-sky-300/80"
               >
                 {item[locale]}
               </span>
@@ -80,7 +80,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
             {project.stack.map((item) => (
               <span
                 key={item}
-                className="rounded-full border border-white/10 px-2.5 py-1 text-[11px] text-slate-500"
+                className="type-body rounded-full border border-white/10 px-2.5 py-1 text-slate-500"
               >
                 {item}
               </span>
@@ -94,7 +94,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
             alt={project.coverAlt[locale]}
             className="aspect-[16/9] w-full bg-[#0c1118] object-contain"
           />
-          <figcaption className="border-t border-white/[0.08] px-4 py-3 text-[11px] leading-5 text-slate-500">
+          <figcaption className="type-body border-t border-white/[0.08] px-4 py-3 text-slate-500">
             {locale === "zh"
               ? "概念视觉图，用于项目展示；真实截图、结构图与实验图将在后续验证和整理中补充。"
               : "Concept visual for presentation; real screenshots, diagrams, and experiment images will be added as validation material is organized."}
@@ -103,28 +103,28 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
 
         <div className="mx-auto mt-14 max-w-[860px] space-y-14">
           <section>
-            <h2 className="text-2xl font-bold tracking-tight text-white">
+            <h2 className="type-heading font-bold text-white">
               {locale === "zh" ? "项目概述" : "Overview"}
             </h2>
-            <p className="mt-4 text-[15px] leading-8 text-slate-400">
+            <p className="type-body mt-4 text-slate-400">
               {project.caseStudy.overview[locale]}
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold tracking-tight text-white">
+            <h2 className="type-heading font-bold text-white">
               {locale === "zh" ? "问题与挑战" : "Challenge"}
             </h2>
-            <p className="mt-4 text-[15px] leading-8 text-slate-400">
+            <p className="type-body mt-4 text-slate-400">
               {project.caseStudy.challenge[locale]}
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold tracking-tight text-white">
+            <h2 className="type-heading font-bold text-white">
               {locale === "zh" ? "系统架构" : "Architecture"}
             </h2>
-            <p className="mt-4 text-[15px] leading-8 text-slate-400">
+            <p className="type-body mt-4 text-slate-400">
               {project.caseStudy.architecture[locale]}
             </p>
 
@@ -135,10 +135,10 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
                     key={item.value + item.label.en}
                     className="rounded-xl border border-white/[0.07] bg-white/[0.025] px-4 py-4"
                   >
-                    <div className="font-mono text-sm font-semibold text-sky-300">
+                    <div className="type-body font-mono font-semibold text-sky-300">
                       {item.value}
                     </div>
-                    <div className="mt-1.5 text-[10px] leading-5 text-slate-600">
+                    <div className="type-body mt-1.5 text-slate-600">
                       {item.label[locale]}
                     </div>
                   </div>
@@ -148,23 +148,23 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold tracking-tight text-white">
+            <h2 className="type-heading font-bold text-white">
               {locale === "zh" ? "我的贡献" : "My Contributions"}
             </h2>
             <BulletList items={project.caseStudy.contributions} locale={locale} />
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold tracking-tight text-white">
+            <h2 className="type-heading font-bold text-white">
               {locale === "zh" ? "工程细节" : "Engineering Details"}
             </h2>
             <div className="mt-6 space-y-8">
               {project.engineeringDetails.map((item) => (
                 <div key={item.title.en}>
-                  <h3 className="text-lg font-semibold text-sky-300">
+                  <h3 className="type-body font-semibold text-sky-300">
                     {item.title[locale]}
                   </h3>
-                  <p className="mt-2 text-[15px] leading-8 text-slate-400">
+                  <p className="type-body mt-2 text-slate-400">
                     {item.description[locale]}
                   </p>
                 </div>
@@ -173,7 +173,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold tracking-tight text-white">
+            <h2 className="type-heading font-bold text-white">
               {locale === "zh" ? "验证与证据" : "Validation & Evidence"}
             </h2>
 
@@ -187,11 +187,11 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
                     <div className="font-mono text-sm font-semibold text-sky-300">
                       {item.value}
                     </div>
-                    <div className="mt-1 text-[10px] text-slate-500">
+                    <div className="type-body mt-1 text-slate-500">
                       {item.label[locale]}
                     </div>
                     {item.note && (
-                      <div className="mt-1 text-[10px] leading-5 text-slate-600">
+                      <div className="type-body mt-1 text-slate-600">
                         {item.note[locale]}
                       </div>
                     )}
@@ -204,7 +204,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold tracking-tight text-white">
+            <h2 className="type-heading font-bold text-white">
               {locale === "zh" ? "当前状态" : "Current Status"}
             </h2>
             <BulletList items={project.caseStudy.currentStatus} locale={locale} />
@@ -216,7 +216,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
                 href={project.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-semibold text-sky-400 hover:text-sky-300"
+                className="type-body font-semibold text-sky-400 hover:text-sky-300"
               >
                 GitHub repository ↗
               </a>

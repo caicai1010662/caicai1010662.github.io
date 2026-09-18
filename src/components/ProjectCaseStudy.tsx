@@ -4,14 +4,34 @@ import Link from "next/link";
 import { useLanguage } from "./LanguageProvider";
 import type { Project } from "@/data/projects";
 
-const introSections = [
-  { key: "overview", zh: "项目概述", en: "Overview" },
-  { key: "problem", zh: "问题与约束", en: "Problem & Constraints" },
-  { key: "solution", zh: "系统方案", en: "Solution" },
-] as const;
+function statusLabel(status: Project["status"], locale: "zh" | "en") {
+  if (status === "active") return locale === "zh" ? "进行中" : "In Progress";
+  return locale === "zh" ? "已完成" : "Completed";
+}
+
+function BulletList({
+  items,
+  locale,
+}: {
+  items: Project["caseStudy"]["contributions"];
+  locale: "zh" | "en";
+}) {
+  return (
+    <ul className="mt-5 space-y-3">
+      {items.map((item) => (
+        <li key={item.en} className="flex gap-3 text-[15px] leading-8 text-slate-400">
+          <span className="mt-[13px] h-1.5 w-1.5 shrink-0 rounded-full bg-sky-500" />
+          <span>{item[locale]}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export default function ProjectCaseStudy({ project }: { project: Project }) {
   const { locale } = useLanguage();
+  const facts = project.facts ?? [];
+  const evidence = project.evidence ?? [];
 
   return (
     <article className="min-h-screen bg-[#07101a] px-5 pb-24 pt-24 text-slate-200">
@@ -32,16 +52,36 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
           </h1>
 
           <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-slate-500">
+            <span>{project.context[locale]}</span>
+            <span aria-hidden>·</span>
+            <span>{statusLabel(project.status, locale)}</span>
+            <span aria-hidden>·</span>
             <span>{project.period}</span>
             <span aria-hidden>·</span>
-            <span>{project.type[locale]}</span>
-            <span aria-hidden>·</span>
-            <span>{project.role[0]}</span>
+            <span>{project.category[locale]}</span>
           </div>
 
-          <div className="mt-4 flex flex-wrap gap-2">
+          <p className="mt-6 text-[15px] leading-8 text-slate-300">
+            {project.value[locale]}
+          </p>
+
+          <div className="mt-5 flex flex-wrap gap-2">
+            {project.role.map((item) => (
+              <span
+                key={item.en}
+                className="rounded-full border border-sky-400/15 bg-sky-400/[0.025] px-3 py-1 text-[11px] text-sky-300/80"
+              >
+                {item[locale]}
+              </span>
+            ))}
+          </div>
+
+          <div className="mt-3 flex flex-wrap gap-2">
             {project.stack.map((item) => (
-              <span key={item} className="rounded-full border border-white/10 px-2.5 py-1 text-[11px] text-slate-500">
+              <span
+                key={item}
+                className="rounded-full border border-white/10 px-2.5 py-1 text-[11px] text-slate-500"
+              >
                 {item}
               </span>
             ))}
@@ -49,49 +89,84 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
         </header>
 
         <figure className="mt-8 overflow-hidden rounded-xl border border-white/[0.08] bg-black/20">
-          <img src={project.cover} alt={project.coverAlt[locale]} className="aspect-[16/9] w-full bg-[#0c1118] object-contain" />
+          <img
+            src={project.cover}
+            alt={project.coverAlt[locale]}
+            className="aspect-[16/9] w-full bg-[#0c1118] object-contain"
+          />
           <figcaption className="border-t border-white/[0.08] px-4 py-3 text-[11px] leading-5 text-slate-500">
             {locale === "zh"
-              ? "概念视觉图，用于项目展示；后续将与真实截图、结构图和实验图共同呈现。"
-              : "Concept visual for presentation; real screenshots, diagrams, and experiment images will be added alongside it."}
+              ? "概念视觉图，用于项目展示；真实截图、结构图与实验图将在后续验证和整理中补充。"
+              : "Concept visual for presentation; real screenshots, diagrams, and experiment images will be added as validation material is organized."}
           </figcaption>
         </figure>
 
-        <p className="mx-auto mt-8 max-w-[860px] text-[15px] leading-8 text-slate-300">{project.summary[locale]}</p>
-
         <div className="mx-auto mt-14 max-w-[860px] space-y-14">
-          {introSections.map((section) => (
-            <section key={section.key}>
-              <h2 className="text-2xl font-bold tracking-tight text-white">{section[locale]}</h2>
-              <p className="mt-4 text-[15px] leading-8 text-slate-400">
-                {project.caseStudy[section.key][locale]}
-              </p>
-            </section>
-          ))}
-
           <section>
             <h2 className="text-2xl font-bold tracking-tight text-white">
-              {locale === "zh" ? "我的职责" : "My Responsibilities"}
+              {locale === "zh" ? "项目概述" : "Overview"}
             </h2>
-            <ul className="mt-5 space-y-3">
-              {project.caseStudy.responsibilities.map((item) => (
-                <li key={item.en} className="flex gap-3 text-[15px] leading-8 text-slate-400">
-                  <span className="mt-[13px] h-1.5 w-1.5 shrink-0 rounded-full bg-sky-500" />
-                  <span>{item[locale]}</span>
-                </li>
-              ))}
-            </ul>
+            <p className="mt-4 text-[15px] leading-8 text-slate-400">
+              {project.caseStudy.overview[locale]}
+            </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold tracking-tight text-white">
-              {locale === "zh" ? "关键工作" : "Key Work"}
+              {locale === "zh" ? "问题与挑战" : "Challenge"}
+            </h2>
+            <p className="mt-4 text-[15px] leading-8 text-slate-400">
+              {project.caseStudy.challenge[locale]}
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold tracking-tight text-white">
+              {locale === "zh" ? "系统架构" : "Architecture"}
+            </h2>
+            <p className="mt-4 text-[15px] leading-8 text-slate-400">
+              {project.caseStudy.architecture[locale]}
+            </p>
+
+            {facts.length > 0 && (
+              <div className="mt-6 grid gap-3 sm:grid-cols-3">
+                {facts.map((item) => (
+                  <div
+                    key={item.value + item.label.en}
+                    className="rounded-xl border border-white/[0.07] bg-white/[0.025] px-4 py-4"
+                  >
+                    <div className="font-mono text-sm font-semibold text-sky-300">
+                      {item.value}
+                    </div>
+                    <div className="mt-1.5 text-[10px] leading-5 text-slate-600">
+                      {item.label[locale]}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold tracking-tight text-white">
+              {locale === "zh" ? "我的贡献" : "My Contributions"}
+            </h2>
+            <BulletList items={project.caseStudy.contributions} locale={locale} />
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold tracking-tight text-white">
+              {locale === "zh" ? "工程细节" : "Engineering Details"}
             </h2>
             <div className="mt-6 space-y-8">
-              {project.highlights.map((item) => (
+              {project.engineeringDetails.map((item) => (
                 <div key={item.title.en}>
-                  <h3 className="text-lg font-semibold text-sky-300">{item.title[locale]}</h3>
-                  <p className="mt-2 text-[15px] leading-8 text-slate-400">{item.description[locale]}</p>
+                  <h3 className="text-lg font-semibold text-sky-300">
+                    {item.title[locale]}
+                  </h3>
+                  <p className="mt-2 text-[15px] leading-8 text-slate-400">
+                    {item.description[locale]}
+                  </p>
                 </div>
               ))}
             </div>
@@ -99,16 +174,40 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
 
           <section>
             <h2 className="text-2xl font-bold tracking-tight text-white">
-              {locale === "zh" ? "阶段结果" : "Outcomes"}
+              {locale === "zh" ? "验证与证据" : "Validation & Evidence"}
             </h2>
-            <ul className="mt-5 space-y-3">
-              {project.caseStudy.results.map((item) => (
-                <li key={item.en} className="flex gap-3 text-[15px] leading-8 text-slate-400">
-                  <span className="mt-[13px] h-1.5 w-1.5 shrink-0 rounded-full bg-sky-500" />
-                  <span>{item[locale]}</span>
-                </li>
-              ))}
-            </ul>
+
+            {evidence.length > 0 && (
+              <div className="mt-6 flex flex-wrap gap-3">
+                {evidence.map((item) => (
+                  <div
+                    key={item.value + item.label.en}
+                    className="rounded-xl border border-sky-400/10 bg-sky-400/[0.025] px-4 py-3"
+                  >
+                    <div className="font-mono text-sm font-semibold text-sky-300">
+                      {item.value}
+                    </div>
+                    <div className="mt-1 text-[10px] text-slate-500">
+                      {item.label[locale]}
+                    </div>
+                    {item.note && (
+                      <div className="mt-1 text-[10px] leading-5 text-slate-600">
+                        {item.note[locale]}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <BulletList items={project.caseStudy.validation} locale={locale} />
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold tracking-tight text-white">
+              {locale === "zh" ? "当前状态" : "Current Status"}
+            </h2>
+            <BulletList items={project.caseStudy.currentStatus} locale={locale} />
           </section>
 
           {project.links?.github && (

@@ -12,11 +12,23 @@ html {
 }
 
 body {
-  @apply bg-[#f7f8fa] text-gray-950 dark:bg-gray-950 dark:text-gray-100;
+  background: #f7f8fa;
+  color: #030712;
+}
+
+.dark body {
+  background: #030712;
+  color: #f3f4f6;
 }
 
 ::selection {
-  @apply bg-blue-200 text-blue-950 dark:bg-blue-800 dark:text-white;
+  background: #bfdbfe;
+  color: #172554;
+}
+
+.dark ::selection {
+  background: #1e40af;
+  color: #ffffff;
 }
 
 a,

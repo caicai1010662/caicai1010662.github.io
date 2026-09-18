@@ -89,15 +89,15 @@ export default function ProjectSearch({
                 ? "快速导航或搜索项目、技术栈、角色…"
                 : "Navigate or search projects, technologies, roles…"
             }
-            className="min-w-0 flex-1 bg-transparent text-sm text-white outline-none placeholder:text-slate-500"
+            className="type-body min-w-0 flex-1 bg-transparent text-white outline-none placeholder:text-slate-500"
           />
-          <button onClick={onClose} className="text-xs text-slate-500 hover:text-white">
+          <button onClick={onClose} className="type-body text-slate-500 hover:text-white">
             ESC
           </button>
         </div>
 
         <div className="border-b border-white/[0.07] px-5 py-3">
-          <div className="mb-2 text-[9px] uppercase tracking-[0.16em] text-slate-600">
+          <div className="type-body mb-2 uppercase tracking-[0.08em] text-slate-600">
             {locale === "zh" ? "快速入口" : "Quick Links"}
           </div>
           <div className="flex flex-wrap gap-2">
@@ -108,7 +108,7 @@ export default function ProjectSearch({
                 onClick={onClose}
                 target={item.external ? "_blank" : undefined}
                 rel={item.external ? "noopener noreferrer" : undefined}
-                className="rounded-full border border-white/[0.08] px-3 py-1.5 text-[10px] text-slate-400 transition hover:border-sky-400/30 hover:text-sky-300"
+                className="type-body rounded-full border border-white/[0.08] px-3 py-1.5 text-slate-400 transition hover:border-sky-400/30 hover:text-sky-300"
               >
                 {item[locale]}
               </a>
@@ -128,13 +128,13 @@ export default function ProjectSearch({
                 <img src={project.cover} alt="" className="h-full w-full object-contain" />
               </div>
               <div className="min-w-0">
-                <div className="truncate text-sm font-semibold text-slate-100">
+                <div className="type-body truncate font-semibold text-slate-100">
                   {project.title[locale]}
                 </div>
-                <div className="mt-1 text-xs text-slate-500">
+                <div className="type-body mt-1 text-slate-500">
                   {project.context[locale]} · {project.category[locale]}
                 </div>
-                <div className="mt-2 flex flex-wrap gap-x-2 text-[10px] text-sky-400/75">
+                <div className="type-body mt-2 flex flex-wrap gap-x-2 text-sky-400/75">
                   {project.role.slice(0, 2).map((item) => (
                     <span key={item.en}>#{item[locale]}</span>
                   ))}
@@ -147,7 +147,7 @@ export default function ProjectSearch({
           ))}
 
           {filtered.length === 0 && (
-            <div className="px-4 py-10 text-center text-sm text-slate-500">
+            <div className="type-body px-4 py-10 text-center text-slate-500">
               {locale === "zh" ? "没有找到匹配项目" : "No matching projects"}
             </div>
           )}

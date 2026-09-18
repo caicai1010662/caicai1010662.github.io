@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import { LanguageProvider } from "@/components/LanguageProvider";
-import CustomCursor from "@/components/CustomCursor";
+import ClickBloom from "@/components/ClickBloom";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -42,7 +42,7 @@ export default function RootLayout({
         style={{ backgroundColor: "#07101a" }}
       >
         <LanguageProvider>
-          <CustomCursor />
+          <ClickBloom />
           <Navbar />
           <main className="bg-[#07101a]">{children}</main>
           <BackToTop />

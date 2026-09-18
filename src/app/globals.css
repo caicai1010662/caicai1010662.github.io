@@ -59,81 +59,67 @@ img {
 }
 
 
-/* Personal interaction layer */
-.custom-cursor-dot,
-.custom-cursor-ring,
-.cursor-star-burst {
+/* Click bloom interaction */
+.click-bloom {
   position: fixed;
-  left: -100px;
-  top: -100px;
   z-index: 9999;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-}
-
-.custom-cursor-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  background: #e0f2fe;
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
-}
-
-.custom-cursor-ring {
-  width: 26px;
-  height: 26px;
-  border-radius: 999px;
-  border: 1px solid rgba(56, 189, 248, 0.78);
-  transition:
-    width 140ms ease,
-    height 140ms ease,
-    border-color 140ms ease,
-    background-color 140ms ease;
-}
-
-.custom-cursor-ring.is-interactive {
-  width: 34px;
-  height: 34px;
-  border-color: rgba(125, 211, 252, 0.96);
-  background: rgba(56, 189, 248, 0.07);
-}
-
-.cursor-star-burst {
   width: 1px;
   height: 1px;
+  pointer-events: none;
 }
 
-.cursor-star-particle {
-  --angle: calc(var(--i) * 45deg);
+.click-bloom-ring {
   position: absolute;
   left: 0;
   top: 0;
-  width: 5px;
-  height: 5px;
-  border-radius: 1px;
-  background: #e0f2fe;
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.9);
-  transform: rotate(var(--angle)) translateY(0) rotate(45deg);
-  animation: cursor-star-pop 540ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  border: 2px solid rgba(15, 23, 42, 0.78);
+  transform: translate(-50%, -50%);
+  animation: bloom-ring 720ms ease-out forwards;
 }
 
-.cursor-star-particle:nth-child(2n) {
-  width: 3px;
-  height: 3px;
-  background: #38bdf8;
+.click-bloom-particle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 999px;
+  background: var(--particle-color);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--particle-color) 70%, transparent);
+  transform: translate(-50%, -50%) rotate(var(--angle)) translateY(0);
+  animation: bloom-particle 680ms cubic-bezier(0.16, 1, 0.3, 1) var(--delay) forwards;
 }
 
-@keyframes cursor-star-pop {
+@keyframes bloom-ring {
+  0% {
+    width: 24px;
+    height: 24px;
+    opacity: 0.9;
+  }
+  100% {
+    width: 96px;
+    height: 96px;
+    opacity: 0;
+  }
+}
+
+@keyframes bloom-particle {
   0% {
     opacity: 0;
-    transform: rotate(var(--angle)) translateY(0) scale(0.4) rotate(45deg);
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(0) scale(0.3);
   }
-  20% {
+  18% {
+    opacity: 1;
+  }
+  62% {
     opacity: 1;
   }
   100% {
     opacity: 0;
-    transform: rotate(var(--angle)) translateY(-34px) scale(0.1) rotate(45deg);
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(calc(var(--distance) * -1)) scale(0.72);
   }
 }
 
@@ -150,17 +136,8 @@ img {
   transform: scale(0.98);
 }
 
-@media (hover: hover) and (pointer: fine) {
-  html.custom-cursor-active,
-  html.custom-cursor-active * {
-    cursor: none !important;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .custom-cursor-dot,
-  .custom-cursor-ring,
-  .cursor-star-burst {
+  .click-bloom {
     display: none;
   }
 

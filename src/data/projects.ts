@@ -48,7 +48,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "stereotactic-microelectrode-system",
-    cover: "/project-covers/original/stereotactic-system.png",
+    cover: "/project-covers/stereotactic-system.png",
     coverAlt: {
       zh: "六自由度脑立体定向微电极植入系统概念视觉",
       en: "Concept visual for the 6-DOF stereotactic microelectrode implantation system",
@@ -186,7 +186,7 @@ export const projects: Project[] = [
   },
   {
     slug: "signalviewer",
-    cover: "/project-covers/original/signalviewer.png",
+    cover: "/project-covers/signalviewer.png",
     coverAlt: {
       zh: "SignalViewer 多通道神经信号可视化概念视觉",
       en: "Concept visual for SignalViewer",
@@ -290,7 +290,7 @@ export const projects: Project[] = [
   },
   {
     slug: "shopagent",
-    cover: "/project-covers/original/shopagent.png",
+    cover: "/project-covers/shopagent.png",
     coverAlt: {
       zh: "ShopAgent 工具调用流程概念视觉",
       en: "Concept visual for the ShopAgent tool-calling workflow",
@@ -391,7 +391,7 @@ export const projects: Project[] = [
   },
   {
     slug: "image-to-pdf",
-    cover: "/project-covers/original/image-to-pdf.png",
+    cover: "/project-covers/image-to-pdf.png",
     coverAlt: {
       zh: "Image-to-PDF 文档工作流概念视觉",
       en: "Concept visual for Image-to-PDF",

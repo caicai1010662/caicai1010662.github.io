@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 
 /**
- * 监听页面垂直滚动位置，节流更新。
- * 被 Navbar（导航栏背景变化）和 BackToTop（显示/隐藏）复用。
+ * 监听页面垂直滚动位置，使用 requestAnimationFrame 节流。
+ * 当前用于控制 BackToTop 的显示与隐藏。
  */
 export function useScrollY(): number {
   const [scrollY, setScrollY] = useState(0);

@@ -31,7 +31,7 @@ export default function Hero() {
 
       <div className="relative z-10 flex max-w-5xl flex-col items-center pt-8">
         <img
-          src="/1.png"
+          src="/avatar.png"
           alt={locale === "zh" ? "范李振" : "Lizhen Fan"}
           className="mb-7 h-28 w-28 rounded-full border-2 border-white/15 object-cover shadow-[0_18px_70px_rgba(0,0,0,0.42)] md:h-32 md:w-32"
         />

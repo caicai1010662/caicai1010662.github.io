@@ -107,7 +107,7 @@ export default function Navbar() {
         <div className="flex h-full flex-col pt-10">
           <div className="text-center">
             <img
-              src="/1.png"
+              src="/avatar.png"
               alt={profile.name[locale]}
               className="mx-auto h-24 w-24 rounded-full border-2 border-white/10 object-cover shadow-[0_14px_50px_rgba(0,0,0,0.35)]"
             />

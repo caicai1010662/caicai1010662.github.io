@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import { LanguageProvider } from "@/components/LanguageProvider";
+import CustomCursor from "@/components/CustomCursor";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -17,9 +18,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "范李振 · Engineering Project Portfolio",
+  title: "小范造物小站",
   description:
-    "范李振（Lizhen Fan）的工程项目作品集：运动控制、桌面软件、系统集成与 AI 应用。",
+    "范李振（Lizhen Fan）的个人造物小站：机械、运动控制、桌面软件与 AI 项目。",
 };
 
 export default function RootLayout({
@@ -38,6 +39,7 @@ export default function RootLayout({
         style={{ backgroundColor: "#07101a" }}
       >
         <LanguageProvider>
+          <CustomCursor />
           <Navbar />
           <main className="bg-[#07101a]">{children}</main>
           <BackToTop />

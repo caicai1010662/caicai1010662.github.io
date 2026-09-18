@@ -28,27 +28,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var theme = localStorage.getItem('theme');
-                  if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                    document.documentElement.classList.add('dark');
-                  }
-                } catch(e) {}
-              })();
-            `,
-          }}
-        />
-      </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <html
+      lang="zh-CN"
+      className="dark bg-[#07101a]"
+      style={{ backgroundColor: "#07101a", colorScheme: "dark" }}
+    >
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-[#07101a] text-slate-200 antialiased`}
+        style={{ backgroundColor: "#07101a" }}
+      >
         <LanguageProvider>
           <Navbar />
-          <main>{children}</main>
+          <main className="bg-[#07101a]">{children}</main>
           <BackToTop />
           <Footer />
         </LanguageProvider>

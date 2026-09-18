@@ -8,7 +8,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import type { Locale } from "@/lib/content";
+import type { Locale } from "@/lib/i18n";
 
 type LanguageContextValue = {
   locale: Locale;

@@ -17,9 +17,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "范李振 · 学术裁缝",
+  title: "范李振 · Engineering Project Portfolio",
   description:
-    "范李振（Lizhen Fan）的个人作品集 —— 跨学科独立研究者，用脑机接口研究烟草与白酒。",
+    "范李振（Lizhen Fan）的工程项目作品集：运动控制、桌面软件、系统集成与 AI 应用。",
 };
 
 export default function RootLayout({

@@ -34,6 +34,24 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
         </p>
       </header>
 
+      <figure className="mt-8 overflow-hidden rounded-3xl border border-gray-200 bg-slate-950 shadow-sm dark:border-gray-800">
+        <img
+          src={project.cover}
+          alt={project.coverAlt[locale]}
+          className="aspect-[16/9] w-full object-cover"
+        />
+        <figcaption className="flex flex-col gap-1 border-t border-white/10 bg-slate-950 px-5 py-4 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
+          <span className="font-mono uppercase tracking-[0.16em] text-sky-300">
+            Concept Visual
+          </span>
+          <span>
+            {locale === "zh"
+              ? "用于项目视觉展示，不代表实物照片或真实软件截图。"
+              : "Illustrative project visual; not a photo of the physical prototype or an actual software screenshot."}
+          </span>
+        </figcaption>
+      </figure>
+
       <div className="grid gap-12 py-10 lg:grid-cols-[minmax(0,1fr)_280px]">
         <div className="space-y-12">
           {sections.map((section, index) => (

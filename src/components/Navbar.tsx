@@ -28,11 +28,19 @@ export default function Navbar() {
           type="button"
           onClick={() => setMenuOpen((value) => !value)}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
-          className="chrome-button"
+          className="grid h-10 w-10 place-items-center rounded-full border border-sky-400/20 bg-[#07111d]/80 text-sky-400 shadow-lg backdrop-blur-md transition hover:border-sky-300/50 hover:bg-[#0a1725]"
         >
-          <span className={`hamburger-line ${menuOpen ? "translate-y-[6px] rotate-45" : "-translate-y-[6px]"}`} />
-          <span className={`hamburger-line ${menuOpen ? "opacity-0" : ""}`} />
-          <span className={`hamburger-line ${menuOpen ? "-translate-y-[6px] -rotate-45" : "translate-y-[6px]"}`} />
+          <span className="relative block h-[15px] w-[18px]">
+            <span
+              className={`absolute left-0 top-0 block h-[1.5px] w-[18px] rounded-full bg-current transition-transform duration-200 ${menuOpen ? "translate-y-[6.75px] rotate-45" : ""}`}
+            />
+            <span
+              className={`absolute left-0 top-[6.75px] block h-[1.5px] w-[18px] rounded-full bg-current transition-opacity duration-200 ${menuOpen ? "opacity-0" : ""}`}
+            />
+            <span
+              className={`absolute left-0 top-[13.5px] block h-[1.5px] w-[18px] rounded-full bg-current transition-transform duration-200 ${menuOpen ? "-translate-y-[6.75px] -rotate-45" : ""}`}
+            />
+          </span>
         </button>
       </div>
 
@@ -41,7 +49,7 @@ export default function Navbar() {
           type="button"
           onClick={() => setSearchOpen(true)}
           aria-label={locale === "zh" ? "搜索项目" : "Search projects"}
-          className="chrome-button"
+          className="grid h-10 w-10 place-items-center rounded-full border border-sky-400/20 bg-[#07111d]/80 text-sky-400 shadow-lg backdrop-blur-md transition hover:border-sky-300/50 hover:bg-[#0a1725]"
         >
           <svg className="h-[19px] w-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
             <circle cx="11" cy="11" r="7" />
@@ -51,12 +59,12 @@ export default function Navbar() {
       </div>
 
       <div
-        className={`fixed inset-0 z-[60] bg-black/55 backdrop-blur-sm transition-opacity duration-300 ${menuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"}`}
+        className={`fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${menuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"}`}
         onClick={() => setMenuOpen(false)}
       />
 
       <aside
-        className={`fixed inset-y-0 left-0 z-[65] w-[330px] max-w-[86vw] border-r border-white/10 bg-[#0a111b]/97 p-7 shadow-2xl backdrop-blur-xl transition-transform duration-300 ease-out ${menuOpen ? "translate-x-0" : "-translate-x-full"}`}
+        className={`fixed inset-y-0 left-0 z-[65] w-[330px] max-w-[86vw] border-r border-white/10 bg-[#0a111b] p-7 shadow-2xl transition-transform duration-300 ease-out ${menuOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
         <div className="flex h-full flex-col pt-12">
           <img
@@ -122,7 +130,7 @@ export default function Navbar() {
             <div className="mt-5">
               <button
                 onClick={() => setLocale(locale === "zh" ? "en" : "zh")}
-                className="drawer-control"
+                className="rounded-full border border-white/10 px-3 py-1.5 text-[11px] text-slate-400 transition hover:border-sky-400/40 hover:text-white"
               >
                 {locale === "zh" ? "Switch to English" : "切换到中文"}
               </button>

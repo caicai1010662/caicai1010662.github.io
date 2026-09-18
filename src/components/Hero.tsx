@@ -51,15 +51,17 @@ export default function Hero() {
           {locale === "zh" ? "范李振的项目集" : "Lizhen Fan's Portfolio"}
         </h1>
 
-        <p className="mt-5 text-[11px] uppercase tracking-[0.26em] text-slate-500">
-          Motion · Software · Systems · AI
+        <p className="mt-5 text-[11px] uppercase tracking-[0.2em] text-slate-500">
+          {locale === "zh"
+            ? "生物医学工程 · 运动控制 · 上位机开发"
+            : "Biomedical Engineering · Motion Control · Desktop Software"}
         </p>
 
         <div className="mt-8 rounded-2xl border border-white/[0.08] bg-black/30 px-6 py-3.5 shadow-[0_20px_70px_rgba(0,0,0,0.32)] backdrop-blur-md">
           <p className="text-sm font-semibold text-slate-100 md:text-[15px]">
             {locale === "zh"
-              ? "把机械、控制、软件与智能能力做成真正能运行的系统。"
-              : "Turning mechanics, control, software, and intelligence into systems that actually run."}
+              ? "从机械结构到控制软件，我更关注把不同模块整合成可以运行、可以验证的工程系统。"
+              : "From mechanics to control software, I focus on integrating modules into engineering systems that can run and be verified."}
           </p>
         </div>
       </div>

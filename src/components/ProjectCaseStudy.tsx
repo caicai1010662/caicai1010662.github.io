@@ -4,11 +4,6 @@ import Link from "next/link";
 import { useLanguage } from "./LanguageProvider";
 import type { Project } from "@/data/projects";
 
-function statusLabel(status: Project["status"], locale: "zh" | "en") {
-  if (status === "active") return locale === "zh" ? "进行中" : "In Progress";
-  return locale === "zh" ? "已完成" : "Completed";
-}
-
 function BulletList({
   items,
   locale,
@@ -38,54 +33,25 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
       <div className="mx-auto max-w-[1080px]">
         <Link
           href="/#projects"
-          className="type-body inline-flex text-slate-500 transition-colors hover:text-sky-400"
+          className="type-body pressable inline-flex text-slate-500 transition-colors hover:text-sky-400"
         >
           ← {locale === "zh" ? "返回项目" : "Back to projects"}
         </Link>
 
-        <header className="mx-auto mt-8 max-w-[860px] border-b border-white/10 pb-8">
-          <p className="type-body uppercase tracking-[0.1em] text-sky-400/70">
-            Case Study
-          </p>
-          <h1 className="type-display mt-3 font-black text-white">
+        <header className="mx-auto mt-8 max-w-[860px] pb-6">
+          <h1 className="type-display font-black text-white">
             {project.title[locale]}
           </h1>
 
           <div className="type-body mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 text-slate-500">
-            <span>{project.context[locale]}</span>
-            <span aria-hidden>·</span>
-            <span>{statusLabel(project.status, locale)}</span>
-            <span aria-hidden>·</span>
             <span>{project.period}</span>
             <span aria-hidden>·</span>
-            <span>{project.category[locale]}</span>
+            <span>{project.context[locale]}</span>
           </div>
 
-          <p className="type-body mt-6 text-slate-300">
+          <p className="type-body mt-6 max-w-3xl text-slate-300">
             {project.value[locale]}
           </p>
-
-          <div className="mt-5 flex flex-wrap gap-2">
-            {project.role.map((item) => (
-              <span
-                key={item.en}
-                className="type-body rounded-full border border-sky-400/15 bg-sky-400/[0.025] px-3 py-1 text-sky-300/80"
-              >
-                {item[locale]}
-              </span>
-            ))}
-          </div>
-
-          <div className="mt-3 flex flex-wrap gap-2">
-            {project.stack.map((item) => (
-              <span
-                key={item}
-                className="type-body rounded-full border border-white/10 px-2.5 py-1 text-slate-500"
-              >
-                {item}
-              </span>
-            ))}
-          </div>
         </header>
 
         <figure className="mt-8 overflow-hidden rounded-xl border border-white/[0.08] bg-black/20">
@@ -184,7 +150,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
                     key={item.value + item.label.en}
                     className="rounded-xl border border-sky-400/10 bg-sky-400/[0.025] px-4 py-3"
                   >
-                    <div className="font-mono text-sm font-semibold text-sky-300">
+                    <div className="type-body font-mono font-semibold text-sky-300">
                       {item.value}
                     </div>
                     <div className="type-body mt-1 text-slate-500">

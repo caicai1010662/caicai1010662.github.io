@@ -19,28 +19,20 @@ export default function ProjectList() {
       <div className="pointer-events-none absolute inset-x-0 top-0 h-14 -translate-y-full border-y border-sky-400/[0.06] bg-sky-400/[0.035] backdrop-blur-[2px]" />
 
       <div className="mx-auto max-w-[1120px]">
-        <header className="mb-9 flex items-end justify-between border-b border-white/10 pb-5">
-          <div>
-            <p className="type-body uppercase tracking-[0.14em] text-sky-400/65">
-              Selected Projects
-            </p>
-            <h2 className="type-heading mt-2 font-bold text-white">
-              {locale === "zh" ? "项目" : "Projects"}
-            </h2>
-            <p className="type-body mt-2 text-slate-600">
-              {locale === "zh"
-                ? "4 个工程项目，覆盖运动控制、桌面软件、系统集成与 AI Agent 应用。"
-                : "Four engineering projects across motion control, desktop software, system integration, and AI agents."}
-            </p>
-          </div>
-          <span className="type-body pb-0.5 font-mono text-slate-600">
-            {String(projects.length).padStart(2, "0")}
-          </span>
+        <header className="mb-9 border-b border-white/10 pb-5">
+          <h2 className="type-heading font-bold text-white">
+            {locale === "zh" ? "造物记录" : "Build Notes"}
+          </h2>
+          <p className="type-body mt-2 text-slate-600">
+            {locale === "zh"
+              ? "一些已经做出来、正在做，或值得继续完善的项目。"
+              : "A few things I have built, am building, or want to keep improving."}
+          </p>
         </header>
 
         <div className="space-y-7">
-          {projects.map((project, index) => (
-            <ProjectCard key={project.slug} project={project} index={index} />
+          {projects.map((project) => (
+            <ProjectCard key={project.slug} project={project} />
           ))}
         </div>
       </div>

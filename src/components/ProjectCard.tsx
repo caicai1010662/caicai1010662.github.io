@@ -15,12 +15,12 @@ export default function ProjectCard({ project }: { project: Project }) {
         data-cursor="interactive"
       >
         <div className="grid md:grid-cols-[42%_1fr]">
-          <div className="flex min-h-[240px] items-center justify-center bg-[#0b1118] p-3 md:min-h-[270px] md:p-4">
+          <div className="relative min-h-[240px] overflow-hidden bg-[#0b1118] md:min-h-[270px]">
             <img
               src={project.cover}
               alt={project.coverAlt[locale]}
               loading="lazy"
-              className="h-full max-h-[255px] w-full object-contain transition-transform duration-500 group-hover:scale-[1.012]"
+              className="absolute inset-0 h-full w-full origin-right scale-[1.38] object-cover transition-transform duration-500 group-hover:scale-[1.41]"
             />
           </div>
 

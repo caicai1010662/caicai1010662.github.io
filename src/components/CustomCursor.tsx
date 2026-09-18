@@ -2,22 +2,23 @@
 
 import { useEffect, useRef, useState } from "react";
 
-type Ripple = {
+type Burst = {
   id: number;
   x: number;
   y: number;
 };
+
+const particles = Array.from({ length: 8 });
 
 export default function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
   const target = useRef({ x: -100, y: -100 });
   const ring = useRef({ x: -100, y: -100 });
-  const rippleId = useRef(0);
+  const burstId = useRef(0);
   const [enabled, setEnabled] = useState(false);
   const [interactive, setInteractive] = useState(false);
-  const [pressed, setPressed] = useState(false);
-  const [ripples, setRipples] = useState<Ripple[]>([]);
+  const [bursts, setBursts] = useState<Burst[]>([]);
 
   useEffect(() => {
     const pointerQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
@@ -49,8 +50,8 @@ export default function CustomCursor() {
     };
 
     const tick = () => {
-      ring.current.x += (target.current.x - ring.current.x) * 0.2;
-      ring.current.y += (target.current.y - ring.current.y) * 0.2;
+      ring.current.x += (target.current.x - ring.current.x) * 0.22;
+      ring.current.y += (target.current.y - ring.current.y) * 0.22;
 
       if (ringRef.current) {
         ringRef.current.style.left = `${ring.current.x}px`;
@@ -60,28 +61,26 @@ export default function CustomCursor() {
       frame = requestAnimationFrame(tick);
     };
 
-    const down = (event: MouseEvent) => {
-      setPressed(true);
-      const id = ++rippleId.current;
-      const ripple = { id, x: event.clientX, y: event.clientY };
-      setRipples((current) => [...current.slice(-4), ripple]);
+    const click = (event: MouseEvent) => {
+      const id = ++burstId.current;
+      setBursts((current) => [
+        ...current.slice(-3),
+        { id, x: event.clientX, y: event.clientY },
+      ]);
+
       window.setTimeout(() => {
-        setRipples((current) => current.filter((item) => item.id !== id));
-      }, 620);
+        setBursts((current) => current.filter((item) => item.id !== id));
+      }, 560);
     };
 
-    const up = () => setPressed(false);
-
     window.addEventListener("mousemove", move, { passive: true });
-    window.addEventListener("mousedown", down);
-    window.addEventListener("mouseup", up);
+    window.addEventListener("mousedown", click);
     frame = requestAnimationFrame(tick);
 
     return () => {
       document.documentElement.classList.remove("custom-cursor-active");
       window.removeEventListener("mousemove", move);
-      window.removeEventListener("mousedown", down);
-      window.removeEventListener("mouseup", up);
+      window.removeEventListener("mousedown", click);
       cancelAnimationFrame(frame);
     };
   }, []);
@@ -93,22 +92,25 @@ export default function CustomCursor() {
       <div ref={dotRef} className="custom-cursor-dot" aria-hidden="true" />
       <div
         ref={ringRef}
-        className={[
-          "custom-cursor-ring",
-          interactive ? "is-interactive" : "",
-          pressed ? "is-pressed" : "",
-        ]
-          .filter(Boolean)
-          .join(" ")}
+        className={`custom-cursor-ring ${interactive ? "is-interactive" : ""}`}
         aria-hidden="true"
       />
-      {ripples.map((ripple) => (
+
+      {bursts.map((burst) => (
         <span
-          key={ripple.id}
-          className="cursor-click-ripple"
-          style={{ left: ripple.x, top: ripple.y }}
+          key={burst.id}
+          className="cursor-star-burst"
+          style={{ left: burst.x, top: burst.y }}
           aria-hidden="true"
-        />
+        >
+          {particles.map((_, index) => (
+            <i
+              key={index}
+              className="cursor-star-particle"
+              style={{ "--i": index } as React.CSSProperties}
+            />
+          ))}
+        </span>
       ))}
     </>
   );

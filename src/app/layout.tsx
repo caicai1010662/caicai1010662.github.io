@@ -18,9 +18,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "小范造物小站",
+  title: "Lizhen Lab",
   description:
-    "范李振（Lizhen Fan）的个人造物小站：机械、运动控制、桌面软件与 AI 项目。",
+    "Lizhen Lab — 范李振（Lizhen Fan）的个人项目站，记录机械、运动控制、桌面软件与 AI 实践。",
   icons: {
     icon: "/favicon.svg",
   },

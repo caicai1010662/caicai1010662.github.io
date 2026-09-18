@@ -62,7 +62,7 @@ img {
 /* Personal interaction layer */
 .custom-cursor-dot,
 .custom-cursor-ring,
-.cursor-click-ripple {
+.cursor-star-burst {
   position: fixed;
   left: -100px;
   top: -100px;
@@ -72,114 +72,68 @@ img {
 }
 
 .custom-cursor-dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 999px;
-  background: #e0f2fe;
-  border: 2px solid #38bdf8;
-  box-shadow:
-    0 0 10px rgba(125, 211, 252, 1),
-    0 0 24px rgba(14, 165, 233, 0.72);
-}
-
-.custom-cursor-ring {
-  width: 40px;
-  height: 40px;
-  border-radius: 999px;
-  border: 2px solid rgba(56, 189, 248, 0.9);
-  background: rgba(14, 165, 233, 0.06);
-  box-shadow:
-    0 0 0 1px rgba(125, 211, 252, 0.12),
-    0 0 28px rgba(14, 165, 233, 0.28);
-  transition:
-    width 160ms ease,
-    height 160ms ease,
-    background-color 160ms ease,
-    border-color 160ms ease,
-    box-shadow 160ms ease;
-}
-
-.custom-cursor-ring::before,
-.custom-cursor-ring::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  background: rgba(125, 211, 252, 0.78);
-  transform: translate(-50%, -50%);
-  transition: opacity 160ms ease;
-}
-
-.custom-cursor-ring::before {
-  width: 54px;
-  height: 1px;
-}
-
-.custom-cursor-ring::after {
-  width: 1px;
-  height: 54px;
-}
-
-.custom-cursor-ring.is-interactive {
-  width: 64px;
-  height: 64px;
-  border-color: #a5f3fc;
-  background: rgba(56, 189, 248, 0.12);
-  box-shadow:
-    0 0 0 1px rgba(165, 243, 252, 0.18),
-    0 0 36px rgba(14, 165, 233, 0.42);
-}
-
-.custom-cursor-ring.is-interactive::before,
-.custom-cursor-ring.is-interactive::after {
-  opacity: 0.55;
-}
-
-.custom-cursor-ring.is-pressed {
-  width: 24px;
-  height: 24px;
-  border-color: #ffffff;
-  background: rgba(125, 211, 252, 0.26);
-  box-shadow: 0 0 32px rgba(125, 211, 252, 0.85);
-}
-
-.cursor-click-ripple {
-  width: 14px;
-  height: 14px;
-  border-radius: 999px;
-  border: 2px solid rgba(165, 243, 252, 0.95);
-  background: rgba(56, 189, 248, 0.12);
-  box-shadow:
-    0 0 18px rgba(56, 189, 248, 0.65),
-    inset 0 0 10px rgba(255, 255, 255, 0.22);
-  animation: cursor-ripple 600ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.cursor-click-ripple::after {
-  content: "";
-  position: absolute;
-  inset: 50%;
   width: 6px;
   height: 6px;
   border-radius: 999px;
-  background: #ffffff;
-  box-shadow: 0 0 16px #38bdf8;
-  transform: translate(-50%, -50%);
+  background: #e0f2fe;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
 }
 
-@keyframes cursor-ripple {
+.custom-cursor-ring {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  border: 1px solid rgba(56, 189, 248, 0.78);
+  transition:
+    width 140ms ease,
+    height 140ms ease,
+    border-color 140ms ease,
+    background-color 140ms ease;
+}
+
+.custom-cursor-ring.is-interactive {
+  width: 34px;
+  height: 34px;
+  border-color: rgba(125, 211, 252, 0.96);
+  background: rgba(56, 189, 248, 0.07);
+}
+
+.cursor-star-burst {
+  width: 1px;
+  height: 1px;
+}
+
+.cursor-star-particle {
+  --angle: calc(var(--i) * 45deg);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 1px;
+  background: #e0f2fe;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.9);
+  transform: rotate(var(--angle)) translateY(0) rotate(45deg);
+  animation: cursor-star-pop 540ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.cursor-star-particle:nth-child(2n) {
+  width: 3px;
+  height: 3px;
+  background: #38bdf8;
+}
+
+@keyframes cursor-star-pop {
   0% {
-    width: 14px;
-    height: 14px;
+    opacity: 0;
+    transform: rotate(var(--angle)) translateY(0) scale(0.4) rotate(45deg);
+  }
+  20% {
     opacity: 1;
   }
-  70% {
-    opacity: 0.72;
-  }
   100% {
-    width: 96px;
-    height: 96px;
     opacity: 0;
+    transform: rotate(var(--angle)) translateY(-34px) scale(0.1) rotate(45deg);
   }
 }
 
@@ -193,7 +147,7 @@ img {
 }
 
 .pressable:active {
-  transform: scale(0.97);
+  transform: scale(0.98);
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -206,7 +160,7 @@ img {
 @media (prefers-reduced-motion: reduce) {
   .custom-cursor-dot,
   .custom-cursor-ring,
-  .cursor-click-ripple {
+  .cursor-star-burst {
     display: none;
   }
 

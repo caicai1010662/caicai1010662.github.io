@@ -43,7 +43,7 @@ export default function Hero() {
               "4px 4px 0 rgba(14,165,233,0.72), 8px 8px 0 rgba(2,132,199,0.16)",
           }}
         >
-          {locale === "zh" ? "小范造物小站" : "Lizhen's Workshop"}
+          Lizhen Lab
         </h1>
 
         <p className="type-body mt-5 tracking-[0.12em] text-slate-500">

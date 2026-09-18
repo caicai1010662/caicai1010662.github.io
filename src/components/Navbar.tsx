@@ -34,7 +34,7 @@ function TechIcon() {
 
 function GitHubIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="currentColor">
+    <svg viewBox="0 0 24 24" className="h-[18px] w-[22px]" fill="currentColor">
       <path d="M12 .8a11.5 11.5 0 0 0-3.64 22.41c.58.11.79-.25.79-.56v-2.23c-3.23.7-3.91-1.37-3.91-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.72 1.27 3.38.97.1-.75.41-1.27.74-1.56-2.58-.29-5.29-1.29-5.29-5.73 0-1.27.45-2.3 1.2-3.11-.12-.3-.52-1.48.11-3.08 0 0 .98-.31 3.16 1.19a10.97 10.97 0 0 1 5.76 0c2.18-1.5 3.16-1.19 3.16-1.19.63 1.6.23 2.78.11 3.08.75.81 1.2 1.84 1.2 3.11 0 4.45-2.72 5.43-5.31 5.72.42.36.79 1.07.79 2.16v3.2c0 .31.21.68.8.56A11.5 11.5 0 0 0 12 .8Z" />
     </svg>
   );
@@ -42,7 +42,7 @@ function GitHubIcon() {
 
 function MailIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="none" stroke="currentColor" strokeWidth="1.7">
+    <svg viewBox="0 0 24 24" className="h-[18px] w-[22px]" fill="none" stroke="currentColor" strokeWidth="1.7">
       <rect x="3.5" y="5.5" width="17" height="13" rx="2" />
       <path d="m4.5 7 7.5 6 7.5-6" />
     </svg>
@@ -51,7 +51,7 @@ function MailIcon() {
 
 function ResumeIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="none" stroke="currentColor" strokeWidth="1.7">
+    <svg viewBox="0 0 24 24" className="h-[18px] w-[22px]" fill="none" stroke="currentColor" strokeWidth="1.7">
       <path d="M6 3.5h8l4 4V20.5H6z" />
       <path d="M14 3.5v5h4M9 13h6M9 16h5" />
     </svg>
@@ -81,12 +81,12 @@ export default function Navbar() {
           type="button"
           onClick={() => setMenuOpen((value) => !value)}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
-          className="grid h-10 w-10 place-items-center rounded-full border border-sky-400/20 bg-[#07111d]/80 text-sky-400 shadow-lg backdrop-blur-md transition hover:border-sky-300/50 hover:bg-[#0a1725]"
+          className="grid h-12 w-12 place-items-center rounded-full border border-sky-400/30 bg-[#07111d]/88 text-sky-400 shadow-[0_10px_30px_rgba(0,0,0,0.32)] backdrop-blur-md transition hover:scale-[1.04] hover:border-sky-300/60 hover:bg-[#0a1725]"
         >
-          <span className="relative block h-[15px] w-[18px]">
-            <span className={`absolute left-0 top-0 block h-[1.5px] w-[18px] rounded-full bg-current transition-transform duration-200 ${menuOpen ? "translate-y-[6.75px] rotate-45" : ""}`} />
-            <span className={`absolute left-0 top-[6.75px] block h-[1.5px] w-[18px] rounded-full bg-current transition-opacity duration-200 ${menuOpen ? "opacity-0" : ""}`} />
-            <span className={`absolute left-0 top-[13.5px] block h-[1.5px] w-[18px] rounded-full bg-current transition-transform duration-200 ${menuOpen ? "-translate-y-[6.75px] -rotate-45" : ""}`} />
+          <span className="relative block h-[18px] w-[22px]">
+            <span className={`absolute left-0 top-0 block h-[2px] w-[22px] rounded-full bg-current transition-transform duration-200 ${menuOpen ? "translate-y-[8px] rotate-45" : ""}`} />
+            <span className={`absolute left-0 top-[8px] block h-[2px] w-[22px] rounded-full bg-current transition-opacity duration-200 ${menuOpen ? "opacity-0" : ""}`} />
+            <span className={`absolute left-0 top-[16px] block h-[2px] w-[22px] rounded-full bg-current transition-transform duration-200 ${menuOpen ? "-translate-y-[8px] -rotate-45" : ""}`} />
           </span>
         </button>
       </div>
@@ -96,9 +96,9 @@ export default function Navbar() {
           type="button"
           onClick={() => setSearchOpen(true)}
           aria-label={locale === "zh" ? "搜索项目" : "Search projects"}
-          className="grid h-10 w-10 place-items-center rounded-full border border-sky-400/20 bg-[#07111d]/80 text-sky-400 shadow-lg backdrop-blur-md transition hover:border-sky-300/50 hover:bg-[#0a1725]"
+          className="grid h-12 w-12 place-items-center rounded-full border border-sky-400/30 bg-[#07111d]/88 text-sky-400 shadow-[0_10px_30px_rgba(0,0,0,0.32)] backdrop-blur-md transition hover:scale-[1.04] hover:border-sky-300/60 hover:bg-[#0a1725]"
         >
-          <svg className="h-[19px] w-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+          <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <circle cx="11" cy="11" r="7" />
             <path d="m20 20-3.4-3.4" />
           </svg>

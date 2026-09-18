@@ -111,14 +111,14 @@ export default function Navbar() {
               alt={profile.name[locale]}
               className="mx-auto h-24 w-24 rounded-full border-2 border-white/10 object-cover shadow-[0_14px_50px_rgba(0,0,0,0.35)]"
             />
-            <h2 className="mt-4 text-xl font-bold tracking-tight text-white">
+            <h2 className="type-heading mt-4 font-bold text-white">
               {profile.name[locale]}
             </h2>
-            <p className="mt-1 text-[12px] text-sky-400">Lizhen Fan</p>
-            <p className="mt-5 text-[12px] leading-6 text-slate-400">
+            <p className="type-body mt-1 text-sky-400">Lizhen Fan</p>
+            <p className="type-body mt-5 text-slate-400">
               {profile.education[locale]}
             </p>
-            <p className="mt-1 text-[12px] leading-6 text-slate-500">
+            <p className="type-body mt-1 text-slate-500">
               {profile.title[locale]}
             </p>
           </div>
@@ -130,7 +130,7 @@ export default function Navbar() {
               className="flex flex-col items-center gap-2 text-slate-400 transition hover:text-sky-400"
             >
               <HomeIcon />
-              <span className="text-[10px] uppercase tracking-[0.12em]">Home</span>
+              <span className="type-body uppercase tracking-[0.08em]">Home</span>
             </a>
             <a
               href="/#projects"
@@ -138,7 +138,7 @@ export default function Navbar() {
               className="flex flex-col items-center gap-2 text-slate-400 transition hover:text-sky-400"
             >
               <FolderIcon />
-              <span className="text-[10px] uppercase tracking-[0.12em]">Projects</span>
+              <span className="type-body uppercase tracking-[0.08em]">Projects</span>
             </a>
             <a
               href={profile.links.resume}
@@ -147,15 +147,15 @@ export default function Navbar() {
               className="flex flex-col items-center gap-2 text-slate-400 transition hover:text-sky-400"
             >
               <ResumeIcon />
-              <span className="text-[10px] uppercase tracking-[0.12em]">Resume</span>
+              <span className="type-body uppercase tracking-[0.08em]">Resume</span>
             </a>
           </nav>
 
           <div className="grid grid-cols-3 border-b border-white/10 py-4 text-center">
             {profile.stats.map((stat) => (
               <div key={stat.value}>
-                <div className="text-base font-bold text-white">{stat.value}</div>
-                <div className="mt-1 text-[9px] uppercase tracking-[0.08em] text-slate-500">
+                <div className="type-body font-mono font-bold text-white">{stat.value}</div>
+                <div className="type-body mt-1 uppercase tracking-[0.04em] text-slate-500">
                   {stat.label[locale]}
                 </div>
               </div>
@@ -184,7 +184,7 @@ export default function Navbar() {
           <div className="mt-auto flex items-center justify-center border-t border-white/10 pt-5">
             <button
               onClick={() => setLocale(locale === "zh" ? "en" : "zh")}
-              className="rounded-full border border-white/10 px-4 py-2 text-[11px] text-slate-400 transition hover:border-sky-400/40 hover:text-white"
+              className="type-body rounded-full border border-white/10 px-4 py-2 text-slate-400 transition hover:border-sky-400/40 hover:text-white"
             >
               {locale === "zh" ? "EN / English" : "中 / 中文"}
             </button>

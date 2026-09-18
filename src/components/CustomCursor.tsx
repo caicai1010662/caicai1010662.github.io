@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 
 type Burst = {
   id: number;
@@ -107,7 +107,7 @@ export default function CustomCursor() {
             <i
               key={index}
               className="cursor-star-particle"
-              style={{ "--i": index } as React.CSSProperties}
+              style={{ "--i": index } as CSSProperties}
             />
           ))}
         </span>

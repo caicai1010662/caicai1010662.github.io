@@ -2,28 +2,92 @@
 
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 
+type Particle = {
+  x: number;
+  y: number;
+  size: number;
+  color: string;
+  opacity: number;
+  delay: number;
+};
+
+type Ring = {
+  width: number;
+  height: number;
+  rotate: number;
+  opacity: number;
+  delay: number;
+};
+
 type Burst = {
   id: number;
   x: number;
   y: number;
+  particles: Particle[];
+  rings: [Ring, Ring];
 };
 
-const particles = [
-  { x: -46, y: -12, size: 14, color: "#2563eb", delay: 0 },
-  { x: -32, y: -36, size: 9, color: "#3b82f6", delay: 20 },
-  { x: -10, y: -46, size: 16, color: "#4338ca", delay: 35 },
-  { x: 18, y: -40, size: 10, color: "#facc15", delay: 10 },
-  { x: 42, y: -24, size: 18, color: "#fde047", delay: 28 },
-  { x: 49, y: 4, size: 12, color: "#1d4ed8", delay: 45 },
-  { x: 36, y: 31, size: 17, color: "#4f46e5", delay: 18 },
-  { x: 12, y: 45, size: 11, color: "#facc15", delay: 40 },
-  { x: -16, y: 42, size: 15, color: "#4338ca", delay: 22 },
-  { x: -39, y: 27, size: 10, color: "#fde047", delay: 8 },
-  { x: -52, y: 10, size: 13, color: "#2563eb", delay: 32 },
-  { x: 4, y: -22, size: 8, color: "#60a5fa", delay: 55 },
-  { x: 22, y: 17, size: 9, color: "#312e81", delay: 50 },
-  { x: -20, y: 6, size: 8, color: "#3b82f6", delay: 26 },
+const colors = [
+  "#2563eb",
+  "#1d4ed8",
+  "#3b82f6",
+  "#4338ca",
+  "#4f46e5",
+  "#6366f1",
+  "#facc15",
+  "#fde047",
+  "#7c8448",
 ];
+
+function between(min: number, max: number) {
+  return min + Math.random() * (max - min);
+}
+
+function randomParticle(): Particle {
+  const angle = between(0, Math.PI * 2);
+  const distance = between(22, 70);
+  const roll = Math.random();
+
+  const size =
+    roll < 0.48
+      ? between(2.5, 6)
+      : roll < 0.86
+        ? between(7, 13)
+        : between(14, 21);
+
+  return {
+    x: Math.cos(angle) * distance,
+    y: Math.sin(angle) * distance,
+    size,
+    color: colors[Math.floor(Math.random() * colors.length)],
+    opacity: between(0.42, 1),
+    delay: between(0, 80),
+  };
+}
+
+function randomRing(scale: number): Ring {
+  const base = between(62, 92) * scale;
+
+  return {
+    width: base,
+    height: base * between(0.78, 1.08),
+    rotate: between(-28, 28),
+    opacity: between(0.48, 0.82),
+    delay: between(0, 55),
+  };
+}
+
+function makeBurst(id: number, x: number, y: number): Burst {
+  const particleCount = Math.floor(between(14, 23));
+
+  return {
+    id,
+    x,
+    y,
+    particles: Array.from({ length: particleCount }, randomParticle),
+    rings: [randomRing(1), randomRing(between(0.62, 0.82))],
+  };
+}
 
 export default function ClickBurst() {
   const [bursts, setBursts] = useState<Burst[]>([]);
@@ -37,14 +101,13 @@ export default function ClickBurst() {
       if (event.button !== 0) return;
 
       const id = ++idRef.current;
-      setBursts((current) => [
-        ...current.slice(-2),
-        { id, x: event.clientX, y: event.clientY },
-      ]);
+      const burst = makeBurst(id, event.clientX, event.clientY);
+
+      setBursts((current) => [...current.slice(-2), burst]);
 
       window.setTimeout(() => {
         setBursts((current) => current.filter((item) => item.id !== id));
-      }, 720);
+      }, 820);
     };
 
     window.addEventListener("pointerdown", handlePointerDown, { passive: true });
@@ -60,8 +123,23 @@ export default function ClickBurst() {
           style={{ left: burst.x, top: burst.y }}
           aria-hidden="true"
         >
-          <span className="click-burst-ring" />
-          {particles.map((particle, index) => (
+          {burst.rings.map((ring, index) => (
+            <span
+              key={index}
+              className="click-burst-ring"
+              style={
+                {
+                  "--ring-width": `${ring.width}px`,
+                  "--ring-height": `${ring.height}px`,
+                  "--ring-rotate": `${ring.rotate}deg`,
+                  "--ring-opacity": ring.opacity,
+                  "--ring-delay": `${ring.delay}ms`,
+                } as CSSProperties
+              }
+            />
+          ))}
+
+          {burst.particles.map((particle, index) => (
             <i
               key={index}
               className="click-burst-particle"
@@ -71,6 +149,7 @@ export default function ClickBurst() {
                   "--y": `${particle.y}px`,
                   "--size": `${particle.size}px`,
                   "--particle-color": particle.color,
+                  "--particle-opacity": particle.opacity,
                   "--delay": `${particle.delay}ms`,
                 } as CSSProperties
               }

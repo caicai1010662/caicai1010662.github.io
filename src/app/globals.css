@@ -72,7 +72,7 @@ img {
   }
 }
 
-/* Click burst only. The system cursor remains unchanged. */
+/* Random click galaxy. The system cursor remains unchanged. */
 .click-burst {
   position: fixed;
   z-index: 9999;
@@ -85,12 +85,17 @@ img {
   position: absolute;
   left: 0;
   top: 0;
-  width: 30px;
-  height: 30px;
-  border: 2px solid rgba(15, 23, 42, 0.72);
+  width: var(--ring-width);
+  height: var(--ring-height);
+  border: 2px solid rgba(3, 14, 28, var(--ring-opacity));
   border-radius: 999px;
-  transform: translate(-50%, -50%);
-  animation: click-burst-ring 680ms ease-out forwards;
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.05);
+  opacity: 0;
+  transform:
+    translate(-50%, -50%)
+    rotate(var(--ring-rotate))
+    scale(0.66);
+  animation: click-galaxy-ring 720ms cubic-bezier(0.16, 1, 0.3, 1) var(--ring-delay) forwards;
 }
 
 .click-burst-particle {
@@ -101,39 +106,58 @@ img {
   height: var(--size);
   border-radius: 999px;
   background: var(--particle-color);
-  box-shadow: 0 0 10px color-mix(in srgb, var(--particle-color) 75%, transparent);
-  transform: translate(-50%, -50%) scale(0.3);
-  animation: click-burst-pop 620ms cubic-bezier(0.16, 1, 0.3, 1) var(--delay) forwards;
+  box-shadow: 0 0 9px color-mix(in srgb, var(--particle-color) 68%, transparent);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.24);
+  animation: click-galaxy-particle 700ms cubic-bezier(0.16, 1, 0.3, 1) var(--delay) forwards;
 }
 
-@keyframes click-burst-ring {
-  from {
-    width: 30px;
-    height: 30px;
-    opacity: 0.9;
-  }
-  to {
-    width: 104px;
-    height: 104px;
-    opacity: 0;
-  }
-}
-
-@keyframes click-burst-pop {
+@keyframes click-galaxy-ring {
   0% {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.2);
+    transform:
+      translate(-50%, -50%)
+      rotate(var(--ring-rotate))
+      scale(0.66);
   }
   18% {
-    opacity: 1;
+    opacity: var(--ring-opacity);
   }
   72% {
-    opacity: 1;
-    transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1);
+    opacity: var(--ring-opacity);
+    transform:
+      translate(-50%, -50%)
+      rotate(calc(var(--ring-rotate) + 8deg))
+      scale(1);
   }
   100% {
     opacity: 0;
-    transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(0.72);
+    transform:
+      translate(-50%, -50%)
+      rotate(calc(var(--ring-rotate) + 13deg))
+      scale(1.08);
+  }
+}
+
+@keyframes click-galaxy-particle {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.24);
+  }
+  16% {
+    opacity: var(--particle-opacity);
+  }
+  68% {
+    opacity: var(--particle-opacity);
+    transform:
+      translate(calc(-50% + var(--x)), calc(-50% + var(--y)))
+      scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform:
+      translate(calc(-50% + var(--x) * 1.08), calc(-50% + var(--y) * 1.08))
+      scale(0.74);
   }
 }
 

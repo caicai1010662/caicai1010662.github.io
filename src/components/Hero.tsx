@@ -29,24 +29,27 @@ export default function Hero() {
       <div className="absolute right-[-90px] top-[8%] h-[400px] w-[400px] rounded-full bg-blue-700/20 blur-[110px]" />
       <div className="absolute left-1/2 top-5 h-[19vh] w-px -translate-x-1/2 bg-gradient-to-b from-white/80 via-white/45 to-transparent" />
 
-      <div className="relative z-10 flex max-w-5xl flex-col items-center pt-8">
+      <div className="relative z-10 flex max-w-6xl flex-col items-center">
         <img
           src="/avatar.png"
           alt={locale === "zh" ? "范李振" : "Lizhen Fan"}
-          className="mb-7 h-28 w-28 rounded-full border-2 border-white/15 object-cover shadow-[0_18px_70px_rgba(0,0,0,0.42)] md:h-32 md:w-32"
+          className="mb-10 h-36 w-36 rounded-full border-2 border-white/15 object-cover shadow-[0_22px_80px_rgba(0,0,0,0.42)] md:h-44 md:w-44"
         />
 
         <h1
-          className="type-display font-black text-white"
+          className="font-black text-white"
           style={{
+            fontSize: "clamp(4rem, 8vw, 6.5rem)",
+            lineHeight: 0.95,
+            letterSpacing: "-0.05em",
             textShadow:
-              "4px 4px 0 rgba(14,165,233,0.72), 8px 8px 0 rgba(2,132,199,0.16)",
+              "5px 5px 0 rgba(14,165,233,0.72), 10px 10px 0 rgba(2,132,199,0.16)",
           }}
         >
           Lizhen Lab
         </h1>
 
-        <p className="type-body mt-5 whitespace-nowrap tracking-[0.08em] text-slate-500 max-sm:whitespace-normal">
+        <p className="mt-7 whitespace-nowrap font-medium tracking-[0.06em] text-slate-400 max-sm:whitespace-normal" style={{ fontSize: "clamp(1.05rem, 1.5vw, 1.25rem)", lineHeight: 1.6 }}>
           {locale === "zh"
             ? "机械 · 控制 · 软件 · AI · 把想法做成系统"
             : "Mechanics · Control · Software · AI · Build things that work"}

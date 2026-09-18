@@ -7,8 +7,8 @@ import { profile } from "@/data/profile";
 import { useLanguage } from "./LanguageProvider";
 
 const quickLinks = [
-  { href: "/#home", zh: "首页", en: "Home" },
-  { href: "/#projects", zh: "项目", en: "Projects" },
+  { href: "/#home", zh: "首页", en: "Home", external: false },
+  { href: "/#projects", zh: "项目", en: "Projects", external: false },
   {
     href: profile.links.resume,
     zh: "简历",

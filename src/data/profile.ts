@@ -1,4 +1,4 @@
-import type { LocalizedText } from "./projects";
+import type { LocalizedText } from "@/lib/i18n";
 
 export const profile = {
   name: {

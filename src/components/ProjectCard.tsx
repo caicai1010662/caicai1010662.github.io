@@ -12,7 +12,6 @@ export default function ProjectCard({ project }: { project: Project }) {
       <Link
         href={`/projects/${project.slug}`}
         className="pressable block"
-        data-cursor="interactive"
       >
         <div className="grid md:grid-cols-[42%_1fr]">
           <div className="relative min-h-[240px] overflow-hidden bg-[#0b1118] md:min-h-[270px]">

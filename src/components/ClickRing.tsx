@@ -8,7 +8,7 @@ type Ring = {
   y: number;
 };
 
-export default function ClickBurst() {
+export default function ClickRing() {
   const [rings, setRings] = useState<Ring[]>([]);
   const idRef = useRef(0);
 

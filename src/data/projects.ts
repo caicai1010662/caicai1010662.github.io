@@ -1,7 +1,6 @@
-export type LocalizedText = {
-  zh: string;
-  en: string;
-};
+import type { LocalizedText } from "@/lib/i18n";
+
+export type { LocalizedText } from "@/lib/i18n";
 
 export type ProjectFact = {
   value: string;

@@ -2,13 +2,13 @@
 
 个人工程项目站，用于展示系统设计、运动控制、桌面软件与 AI 实践。
 
-## 当前结构
+## 开发基线
 
-- **Home**：简洁 Hero + 项目列表
-- **Project Case Study**：每个项目的详细背景、架构、个人贡献、工程细节与验证状态
-- **Drawer**：个人信息、导航、简历与联系方式
-- **Quick Navigator**：项目与常用入口检索
-- **Bilingual**：中文 / English
+- 默认分支：`main`
+- 开发方式：直接维护 `main`，不保留额外长期分支
+- 部署方式：GitHub Pages 静态导出
+- 首页职责：项目入口与简要介绍
+- 详情页职责：技术背景、架构、个人贡献、工程细节与验证状态
 
 ## 项目
 
@@ -23,7 +23,7 @@
 - React 19
 - TypeScript
 - Tailwind CSS 4
-- GitHub Pages static export
+- GitHub Pages
 
 ## 目录
 
@@ -35,15 +35,18 @@ src/
 ├── components/
 │   ├── Hero.tsx
 │   ├── Navbar.tsx
+│   ├── ProjectSearch.tsx
 │   ├── ProjectList.tsx
 │   ├── ProjectCard.tsx
 │   ├── ProjectCaseStudy.tsx
-│   ├── ProjectSearch.tsx
+│   ├── ClickRing.tsx
 │   ├── BackToTop.tsx
 │   └── Footer.tsx
 ├── data/
 │   ├── profile.ts
 │   └── projects.ts
+├── hooks/
+│   └── useScrollY.ts
 └── lib/
     └── i18n.ts
 ```

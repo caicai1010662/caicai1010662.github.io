@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import { LanguageProvider } from "@/components/LanguageProvider";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import ClickRing from "@/components/ClickRing";
 import "./globals.css";
 
@@ -16,6 +17,28 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+const themeScript = `
+(() => {
+  try {
+    const stored = localStorage.getItem("lizhen-theme");
+    const preference =
+      stored === "light" || stored === "dark" || stored === "system"
+        ? stored
+        : "system";
+    const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const resolved =
+      preference === "system" ? (systemDark ? "dark" : "light") : preference;
+    const root = document.documentElement;
+    root.dataset.theme = resolved;
+    root.dataset.themePreference = preference;
+    root.style.colorScheme = resolved;
+  } catch {
+    document.documentElement.dataset.theme = "dark";
+    document.documentElement.dataset.themePreference = "system";
+  }
+})();
+`;
 
 export const metadata: Metadata = {
   title: "Lizhen Lab",
@@ -31,20 +54,25 @@ export default function RootLayout({
   return (
     <html
       lang="zh-CN"
-      className="dark bg-[#07101a]"
-      style={{ backgroundColor: "#07101a", colorScheme: "dark" }}
+      data-theme="dark"
+      data-theme-preference="system"
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-[#07101a] text-slate-200 antialiased`}
-        style={{ backgroundColor: "#07101a" }}
+        className={`${geistSans.variable} ${geistMono.variable} min-h-screen antialiased`}
       >
-        <LanguageProvider>
-          <ClickRing />
-          <Navbar />
-          <main className="bg-[#07101a]">{children}</main>
-          <BackToTop />
-          <Footer />
-        </LanguageProvider>
+        <ThemeProvider>
+          <LanguageProvider>
+            <ClickRing />
+            <Navbar />
+            <main>{children}</main>
+            <BackToTop />
+            <Footer />
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

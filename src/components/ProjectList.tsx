@@ -10,20 +10,37 @@ export default function ProjectList() {
   return (
     <section
       id="projects"
-      className="relative bg-[#08111c] px-5 pb-24 pt-16 md:pb-28 md:pt-20"
+      className="relative px-5 pb-24 pt-16 md:pb-28 md:pt-20"
       style={{
+        backgroundColor: "var(--bg-secondary)",
         backgroundImage:
-          "linear-gradient(rgba(5,12,22,0.82), rgba(5,12,22,0.95)), radial-gradient(circle at 18% 0%, rgba(14,165,233,0.18), transparent 32%)",
+          "radial-gradient(circle at 18% 0%, var(--hero-glow-a), transparent 32%)",
       }}
     >
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-14 -translate-y-full border-y border-sky-400/[0.06] bg-sky-400/[0.035] backdrop-blur-[2px]" />
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-14 -translate-y-full border-y backdrop-blur-[2px]"
+        style={{
+          borderColor: "var(--border)",
+          backgroundColor:
+            "color-mix(in srgb, var(--accent) 3.5%, transparent)",
+        }}
+      />
 
       <div className="mx-auto max-w-[1120px]">
-        <header className="mb-9 border-b border-white/10 pb-5">
-          <h2 className="type-heading font-bold text-white">
+        <header
+          className="mb-9 border-b pb-5"
+          style={{ borderColor: "var(--border-strong)" }}
+        >
+          <h2
+            className="type-heading font-bold"
+            style={{ color: "var(--text)" }}
+          >
             {locale === "zh" ? "造物记录" : "Build Notes"}
           </h2>
-          <p className="type-body mt-2 text-slate-600">
+          <p
+            className="type-body mt-2"
+            style={{ color: "var(--text-muted)" }}
+          >
             {locale === "zh"
               ? "一些已经做出来、正在做，或值得继续完善的项目。"
               : "A few things I have built, am building, or want to keep improving."}

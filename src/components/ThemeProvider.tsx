@@ -30,20 +30,29 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [preference, setPreferenceState] =
     useState<ThemePreference>("system");
   const [systemTheme, setSystemTheme] = useState<ResolvedTheme>("dark");
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const root = document.documentElement;
     const saved = root.dataset.themePreference;
+    const resolved = root.dataset.theme;
 
     if (saved === "light" || saved === "dark" || saved === "system") {
       setPreferenceState(saved);
     }
 
+    if (resolved === "light" || resolved === "dark") {
+      setSystemTheme(resolved);
+    } else {
+      setSystemTheme(getSystemTheme());
+    }
+
     const media = window.matchMedia("(prefers-color-scheme: dark)");
     const syncSystemTheme = () => setSystemTheme(getSystemTheme());
 
-    syncSystemTheme();
     media.addEventListener("change", syncSystemTheme);
+    setReady(true);
+
     return () => media.removeEventListener("change", syncSystemTheme);
   }, []);
 
@@ -51,11 +60,13 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     preference === "system" ? systemTheme : preference;
 
   useEffect(() => {
+    if (!ready) return;
+
     const root = document.documentElement;
     root.dataset.theme = resolvedTheme;
     root.dataset.themePreference = preference;
     root.style.colorScheme = resolvedTheme;
-  }, [preference, resolvedTheme]);
+  }, [preference, ready, resolvedTheme]);
 
   const setPreference = useCallback((theme: ThemePreference) => {
     setPreferenceState(theme);

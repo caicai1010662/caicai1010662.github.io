@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useLanguage } from "./LanguageProvider";
 import { profile } from "@/data/profile";
@@ -124,22 +125,22 @@ export default function Navbar() {
           </div>
 
           <nav className="mt-7 grid grid-cols-3 border-y border-white/10 py-4 text-center">
-            <a
+            <Link
               href="/#home"
               onClick={() => setMenuOpen(false)}
               className="pressable flex flex-col items-center gap-2 text-slate-400 transition hover:text-sky-400"
             >
               <HomeIcon />
               <span className="type-body uppercase tracking-[0.08em]">Home</span>
-            </a>
-            <a
+            </Link>
+            <Link
               href="/#projects"
               onClick={() => setMenuOpen(false)}
               className="pressable flex flex-col items-center gap-2 text-slate-400 transition hover:text-sky-400"
             >
               <FolderIcon />
               <span className="type-body uppercase tracking-[0.08em]">Projects</span>
-            </a>
+            </Link>
             <a
               href={profile.links.resume}
               target="_blank"

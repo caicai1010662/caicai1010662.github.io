@@ -4,7 +4,6 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useState,
   type ReactNode,
 } from "react";
@@ -21,14 +20,14 @@ const STORAGE_KEY = "language";
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   // 默认中文，读取 localStorage 记忆用户上次的选择
-  const [locale, setLocale] = useState<Locale>("zh");
-
-  useEffect(() => {
-    const saved = window.localStorage.getItem(STORAGE_KEY);
-    if (saved === "zh" || saved === "en") {
-      setLocale(saved);
+  const [locale, setLocale] = useState<Locale>(() => {
+    if (typeof window === "undefined") {
+      return "zh";
     }
-  }, []);
+
+    const saved = window.localStorage.getItem(STORAGE_KEY);
+    return saved === "zh" || saved === "en" ? saved : "zh";
+  });
 
   const updateLocale = useCallback((next: Locale) => {
     setLocale(next);

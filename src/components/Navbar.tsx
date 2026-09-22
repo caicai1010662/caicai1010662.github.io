@@ -29,10 +29,10 @@ function ResumeIcon() {
   return (
     <svg
       viewBox="0 0 24 24"
-      className="h-[19px] w-[19px]"
+      className="h-5 w-5"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.8"
+      strokeWidth="1.75"
       strokeLinecap="round"
       strokeLinejoin="round"
     >
@@ -45,7 +45,7 @@ function ResumeIcon() {
 
 function GitHubIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="currentColor">
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
       <path d="M12 .8a11.5 11.5 0 0 0-3.64 22.41c.58.11.79-.25.79-.56v-2.23c-3.23.7-3.91-1.37-3.91-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.72 1.27 3.38.97.1-.75.41-1.27.74-1.56-2.58-.29-5.29-1.29-5.29-5.73 0-1.27.45-2.3 1.2-3.11-.12-.3-.52-1.48.11-3.08 0 0 .98-.31 3.16 1.19a10.97 10.97 0 0 1 5.76 0c2.18-1.5 3.16-1.19 3.16-1.19.63 1.6.23 2.78.11 3.08.75.81 1.2 1.84 1.2 3.11 0 4.45-2.72 5.43-5.31 5.72.42.36.79 1.07.79 2.16v3.2c0 .31.21.68.8.56A11.5 11.5 0 0 0 12 .8Z" />
     </svg>
   );
@@ -55,10 +55,10 @@ function MailIcon() {
   return (
     <svg
       viewBox="0 0 24 24"
-      className="h-[19px] w-[19px]"
+      className="h-5 w-5"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.8"
+      strokeWidth="1.75"
       strokeLinecap="round"
       strokeLinejoin="round"
     >
@@ -72,7 +72,7 @@ function BilibiliIcon() {
   return (
     <svg
       viewBox="0 0 24 24"
-      className="h-[20px] w-[20px]"
+      className="h-5 w-5"
       fill="none"
       stroke="currentColor"
       strokeWidth="1.75"
@@ -236,17 +236,27 @@ export default function Navbar() {
             ))}
           </div>
 
-          <div className="mt-6 flex items-center justify-center gap-4">
+          <div className="mt-6 flex items-center justify-center gap-3">
             {[{
               href: profile.links.github,
               label: "GitHub",
               icon: <GitHubIcon />,
               external: true,
             }, {
+              href: profile.links.resume,
+              label: locale === "zh" ? "简历" : "Resume",
+              icon: <ResumeIcon />,
+              external: true,
+            }, {
               href: profile.links.email,
               label: locale === "zh" ? "邮箱" : "Email",
               icon: <MailIcon />,
               external: false,
+            }, {
+              href: profile.links.bilibili,
+              label: "Bilibili",
+              icon: <BilibiliIcon />,
+              external: true,
             }].map((item) => (
               <a
                 key={item.label}
@@ -254,10 +264,20 @@ export default function Navbar() {
                 target={item.external ? "_blank" : undefined}
                 rel={item.external ? "noopener noreferrer" : undefined}
                 aria-label={item.label}
-                className="pressable grid h-10 w-10 place-items-center rounded-full border transition-opacity hover:opacity-70"
-                style={{ borderColor: "var(--border-strong)", color: "var(--text-secondary)" }}
+                title={item.label}
+                className="group pressable grid h-11 w-11 place-items-center rounded-full border transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--accent)] hover:text-[var(--accent)]"
+                style={{
+                  borderColor: "var(--border-strong)",
+                  backgroundColor:
+                    "color-mix(in srgb, var(--surface-soft) 82%, transparent)",
+                  color: "var(--text-secondary)",
+                  boxShadow:
+                    "0 6px 18px color-mix(in srgb, var(--shadow) 42%, transparent)",
+                }}
               >
-                {item.icon}
+                <span className="grid place-items-center transition-transform duration-200 group-hover:scale-110">
+                  {item.icon}
+                </span>
               </a>
             ))}
           </div>

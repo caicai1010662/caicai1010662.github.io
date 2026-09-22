@@ -12,7 +12,7 @@ export default function ProjectList() {
       id="projects"
       className="relative px-5 pb-24 pt-16 md:pb-28 md:pt-20"
       style={{
-        backgroundColor: "var(--bg-secondary)",
+        backgroundColor: "var(--section-surface)",
         backgroundImage:
           "radial-gradient(circle at 18% 0%, var(--hero-glow-a), transparent 32%)",
       }}

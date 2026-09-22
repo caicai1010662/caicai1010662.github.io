@@ -20,62 +20,42 @@ type ThemeContextValue = {
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 const STORAGE_KEY = "lizhen-theme";
 
-function getSystemTheme(): ResolvedTheme {
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
-}
-
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [preference, setPreferenceState] =
-    useState<ThemePreference>("system");
-  const [systemTheme, setSystemTheme] = useState<ResolvedTheme>("dark");
+  const [theme, setTheme] = useState<ThemePreference>("dark");
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const root = document.documentElement;
-    const saved = root.dataset.themePreference;
     const resolved = root.dataset.theme;
 
-    if (saved === "light" || saved === "dark" || saved === "system") {
-      setPreferenceState(saved);
-    }
-
     if (resolved === "light" || resolved === "dark") {
-      setSystemTheme(resolved);
-    } else {
-      setSystemTheme(getSystemTheme());
+      setTheme(resolved);
     }
 
-    const media = window.matchMedia("(prefers-color-scheme: dark)");
-    const syncSystemTheme = () => setSystemTheme(getSystemTheme());
-
-    media.addEventListener("change", syncSystemTheme);
     setReady(true);
-
-    return () => media.removeEventListener("change", syncSystemTheme);
   }, []);
-
-  const resolvedTheme: ResolvedTheme =
-    preference === "system" ? systemTheme : preference;
 
   useEffect(() => {
     if (!ready) return;
 
     const root = document.documentElement;
-    root.dataset.theme = resolvedTheme;
-    root.dataset.themePreference = preference;
-    root.style.colorScheme = resolvedTheme;
-  }, [preference, ready, resolvedTheme]);
+    root.dataset.theme = theme;
+    root.dataset.themePreference = theme;
+    root.style.colorScheme = theme;
+  }, [ready, theme]);
 
-  const setPreference = useCallback((theme: ThemePreference) => {
-    setPreferenceState(theme);
-    window.localStorage.setItem(STORAGE_KEY, theme);
+  const setPreference = useCallback((nextTheme: ThemePreference) => {
+    setTheme(nextTheme);
+    window.localStorage.setItem(STORAGE_KEY, nextTheme);
   }, []);
 
   const value = useMemo(
-    () => ({ preference, resolvedTheme, setPreference }),
-    [preference, resolvedTheme, setPreference],
+    () => ({
+      preference: theme,
+      resolvedTheme: theme,
+      setPreference,
+    }),
+    [theme, setPreference],
   );
 
   return (

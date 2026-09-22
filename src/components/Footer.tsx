@@ -24,15 +24,8 @@ export default function Footer() {
       />
 
       <div className="mx-auto flex max-w-[1120px] flex-col items-center px-5 py-14 text-center md:py-16">
-        <img
-          src="/icon.svg"
-          alt=""
-          aria-hidden
-          className="h-12 w-12 rounded-[12px] shadow-[0_12px_36px_var(--shadow)]"
-        />
-
         <h2
-          className="mt-5 text-[1.75rem] font-bold tracking-[-0.035em]"
+          className="text-[1.75rem] font-bold tracking-[-0.035em]"
           style={{ color: "var(--text)" }}
         >
           Lizhen Lab

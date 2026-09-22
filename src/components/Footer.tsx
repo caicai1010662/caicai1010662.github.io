@@ -1,7 +1,6 @@
 "use client";
 
 import { useLanguage } from "./LanguageProvider";
-import { profile } from "@/data/profile";
 
 export default function Footer() {
   const { locale } = useLanguage();
@@ -40,39 +39,8 @@ export default function Footer() {
             : "Mechanics · Control · Software · AI · Build things that work"}
         </p>
 
-        <nav
-          aria-label={locale === "zh" ? "页脚链接" : "Footer links"}
-          className="type-body mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-medium"
-        >
-          <a
-            href={profile.links.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="pressable transition-opacity hover:opacity-70"
-            style={{ color: "var(--accent)" }}
-          >
-            GitHub ↗
-          </a>
-          <a
-            href={profile.links.resume}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="pressable transition-opacity hover:opacity-70"
-            style={{ color: "var(--accent)" }}
-          >
-            {locale === "zh" ? "简历" : "Resume"} ↗
-          </a>
-          <a
-            href={profile.links.email}
-            className="pressable transition-opacity hover:opacity-70"
-            style={{ color: "var(--accent)" }}
-          >
-            {locale === "zh" ? "邮箱" : "Email"}
-          </a>
-        </nav>
-
         <div
-          className="mt-6 h-px w-28"
+          className="mt-5 h-px w-28"
           style={{
             background:
               "linear-gradient(90deg, transparent, var(--border-strong), transparent)",

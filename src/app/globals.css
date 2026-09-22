@@ -25,8 +25,8 @@
   --overlay: rgba(0, 0, 0, 0.60);
   --shadow: rgba(0, 0, 0, 0.32);
   --hero-grid: rgba(125, 211, 252, 0.05);
-  --hero-glow-a: rgba(14, 165, 233, 0.16);
-  --hero-glow-b: rgba(37, 99, 235, 0.14);
+  --hero-glow-a: rgba(14, 165, 233, 0.10);
+  --hero-glow-b: rgba(37, 99, 235, 0.08);
   --hero-start: #07101a;
   --hero-mid: #081421;
   --hero-end: #0a1725;
@@ -34,9 +34,9 @@
   --hero-title-shadow-soft: rgba(2, 132, 199, 0.16);
   --ring: rgba(56, 189, 248, 0.9);
   --landscape-image: url("/backgrounds/landscape_Night.webp");
-  --wallpaper-overlay: rgba(4, 10, 18, 0.38);
-  --section-surface: rgba(8, 17, 28, 0.68);
-  --reading-surface: rgba(7, 16, 26, 0.82);
+  --wallpaper-overlay: rgba(4, 10, 18, 0.20);
+  --section-surface: rgba(8, 17, 28, 0.46);
+  --reading-surface: rgba(7, 16, 26, 0.68);
 }
 
 [data-theme="light"] {
@@ -58,8 +58,8 @@
   --overlay: rgba(15, 23, 42, 0.26);
   --shadow: rgba(15, 23, 42, 0.12);
   --hero-grid: rgba(2, 132, 199, 0.07);
-  --hero-glow-a: rgba(14, 165, 233, 0.13);
-  --hero-glow-b: rgba(59, 130, 246, 0.09);
+  --hero-glow-a: rgba(14, 165, 233, 0.08);
+  --hero-glow-b: rgba(59, 130, 246, 0.05);
   --hero-start: #f8fbff;
   --hero-mid: #f1f6fb;
   --hero-end: #eaf1f8;
@@ -67,9 +67,9 @@
   --hero-title-shadow-soft: rgba(2, 132, 199, 0.10);
   --ring: rgba(2, 132, 199, 0.78);
   --landscape-image: url("/backgrounds/landscape_Day.webp");
-  --wallpaper-overlay: rgba(245, 247, 250, 0.24);
-  --section-surface: rgba(237, 242, 247, 0.64);
-  --reading-surface: rgba(245, 247, 250, 0.80);
+  --wallpaper-overlay: rgba(245, 247, 250, 0.10);
+  --section-surface: rgba(237, 242, 247, 0.40);
+  --reading-surface: rgba(245, 247, 250, 0.66);
 }
 
 html {

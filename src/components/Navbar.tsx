@@ -178,88 +178,115 @@ export default function Navbar() {
       />
 
       <aside
-        className={`fixed inset-y-0 left-0 z-[65] w-[320px] max-w-[88vw] border-r px-6 py-7 shadow-2xl transition-transform duration-300 ease-out ${menuOpen ? "translate-x-0" : "-translate-x-full"}`}
+        className={`fixed inset-y-0 left-0 z-[65] w-[360px] max-w-[92vw] border-r px-7 py-7 shadow-2xl transition-transform duration-300 ease-out ${menuOpen ? "translate-x-0" : "-translate-x-full"}`}
         style={{
           borderColor: "var(--border-strong)",
           backgroundColor: "var(--surface-strong)",
           color: "var(--text)",
         }}
       >
-        <div className="flex h-full flex-col pt-8">
+        <div className="flex h-full flex-col pt-7">
           <div className="text-center">
             <img
               src="/avatar.png"
               alt={profile.name[locale]}
-              className="mx-auto h-20 w-20 rounded-full border-2 object-cover"
+              className="mx-auto h-[88px] w-[88px] rounded-full border-2 object-cover"
               style={{
                 borderColor: "var(--border-strong)",
-                boxShadow: "0 12px 36px var(--shadow)",
+                boxShadow: "0 16px 42px var(--shadow)",
               }}
             />
+
             <h2
-              className="type-heading mt-3 font-bold"
+              className="mt-4 text-[1.7rem] font-bold tracking-[-0.035em]"
               style={{ color: "var(--text)" }}
             >
               {profile.name[locale]}
             </h2>
+
             <p
-              className="type-body mx-auto mt-2 max-w-[250px]"
-              style={{ color: "var(--text-muted)" }}
+              className="mt-1 text-[0.95rem] font-medium tracking-[0.03em]"
+              style={{ color: "var(--accent)" }}
+            >
+              Lizhen Lab
+            </p>
+
+            <p
+              className="type-body mx-auto mt-5 max-w-[270px]"
+              style={{ color: "var(--text-secondary)" }}
             >
               {profile.title[locale]}
             </p>
+
+            <p
+              className="type-body mx-auto mt-2 max-w-[270px]"
+              style={{ color: "var(--text-muted)" }}
+            >
+              {locale === "zh"
+                ? "把想法做成真正可以运行的系统。"
+                : "Turning ideas into systems that actually work."}
+            </p>
           </div>
 
-          <nav className="mt-7 grid grid-cols-2 gap-2">
+          <nav className="mt-8 grid grid-cols-2">
             <Link
               href="/#home"
               onClick={() => setMenuOpen(false)}
-              className="pressable flex items-center justify-center gap-2 rounded-xl py-2.5 transition hover:-translate-y-0.5"
-              style={{
-                color: "var(--text-secondary)",
-                backgroundColor:
-                  "color-mix(in srgb, var(--surface-soft) 52%, transparent)",
-              }}
+              className="pressable flex flex-col items-center gap-2 py-3 transition hover:-translate-y-0.5"
+              style={{ color: "var(--text-secondary)" }}
             >
               <HomeIcon />
-              <span className="type-body font-medium">Home</span>
+              <span className="type-body font-medium tracking-[0.04em]">
+                Home
+              </span>
             </Link>
+
             <Link
               href="/#projects"
               onClick={() => setMenuOpen(false)}
-              className="pressable flex items-center justify-center gap-2 rounded-xl py-2.5 transition hover:-translate-y-0.5"
+              className="pressable flex flex-col items-center gap-2 border-l py-3 transition hover:-translate-y-0.5"
               style={{
+                borderColor: "var(--border)",
                 color: "var(--text-secondary)",
-                backgroundColor:
-                  "color-mix(in srgb, var(--surface-soft) 52%, transparent)",
               }}
             >
               <FolderIcon />
-              <span className="type-body font-medium">Projects</span>
+              <span className="type-body font-medium tracking-[0.04em]">
+                Projects
+              </span>
             </Link>
           </nav>
 
-          <div className="mt-5 flex items-center justify-center gap-3">
+          <div
+            className="mt-7 h-px w-full"
+            style={{ backgroundColor: "var(--border)" }}
+          />
+
+          <div className="mt-6 flex items-center justify-center gap-7">
             {[{
               href: profile.links.github,
               label: "GitHub",
               icon: <GitHubIcon />,
               external: true,
+              color: "#8b7ab8",
             }, {
               href: profile.links.resume,
               label: locale === "zh" ? "简历" : "Resume",
               icon: <ResumeIcon />,
               external: true,
-            }, {
-              href: profile.links.email,
-              label: locale === "zh" ? "邮箱" : "Email",
-              icon: <MailIcon />,
-              external: false,
+              color: "var(--accent)",
             }, {
               href: profile.links.bilibili,
               label: "Bilibili",
               icon: <BilibiliIcon />,
               external: true,
+              color: "#fb7299",
+            }, {
+              href: profile.links.email,
+              label: locale === "zh" ? "邮箱" : "Email",
+              icon: <MailIcon />,
+              external: false,
+              color: "#38bdf8",
             }].map((item) => (
               <a
                 key={item.label}
@@ -268,15 +295,8 @@ export default function Navbar() {
                 rel={item.external ? "noopener noreferrer" : undefined}
                 aria-label={item.label}
                 title={item.label}
-                className="group pressable grid h-11 w-11 place-items-center rounded-full border transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--accent)] hover:text-[var(--accent)]"
-                style={{
-                  borderColor: "var(--border-strong)",
-                  backgroundColor:
-                    "color-mix(in srgb, var(--surface-soft) 82%, transparent)",
-                  color: "var(--text-secondary)",
-                  boxShadow:
-                    "0 6px 18px color-mix(in srgb, var(--shadow) 42%, transparent)",
-                }}
+                className="group pressable grid h-8 w-8 place-items-center transition hover:-translate-y-0.5"
+                style={{ color: item.color }}
               >
                 <span className="grid place-items-center transition-transform duration-200 group-hover:scale-110">
                   {item.icon}
@@ -286,9 +306,11 @@ export default function Navbar() {
           </div>
 
           <div
-            className="mt-auto flex items-center justify-center gap-3 border-t pt-5"
-            style={{ borderColor: "var(--border-strong)" }}
-          >
+            className="mt-7 h-px w-full"
+            style={{ backgroundColor: "var(--border)" }}
+          />
+
+          <div className="mt-6 flex items-center justify-center gap-8">
             <button
               type="button"
               onClick={() =>
@@ -312,11 +334,12 @@ export default function Navbar() {
                     ? "暗色模式"
                     : "Dark mode"
               }
-              className="pressable grid h-11 w-11 place-items-center rounded-full border transition hover:-translate-y-0.5"
+              className="pressable grid h-9 w-9 place-items-center transition hover:-translate-y-0.5"
               style={{
-                borderColor: "var(--border-strong)",
-                backgroundColor: "var(--surface-soft)",
-                color: resolvedTheme === "light" ? "#f5b82e" : "var(--text)",
+                color:
+                  resolvedTheme === "light"
+                    ? "#f5b82e"
+                    : "var(--text-secondary)",
               }}
             >
               {resolvedTheme === "light" ? <SunIcon /> : <MoonIcon />}
@@ -329,18 +352,13 @@ export default function Navbar() {
                 locale === "zh" ? "切换至英文" : "Switch to Chinese"
               }
               title={locale === "zh" ? "中文" : "English"}
-              className="pressable relative grid h-11 w-11 place-items-center rounded-full border transition hover:-translate-y-0.5"
-              style={{
-                borderColor: "var(--border-strong)",
-                backgroundColor: "var(--surface-soft)",
-                color: "var(--text-secondary)",
-              }}
+              className="pressable relative grid h-9 w-9 place-items-center transition hover:-translate-y-0.5"
+              style={{ color: "var(--text-secondary)" }}
             >
               <LanguageIcon />
               <span
-                className="absolute -bottom-1 -right-1 min-w-5 rounded-full border px-1 text-[9px] font-bold leading-[18px]"
+                className="absolute -bottom-1.5 -right-2 min-w-5 rounded-full px-1 text-[9px] font-bold leading-[18px]"
                 style={{
-                  borderColor: "var(--surface-strong)",
                   backgroundColor: "var(--accent)",
                   color: "#ffffff",
                 }}

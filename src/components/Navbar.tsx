@@ -29,23 +29,23 @@ function ResumeIcon() {
   return (
     <svg
       viewBox="0 0 24 24"
-      className="h-5 w-5"
+      className="h-7 w-7"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.75"
+      strokeWidth="1.85"
       strokeLinecap="round"
       strokeLinejoin="round"
     >
       <path d="M7 3.5h7l4 4v13H7z" />
       <path d="M14 3.5v4h4" />
-      <path d="M10 11.5h5M10 14.5h5M10 17.5h3.5" />
+      <path d="M10 11h5M10 14h5M10 17h4" />
     </svg>
   );
 }
 
 function GitHubIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
+    <svg viewBox="0 0 24 24" className="h-7 w-7" fill="currentColor">
       <path d="M12 .8a11.5 11.5 0 0 0-3.64 22.41c.58.11.79-.25.79-.56v-2.23c-3.23.7-3.91-1.37-3.91-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.72 1.27 3.38.97.1-.75.41-1.27.74-1.56-2.58-.29-5.29-1.29-5.29-5.73 0-1.27.45-2.3 1.2-3.11-.12-.3-.52-1.48.11-3.08 0 0 .98-.31 3.16 1.19a10.97 10.97 0 0 1 5.76 0c2.18-1.5 3.16-1.19 3.16-1.19.63 1.6.23 2.78.11 3.08.75.81 1.2 1.84 1.2 3.11 0 4.45-2.72 5.43-5.31 5.72.42.36.79 1.07.79 2.16v3.2c0 .31.21.68.8.56A11.5 11.5 0 0 0 12 .8Z" />
     </svg>
   );
@@ -55,15 +55,15 @@ function MailIcon() {
   return (
     <svg
       viewBox="0 0 24 24"
-      className="h-5 w-5"
+      className="h-7 w-7"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.75"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      strokeWidth="2"
+      strokeLinecap="square"
+      strokeLinejoin="miter"
     >
-      <rect x="3.5" y="5.5" width="17" height="13" rx="2.25" />
-      <path d="m5 8 7 5 7-5" />
+      <rect x="3.5" y="5.5" width="17" height="13" rx="0.6" />
+      <path d="m4.5 7 7.5 6 7.5-6" />
     </svg>
   );
 }
@@ -72,17 +72,17 @@ function BilibiliIcon() {
   return (
     <svg
       viewBox="0 0 24 24"
-      className="h-5 w-5"
+      className="h-7 w-7"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.75"
+      strokeWidth="1.9"
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <path d="m8.5 4.5 2 2.5M15.5 4.5l-2 2.5" />
-      <rect x="4" y="7" width="16" height="12" rx="3" />
-      <path d="M8.5 11.5v2M15.5 11.5v2" />
-      <path d="M9 16h6" />
+      <path d="m8.2 4.3 2.2 2.4M15.8 4.3l-2.2 2.4" />
+      <rect x="4.2" y="7" width="15.6" height="11.8" rx="3.1" />
+      <path d="M8.8 11.4v2.1M15.2 11.4v2.1" />
+      <path d="M9.1 16.1h5.8" />
     </svg>
   );
 }
@@ -262,31 +262,31 @@ export default function Navbar() {
             style={{ backgroundColor: "var(--border)" }}
           />
 
-          <div className="mt-6 flex items-center justify-center gap-7">
+          <div className="mt-6 flex items-center justify-center gap-8">
             {[{
               href: profile.links.github,
               label: "GitHub",
               icon: <GitHubIcon />,
               external: true,
-              color: "#8b7ab8",
+              color: "#7356a5",
             }, {
               href: profile.links.resume,
               label: locale === "zh" ? "简历" : "Resume",
               icon: <ResumeIcon />,
               external: true,
-              color: "var(--accent)",
+              color: "#7f8fb3",
             }, {
               href: profile.links.bilibili,
               label: "Bilibili",
               icon: <BilibiliIcon />,
               external: true,
-              color: "#fb7299",
+              color: "#ff7aa8",
             }, {
               href: profile.links.email,
               label: locale === "zh" ? "邮箱" : "Email",
               icon: <MailIcon />,
               external: false,
-              color: "#38bdf8",
+              color: "#00aeef",
             }].map((item) => (
               <a
                 key={item.label}
@@ -295,7 +295,7 @@ export default function Navbar() {
                 rel={item.external ? "noopener noreferrer" : undefined}
                 aria-label={item.label}
                 title={item.label}
-                className="group pressable grid h-8 w-8 place-items-center transition hover:-translate-y-0.5"
+                className="group pressable grid h-9 w-9 place-items-center transition duration-200 hover:-translate-y-0.5 hover:brightness-110"
                 style={{ color: item.color }}
               >
                 <span className="grid place-items-center transition-transform duration-200 group-hover:scale-110">

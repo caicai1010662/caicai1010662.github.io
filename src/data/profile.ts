@@ -22,5 +22,6 @@ export const profile = {
     github: "https://github.com/caicai1010662",
     resume: "/resume/Lizhen_Fan_Resume.pdf",
     email: "mailto:17685537369@163.com",
+    bilibili: "https://space.bilibili.com/1225873593",
   },
 } as const;

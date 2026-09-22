@@ -14,8 +14,15 @@ function BulletList({
   return (
     <ul className="mt-5 space-y-3">
       {items.map((item) => (
-        <li key={item.en} className="type-body flex gap-3 text-slate-400">
-          <span className="mt-[13px] h-1.5 w-1.5 shrink-0 rounded-full bg-sky-500" />
+        <li
+          key={item.en}
+          className="type-body flex gap-3"
+          style={{ color: "var(--text-secondary)" }}
+        >
+          <span
+            className="mt-[13px] h-1.5 w-1.5 shrink-0 rounded-full"
+            style={{ backgroundColor: "var(--accent)" }}
+          />
           <span>{item[locale]}</span>
         </li>
       ))}
@@ -29,38 +36,67 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
   const evidence = project.evidence ?? [];
 
   return (
-    <article className="min-h-screen bg-[#07101a] px-5 pb-24 pt-24 text-slate-200">
+    <article
+      className="min-h-screen px-5 pb-24 pt-24"
+      style={{
+        backgroundColor: "var(--bg)",
+        color: "var(--text)",
+      }}
+    >
       <div className="mx-auto max-w-[1080px]">
         <Link
           href="/#projects"
-          className="type-body pressable inline-flex text-slate-500 transition-colors hover:text-sky-400"
+          className="type-body pressable inline-flex transition-opacity hover:opacity-70"
+          style={{ color: "var(--text-muted)" }}
         >
           ← {locale === "zh" ? "返回项目" : "Back to projects"}
         </Link>
 
         <header className="mx-auto mt-8 max-w-[860px] pb-6">
-          <h1 className="type-display font-black text-white">
+          <h1
+            className="type-display font-black"
+            style={{ color: "var(--text)" }}
+          >
             {project.title[locale]}
           </h1>
 
-          <div className="type-body mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 text-slate-500">
+          <div
+            className="type-body mt-5 flex flex-wrap items-center gap-x-3 gap-y-2"
+            style={{ color: "var(--text-muted)" }}
+          >
             <span>{project.period}</span>
             <span aria-hidden>·</span>
             <span>{project.context[locale]}</span>
           </div>
 
-          <p className="type-body mt-6 max-w-3xl text-slate-300">
+          <p
+            className="type-body mt-6 max-w-3xl"
+            style={{ color: "var(--text-secondary)" }}
+          >
             {project.value[locale]}
           </p>
         </header>
 
-        <figure className="mt-8 overflow-hidden rounded-xl border border-white/[0.08] bg-black/20">
+        <figure
+          className="mt-8 overflow-hidden rounded-xl border"
+          style={{
+            borderColor: "var(--border)",
+            backgroundColor: "var(--surface)",
+          }}
+        >
           <img
             src={project.cover}
             alt={project.coverAlt[locale]}
-            className="aspect-[16/9] w-full bg-[#0c1118] object-contain"
+            className="aspect-[16/9] w-full object-contain"
+            style={{ backgroundColor: "var(--surface-image)" }}
           />
-          <figcaption className="type-body border-t border-white/[0.08] px-4 py-3 text-slate-500">
+          <figcaption
+            className="type-body border-t px-4 py-3"
+            style={{
+              borderColor: "var(--border)",
+              color: "var(--text-muted)",
+            }}
+          >
             {locale === "zh"
               ? "概念视觉图，用于项目展示；真实截图、结构图与实验图将在后续验证和整理中补充。"
               : "Concept visual for presentation; real screenshots, diagrams, and experiment images will be added as validation material is organized."}
@@ -69,28 +105,28 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
 
         <div className="mx-auto mt-14 max-w-[860px] space-y-14">
           <section>
-            <h2 className="type-heading font-bold text-white">
+            <h2 className="type-heading font-bold" style={{ color: "var(--text)" }}>
               {locale === "zh" ? "项目概述" : "Overview"}
             </h2>
-            <p className="type-body mt-4 text-slate-400">
+            <p className="type-body mt-4" style={{ color: "var(--text-secondary)" }}>
               {project.caseStudy.overview[locale]}
             </p>
           </section>
 
           <section>
-            <h2 className="type-heading font-bold text-white">
+            <h2 className="type-heading font-bold" style={{ color: "var(--text)" }}>
               {locale === "zh" ? "问题与挑战" : "Challenge"}
             </h2>
-            <p className="type-body mt-4 text-slate-400">
+            <p className="type-body mt-4" style={{ color: "var(--text-secondary)" }}>
               {project.caseStudy.challenge[locale]}
             </p>
           </section>
 
           <section>
-            <h2 className="type-heading font-bold text-white">
+            <h2 className="type-heading font-bold" style={{ color: "var(--text)" }}>
               {locale === "zh" ? "系统架构" : "Architecture"}
             </h2>
-            <p className="type-body mt-4 text-slate-400">
+            <p className="type-body mt-4" style={{ color: "var(--text-secondary)" }}>
               {project.caseStudy.architecture[locale]}
             </p>
 
@@ -99,12 +135,22 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
                 {facts.map((item) => (
                   <div
                     key={item.value + item.label.en}
-                    className="rounded-xl border border-white/[0.07] bg-white/[0.025] px-4 py-4"
+                    className="rounded-xl border px-4 py-4"
+                    style={{
+                      borderColor: "var(--border)",
+                      backgroundColor: "var(--surface)",
+                    }}
                   >
-                    <div className="type-body font-mono font-semibold text-sky-300">
+                    <div
+                      className="type-body font-mono font-semibold"
+                      style={{ color: "var(--accent)" }}
+                    >
                       {item.value}
                     </div>
-                    <div className="type-body mt-1.5 text-slate-600">
+                    <div
+                      className="type-body mt-1.5"
+                      style={{ color: "var(--text-muted)" }}
+                    >
                       {item.label[locale]}
                     </div>
                   </div>
@@ -114,23 +160,29 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
           </section>
 
           <section>
-            <h2 className="type-heading font-bold text-white">
+            <h2 className="type-heading font-bold" style={{ color: "var(--text)" }}>
               {locale === "zh" ? "我的贡献" : "My Contributions"}
             </h2>
             <BulletList items={project.caseStudy.contributions} locale={locale} />
           </section>
 
           <section>
-            <h2 className="type-heading font-bold text-white">
+            <h2 className="type-heading font-bold" style={{ color: "var(--text)" }}>
               {locale === "zh" ? "工程细节" : "Engineering Details"}
             </h2>
             <div className="mt-6 space-y-8">
               {project.engineeringDetails.map((item) => (
                 <div key={item.title.en}>
-                  <h3 className="type-body font-semibold text-sky-300">
+                  <h3
+                    className="type-body font-semibold"
+                    style={{ color: "var(--accent)" }}
+                  >
                     {item.title[locale]}
                   </h3>
-                  <p className="type-body mt-2 text-slate-400">
+                  <p
+                    className="type-body mt-2"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
                     {item.description[locale]}
                   </p>
                 </div>
@@ -139,7 +191,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
           </section>
 
           <section>
-            <h2 className="type-heading font-bold text-white">
+            <h2 className="type-heading font-bold" style={{ color: "var(--text)" }}>
               {locale === "zh" ? "验证与证据" : "Validation & Evidence"}
             </h2>
 
@@ -148,16 +200,31 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
                 {evidence.map((item) => (
                   <div
                     key={item.value + item.label.en}
-                    className="rounded-xl border border-sky-400/10 bg-sky-400/[0.025] px-4 py-3"
+                    className="rounded-xl border px-4 py-3"
+                    style={{
+                      borderColor:
+                        "color-mix(in srgb, var(--accent) 15%, transparent)",
+                      backgroundColor:
+                        "color-mix(in srgb, var(--accent) 4%, var(--surface))",
+                    }}
                   >
-                    <div className="type-body font-mono font-semibold text-sky-300">
+                    <div
+                      className="type-body font-mono font-semibold"
+                      style={{ color: "var(--accent)" }}
+                    >
                       {item.value}
                     </div>
-                    <div className="type-body mt-1 text-slate-500">
+                    <div
+                      className="type-body mt-1"
+                      style={{ color: "var(--text-muted)" }}
+                    >
                       {item.label[locale]}
                     </div>
                     {item.note && (
-                      <div className="type-body mt-1 text-slate-600">
+                      <div
+                        className="type-body mt-1"
+                        style={{ color: "var(--text-faint)" }}
+                      >
                         {item.note[locale]}
                       </div>
                     )}
@@ -170,19 +237,23 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
           </section>
 
           <section>
-            <h2 className="type-heading font-bold text-white">
+            <h2 className="type-heading font-bold" style={{ color: "var(--text)" }}>
               {locale === "zh" ? "当前状态" : "Current Status"}
             </h2>
             <BulletList items={project.caseStudy.currentStatus} locale={locale} />
           </section>
 
           {project.links?.github && (
-            <section className="border-t border-white/10 pt-8">
+            <section
+              className="border-t pt-8"
+              style={{ borderColor: "var(--border-strong)" }}
+            >
               <a
                 href={project.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="type-body font-semibold text-sky-400 hover:text-sky-300"
+                className="type-body font-semibold transition-opacity hover:opacity-70"
+                style={{ color: "var(--accent)" }}
               >
                 GitHub repository ↗
               </a>

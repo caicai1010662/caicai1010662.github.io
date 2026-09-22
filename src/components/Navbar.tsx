@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useLanguage } from "./LanguageProvider";
+import { useTheme } from "./ThemeProvider";
+import type { ThemePreference } from "@/lib/theme";
 import { profile } from "@/data/profile";
 import ProjectSearch from "./ProjectSearch";
 
@@ -50,8 +52,19 @@ function MailIcon() {
   );
 }
 
+const themeOptions: {
+  value: ThemePreference;
+  zh: string;
+  en: string;
+}[] = [
+  { value: "system", zh: "系统", en: "System" },
+  { value: "light", zh: "亮色", en: "Light" },
+  { value: "dark", zh: "暗色", en: "Dark" },
+];
+
 export default function Navbar() {
   const { locale, setLocale } = useLanguage();
+  const { preference, setPreference } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
 
@@ -66,6 +79,14 @@ export default function Navbar() {
     return () => window.removeEventListener("keydown", handleKey);
   }, []);
 
+  const floatingButtonStyle = {
+    borderColor: "color-mix(in srgb, var(--accent) 30%, transparent)",
+    backgroundColor:
+      "color-mix(in srgb, var(--surface-soft) 88%, transparent)",
+    color: "var(--accent)",
+    boxShadow: "0 10px 30px var(--shadow)",
+  };
+
   return (
     <>
       <div className="fixed left-5 top-5 z-[70]">
@@ -73,7 +94,8 @@ export default function Navbar() {
           type="button"
           onClick={() => setMenuOpen((value) => !value)}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
-          className="pressable grid h-12 w-12 place-items-center rounded-full border border-sky-400/30 bg-[#07111d]/88 text-sky-400 shadow-[0_10px_30px_rgba(0,0,0,0.32)] backdrop-blur-md transition hover:scale-[1.04] hover:border-sky-300/60 hover:bg-[#0a1725]"
+          className="pressable grid h-12 w-12 place-items-center rounded-full border backdrop-blur-md transition hover:scale-[1.04]"
+          style={floatingButtonStyle}
         >
           <span className="relative block h-[18px] w-[22px]">
             <span className={`absolute left-0 top-0 block h-[2px] w-[22px] rounded-full bg-current transition-transform duration-200 ${menuOpen ? "translate-y-[8px] rotate-45" : ""}`} />
@@ -88,7 +110,8 @@ export default function Navbar() {
           type="button"
           onClick={() => setSearchOpen(true)}
           aria-label={locale === "zh" ? "快速导航" : "Quick navigator"}
-          className="pressable grid h-12 w-12 place-items-center rounded-full border border-sky-400/30 bg-[#07111d]/88 text-sky-400 shadow-[0_10px_30px_rgba(0,0,0,0.32)] backdrop-blur-md transition hover:scale-[1.04] hover:border-sky-300/60 hover:bg-[#0a1725]"
+          className="pressable grid h-12 w-12 place-items-center rounded-full border backdrop-blur-md transition hover:scale-[1.04]"
+          style={floatingButtonStyle}
         >
           <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <circle cx="11" cy="11" r="7" />
@@ -98,65 +121,68 @@ export default function Navbar() {
       </div>
 
       <div
-        className={`fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${menuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"}`}
+        className={`fixed inset-0 z-[60] backdrop-blur-sm transition-opacity duration-300 ${menuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"}`}
+        style={{ backgroundColor: "var(--overlay)" }}
         onClick={() => setMenuOpen(false)}
       />
 
       <aside
-        className={`fixed inset-y-0 left-0 z-[65] w-[320px] max-w-[88vw] border-r border-white/10 bg-[#1b1d23] px-6 py-7 shadow-2xl transition-transform duration-300 ease-out ${menuOpen ? "translate-x-0" : "-translate-x-full"}`}
+        className={`fixed inset-y-0 left-0 z-[65] w-[320px] max-w-[88vw] border-r px-6 py-7 shadow-2xl transition-transform duration-300 ease-out ${menuOpen ? "translate-x-0" : "-translate-x-full"}`}
+        style={{
+          borderColor: "var(--border-strong)",
+          backgroundColor: "var(--surface-strong)",
+          color: "var(--text)",
+        }}
       >
         <div className="flex h-full flex-col pt-10">
           <div className="text-center">
             <img
               src="/avatar.png"
               alt={profile.name[locale]}
-              className="mx-auto h-24 w-24 rounded-full border-2 border-white/10 object-cover shadow-[0_14px_50px_rgba(0,0,0,0.35)]"
+              className="mx-auto h-24 w-24 rounded-full border-2 object-cover"
+              style={{
+                borderColor: "var(--border-strong)",
+                boxShadow: "0 14px 50px var(--shadow)",
+              }}
             />
-            <h2 className="type-heading mt-4 font-bold text-white">
+            <h2 className="type-heading mt-4 font-bold" style={{ color: "var(--text)" }}>
               {profile.name[locale]}
             </h2>
-            <p className="type-body mt-1 text-sky-400">Lizhen Fan</p>
-            <p className="type-body mt-5 text-slate-400">
+            <p className="type-body mt-1" style={{ color: "var(--accent)" }}>Lizhen Fan</p>
+            <p className="type-body mt-5" style={{ color: "var(--text-secondary)" }}>
               {profile.education[locale]}
             </p>
-            <p className="type-body mt-1 text-slate-500">
+            <p className="type-body mt-1" style={{ color: "var(--text-muted)" }}>
               {profile.title[locale]}
             </p>
           </div>
 
-          <nav className="mt-7 grid grid-cols-3 border-y border-white/10 py-4 text-center">
-            <Link
-              href="/#home"
-              onClick={() => setMenuOpen(false)}
-              className="pressable flex flex-col items-center gap-2 text-slate-400 transition hover:text-sky-400"
-            >
+          <nav
+            className="mt-7 grid grid-cols-3 border-y py-4 text-center"
+            style={{ borderColor: "var(--border-strong)" }}
+          >
+            <Link href="/#home" onClick={() => setMenuOpen(false)} className="pressable flex flex-col items-center gap-2 transition-opacity hover:opacity-70" style={{ color: "var(--text-secondary)" }}>
               <HomeIcon />
               <span className="type-body uppercase tracking-[0.08em]">Home</span>
             </Link>
-            <Link
-              href="/#projects"
-              onClick={() => setMenuOpen(false)}
-              className="pressable flex flex-col items-center gap-2 text-slate-400 transition hover:text-sky-400"
-            >
+            <Link href="/#projects" onClick={() => setMenuOpen(false)} className="pressable flex flex-col items-center gap-2 transition-opacity hover:opacity-70" style={{ color: "var(--text-secondary)" }}>
               <FolderIcon />
               <span className="type-body uppercase tracking-[0.08em]">Projects</span>
             </Link>
-            <a
-              href={profile.links.resume}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="pressable flex flex-col items-center gap-2 text-slate-400 transition hover:text-sky-400"
-            >
+            <a href={profile.links.resume} target="_blank" rel="noopener noreferrer" className="pressable flex flex-col items-center gap-2 transition-opacity hover:opacity-70" style={{ color: "var(--text-secondary)" }}>
               <ResumeIcon />
               <span className="type-body uppercase tracking-[0.08em]">Resume</span>
             </a>
           </nav>
 
-          <div className="grid grid-cols-3 border-b border-white/10 py-4 text-center">
+          <div
+            className="grid grid-cols-3 border-b py-4 text-center"
+            style={{ borderColor: "var(--border-strong)" }}
+          >
             {profile.stats.map((stat) => (
               <div key={stat.value}>
-                <div className="type-body font-mono font-bold text-white">{stat.value}</div>
-                <div className="type-body mt-1 uppercase tracking-[0.04em] text-slate-500">
+                <div className="type-body font-mono font-bold" style={{ color: "var(--text)" }}>{stat.value}</div>
+                <div className="type-body mt-1 uppercase tracking-[0.04em]" style={{ color: "var(--text-muted)" }}>
                   {stat.label[locale]}
                 </div>
               </div>
@@ -164,31 +190,82 @@ export default function Navbar() {
           </div>
 
           <div className="mt-6 flex items-center justify-center gap-4">
-            <a
-              href={profile.links.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-              className="pressable grid h-10 w-10 place-items-center rounded-full border border-white/10 text-slate-400 transition hover:border-sky-400/40 hover:text-sky-400"
-            >
-              <GitHubIcon />
-            </a>
-            <a
-              href={profile.links.email}
-              aria-label={locale === "zh" ? "邮箱" : "Email"}
-              className="pressable grid h-10 w-10 place-items-center rounded-full border border-white/10 text-slate-400 transition hover:border-sky-400/40 hover:text-sky-400"
-            >
-              <MailIcon />
-            </a>
+            {[{
+              href: profile.links.github,
+              label: "GitHub",
+              icon: <GitHubIcon />,
+              external: true,
+            }, {
+              href: profile.links.email,
+              label: locale === "zh" ? "邮箱" : "Email",
+              icon: <MailIcon />,
+              external: false,
+            }].map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                target={item.external ? "_blank" : undefined}
+                rel={item.external ? "noopener noreferrer" : undefined}
+                aria-label={item.label}
+                className="pressable grid h-10 w-10 place-items-center rounded-full border transition-opacity hover:opacity-70"
+                style={{ borderColor: "var(--border-strong)", color: "var(--text-secondary)" }}
+              >
+                {item.icon}
+              </a>
+            ))}
           </div>
 
-          <div className="mt-auto flex items-center justify-center border-t border-white/10 pt-5">
-            <button
-              onClick={() => setLocale(locale === "zh" ? "en" : "zh")}
-              className="type-body pressable rounded-full border border-white/10 px-4 py-2 text-slate-400 transition hover:border-sky-400/40 hover:text-white"
-            >
-              {locale === "zh" ? "EN / English" : "中 / 中文"}
-            </button>
+          <div
+            className="mt-auto space-y-4 border-t pt-5"
+            style={{ borderColor: "var(--border-strong)" }}
+          >
+            <div>
+              <div
+                className="type-body mb-2 text-center uppercase tracking-[0.08em]"
+                style={{ color: "var(--text-muted)" }}
+              >
+                {locale === "zh" ? "显示模式" : "Appearance"}
+              </div>
+              <div
+                className="grid grid-cols-3 rounded-full border p-1"
+                style={{
+                  borderColor: "var(--border-strong)",
+                  backgroundColor: "var(--surface-soft)",
+                }}
+              >
+                {themeOptions.map((option) => {
+                  const active = preference === option.value;
+                  return (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() => setPreference(option.value)}
+                      aria-pressed={active}
+                      className="type-body rounded-full px-2 py-1.5 font-medium transition"
+                      style={{
+                        backgroundColor: active ? "var(--accent)" : "transparent",
+                        color: active ? "#ffffff" : "var(--text-secondary)",
+                      }}
+                    >
+                      {option[locale]}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="flex justify-center">
+              <button
+                onClick={() => setLocale(locale === "zh" ? "en" : "zh")}
+                className="type-body pressable rounded-full border px-4 py-2 transition-opacity hover:opacity-70"
+                style={{
+                  borderColor: "var(--border-strong)",
+                  color: "var(--text-secondary)",
+                }}
+              >
+                {locale === "zh" ? "EN / English" : "中 / 中文"}
+              </button>
+            </div>
           </div>
         </div>
       </aside>

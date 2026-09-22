@@ -62,16 +62,26 @@ export default function ProjectSearch({
 
   return (
     <div
-      className="fixed inset-0 z-[80] bg-[#02060d]/85 px-4 pt-20 backdrop-blur-md"
+      className="fixed inset-0 z-[80] px-4 pt-20 backdrop-blur-md"
+      style={{ backgroundColor: "var(--overlay)" }}
       onMouseDown={onClose}
     >
       <div
-        className="mx-auto max-w-2xl overflow-hidden rounded-2xl border border-white/10 bg-[#0c121c] shadow-2xl"
+        className="mx-auto max-w-2xl overflow-hidden rounded-2xl border shadow-2xl"
+        style={{
+          borderColor: "var(--border-strong)",
+          backgroundColor: "var(--surface-strong)",
+          boxShadow: "0 24px 80px var(--shadow)",
+        }}
         onMouseDown={(event) => event.stopPropagation()}
       >
-        <div className="flex items-center gap-3 border-b border-white/10 px-5 py-4">
+        <div
+          className="flex items-center gap-3 border-b px-5 py-4"
+          style={{ borderColor: "var(--border-strong)" }}
+        >
           <svg
-            className="h-5 w-5 shrink-0 text-sky-400"
+            className="h-5 w-5 shrink-0"
+            style={{ color: "var(--accent)" }}
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -89,15 +99,26 @@ export default function ProjectSearch({
                 ? "快速导航或搜索项目、技术栈、角色…"
                 : "Navigate or search projects, technologies, roles…"
             }
-            className="type-body min-w-0 flex-1 bg-transparent text-white outline-none placeholder:text-slate-500"
+            className="type-body min-w-0 flex-1 bg-transparent outline-none"
+            style={{ color: "var(--text)" }}
           />
-          <button onClick={onClose} className="type-body text-slate-500 hover:text-white">
+          <button
+            onClick={onClose}
+            className="type-body transition-opacity hover:opacity-70"
+            style={{ color: "var(--text-muted)" }}
+          >
             ESC
           </button>
         </div>
 
-        <div className="border-b border-white/[0.07] px-5 py-3">
-          <div className="type-body mb-2 uppercase tracking-[0.08em] text-slate-600">
+        <div
+          className="border-b px-5 py-3"
+          style={{ borderColor: "var(--border)" }}
+        >
+          <div
+            className="type-body mb-2 uppercase tracking-[0.08em]"
+            style={{ color: "var(--text-muted)" }}
+          >
             {locale === "zh" ? "快速入口" : "Quick Links"}
           </div>
           <div className="flex flex-wrap gap-2">
@@ -108,7 +129,11 @@ export default function ProjectSearch({
                 onClick={onClose}
                 target={item.external ? "_blank" : undefined}
                 rel={item.external ? "noopener noreferrer" : undefined}
-                className="type-body rounded-full border border-white/[0.08] px-3 py-1.5 text-slate-400 transition hover:border-sky-400/30 hover:text-sky-300"
+                className="type-body rounded-full border px-3 py-1.5 transition-opacity hover:opacity-70"
+                style={{
+                  borderColor: "var(--border)",
+                  color: "var(--text-secondary)",
+                }}
               >
                 {item[locale]}
               </a>
@@ -122,19 +147,32 @@ export default function ProjectSearch({
               key={project.slug}
               href={`/projects/${project.slug}`}
               onClick={onClose}
-              className="flex gap-4 rounded-xl p-3 transition-colors hover:bg-white/[0.05]"
+              className="flex gap-4 rounded-xl p-3 transition"
+              style={{ color: "var(--text)" }}
             >
-              <div className="flex h-16 w-24 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-[#08111c]">
+              <div
+                className="flex h-16 w-24 shrink-0 items-center justify-center overflow-hidden rounded-lg"
+                style={{ backgroundColor: "var(--surface-image)" }}
+              >
                 <img src={project.cover} alt="" className="h-full w-full object-contain" />
               </div>
               <div className="min-w-0">
-                <div className="type-body truncate font-semibold text-slate-100">
+                <div
+                  className="type-body truncate font-semibold"
+                  style={{ color: "var(--text)" }}
+                >
                   {project.title[locale]}
                 </div>
-                <div className="type-body mt-1 text-slate-500">
+                <div
+                  className="type-body mt-1"
+                  style={{ color: "var(--text-muted)" }}
+                >
                   {project.context[locale]} · {project.category[locale]}
                 </div>
-                <div className="type-body mt-2 flex flex-wrap gap-x-2 text-sky-400/75">
+                <div
+                  className="type-body mt-2 flex flex-wrap gap-x-2"
+                  style={{ color: "var(--accent)" }}
+                >
                   {project.role.slice(0, 2).map((item) => (
                     <span key={item.en}>#{item[locale]}</span>
                   ))}
@@ -147,7 +185,10 @@ export default function ProjectSearch({
           ))}
 
           {filtered.length === 0 && (
-            <div className="type-body px-4 py-10 text-center text-slate-500">
+            <div
+              className="type-body px-4 py-10 text-center"
+              style={{ color: "var(--text-muted)" }}
+            >
               {locale === "zh" ? "没有找到匹配项目" : "No matching projects"}
             </div>
           )}

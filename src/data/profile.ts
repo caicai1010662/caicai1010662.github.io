@@ -20,7 +20,7 @@ export const profile = {
   ],
   links: {
     github: "https://github.com/caicai1010662",
-    resume: "https://github.com/caicai1010662/Fanlizhen_HNU_Resume",
+    resume: "/resume/Lizhen_Fan_Resume.pdf",
     email: "mailto:17685537369@163.com",
   },
 } as const;

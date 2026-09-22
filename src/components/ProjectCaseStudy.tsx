@@ -39,7 +39,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
     <article
       className="min-h-screen px-5 pb-24 pt-24"
       style={{
-        backgroundColor: "var(--bg)",
+        backgroundColor: "var(--reading-surface)",
         color: "var(--text)",
       }}
     >

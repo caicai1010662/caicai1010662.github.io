@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useLanguage } from "./LanguageProvider";
 import { useTheme } from "./ThemeProvider";
-import type { ThemePreference } from "@/lib/theme";
 import { profile } from "@/data/profile";
 import ProjectSearch from "./ProjectSearch";
 
@@ -52,19 +51,35 @@ function MailIcon() {
   );
 }
 
-const themeOptions: {
-  value: ThemePreference;
-  zh: string;
-  en: string;
-}[] = [
-  { value: "system", zh: "系统", en: "System" },
-  { value: "light", zh: "亮色", en: "Light" },
-  { value: "dark", zh: "暗色", en: "Dark" },
-];
+function SunIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42" />
+    </svg>
+  );
+}
+
+function MoonIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <path d="M20.2 15.2A8.5 8.5 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z" />
+    </svg>
+  );
+}
+
+function LanguageIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.7">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3.5 12h17M12 3c2.2 2.4 3.3 5.4 3.3 9S14.2 18.6 12 21M12 3C9.8 5.4 8.7 8.4 8.7 12s1.1 6.6 3.3 9" />
+    </svg>
+  );
+}
 
 export default function Navbar() {
   const { locale, setLocale } = useLanguage();
-  const { preference, setPreference } = useTheme();
+  const { resolvedTheme, setPreference } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
 
@@ -216,56 +231,68 @@ export default function Navbar() {
           </div>
 
           <div
-            className="mt-auto space-y-4 border-t pt-5"
+            className="mt-auto flex items-center justify-center gap-3 border-t pt-5"
             style={{ borderColor: "var(--border-strong)" }}
           >
-            <div>
-              <div
-                className="type-body mb-2 text-center uppercase tracking-[0.08em]"
-                style={{ color: "var(--text-muted)" }}
-              >
-                {locale === "zh" ? "显示模式" : "Appearance"}
-              </div>
-              <div
-                className="grid grid-cols-3 rounded-full border p-1"
-                style={{
-                  borderColor: "var(--border-strong)",
-                  backgroundColor: "var(--surface-soft)",
-                }}
-              >
-                {themeOptions.map((option) => {
-                  const active = preference === option.value;
-                  return (
-                    <button
-                      key={option.value}
-                      type="button"
-                      onClick={() => setPreference(option.value)}
-                      aria-pressed={active}
-                      className="type-body rounded-full px-2 py-1.5 font-medium transition"
-                      style={{
-                        backgroundColor: active ? "var(--accent)" : "transparent",
-                        color: active ? "#ffffff" : "var(--text-secondary)",
-                      }}
-                    >
-                      {option[locale]}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
+            <button
+              type="button"
+              onClick={() =>
+                setPreference(resolvedTheme === "light" ? "dark" : "light")
+              }
+              aria-label={
+                resolvedTheme === "light"
+                  ? locale === "zh"
+                    ? "切换至暗色模式"
+                    : "Switch to dark mode"
+                  : locale === "zh"
+                    ? "切换至亮色模式"
+                    : "Switch to light mode"
+              }
+              title={
+                resolvedTheme === "light"
+                  ? locale === "zh"
+                    ? "亮色模式"
+                    : "Light mode"
+                  : locale === "zh"
+                    ? "暗色模式"
+                    : "Dark mode"
+              }
+              className="pressable grid h-11 w-11 place-items-center rounded-full border transition hover:-translate-y-0.5"
+              style={{
+                borderColor: "var(--border-strong)",
+                backgroundColor: "var(--surface-soft)",
+                color: resolvedTheme === "light" ? "#f5b82e" : "var(--text)",
+              }}
+            >
+              {resolvedTheme === "light" ? <SunIcon /> : <MoonIcon />}
+            </button>
 
-            <div className="flex justify-center">
-              <button
-                onClick={() => setLocale(locale === "zh" ? "en" : "zh")}
-                className="type-body pressable rounded-full border px-4 py-2 transition-opacity hover:opacity-70"
+            <button
+              type="button"
+              onClick={() => setLocale(locale === "zh" ? "en" : "zh")}
+              aria-label={
+                locale === "zh" ? "切换至英文" : "Switch to Chinese"
+              }
+              title={locale === "zh" ? "中文" : "English"}
+              className="pressable relative grid h-11 w-11 place-items-center rounded-full border transition hover:-translate-y-0.5"
+              style={{
+                borderColor: "var(--border-strong)",
+                backgroundColor: "var(--surface-soft)",
+                color: "var(--text-secondary)",
+              }}
+            >
+              <LanguageIcon />
+              <span
+                className="absolute -bottom-1 -right-1 min-w-5 rounded-full border px-1 text-[9px] font-bold leading-[18px]"
                 style={{
-                  borderColor: "var(--border-strong)",
-                  color: "var(--text-secondary)",
+                  borderColor: "var(--surface-strong)",
+                  backgroundColor: "var(--accent)",
+                  color: "#ffffff",
                 }}
               >
-                {locale === "zh" ? "EN / English" : "中 / 中文"}
-              </button>
-            </div>
+                {locale === "zh" ? "中" : "EN"}
+              </span>
+            </button>
           </div>
         </div>
       </aside>

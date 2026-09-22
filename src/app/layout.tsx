@@ -22,20 +22,22 @@ const themeScript = `
 (() => {
   try {
     const stored = localStorage.getItem("lizhen-theme");
-    const preference =
-      stored === "light" || stored === "dark" || stored === "system"
-        ? stored
-        : "system";
-    const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const resolved =
-      preference === "system" ? (systemDark ? "dark" : "light") : preference;
+    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+    const theme = stored === "light" || stored === "dark"
+      ? stored
+      : systemTheme;
+
+    localStorage.setItem("lizhen-theme", theme);
+
     const root = document.documentElement;
-    root.dataset.theme = resolved;
-    root.dataset.themePreference = preference;
-    root.style.colorScheme = resolved;
+    root.dataset.theme = theme;
+    root.dataset.themePreference = theme;
+    root.style.colorScheme = theme;
   } catch {
     document.documentElement.dataset.theme = "dark";
-    document.documentElement.dataset.themePreference = "system";
+    document.documentElement.dataset.themePreference = "dark";
   }
 })();
 `;
@@ -55,7 +57,7 @@ export default function RootLayout({
     <html
       lang="zh-CN"
       data-theme="dark"
-      data-theme-preference="system"
+      data-theme-preference="dark"
       suppressHydrationWarning
     >
       <head>

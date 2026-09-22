@@ -185,58 +185,61 @@ export default function Navbar() {
           color: "var(--text)",
         }}
       >
-        <div className="flex h-full flex-col pt-10">
+        <div className="flex h-full flex-col pt-8">
           <div className="text-center">
             <img
               src="/avatar.png"
               alt={profile.name[locale]}
-              className="mx-auto h-24 w-24 rounded-full border-2 object-cover"
+              className="mx-auto h-20 w-20 rounded-full border-2 object-cover"
               style={{
                 borderColor: "var(--border-strong)",
-                boxShadow: "0 14px 50px var(--shadow)",
+                boxShadow: "0 12px 36px var(--shadow)",
               }}
             />
-            <h2 className="type-heading mt-4 font-bold" style={{ color: "var(--text)" }}>
+            <h2
+              className="type-heading mt-3 font-bold"
+              style={{ color: "var(--text)" }}
+            >
               {profile.name[locale]}
             </h2>
-            <p className="type-body mt-1" style={{ color: "var(--accent)" }}>Lizhen Fan</p>
-            <p className="type-body mt-5" style={{ color: "var(--text-secondary)" }}>
-              {profile.education[locale]}
-            </p>
-            <p className="type-body mt-1" style={{ color: "var(--text-muted)" }}>
+            <p
+              className="type-body mx-auto mt-2 max-w-[250px]"
+              style={{ color: "var(--text-muted)" }}
+            >
               {profile.title[locale]}
             </p>
           </div>
 
-          <nav
-            className="mt-7 grid grid-cols-2 border-y py-4 text-center"
-            style={{ borderColor: "var(--border-strong)" }}
-          >
-            <Link href="/#home" onClick={() => setMenuOpen(false)} className="pressable flex flex-col items-center gap-2 transition-opacity hover:opacity-70" style={{ color: "var(--text-secondary)" }}>
+          <nav className="mt-7 grid grid-cols-2 gap-2">
+            <Link
+              href="/#home"
+              onClick={() => setMenuOpen(false)}
+              className="pressable flex items-center justify-center gap-2 rounded-xl py-2.5 transition hover:-translate-y-0.5"
+              style={{
+                color: "var(--text-secondary)",
+                backgroundColor:
+                  "color-mix(in srgb, var(--surface-soft) 52%, transparent)",
+              }}
+            >
               <HomeIcon />
-              <span className="type-body uppercase tracking-[0.08em]">Home</span>
+              <span className="type-body font-medium">Home</span>
             </Link>
-            <Link href="/#projects" onClick={() => setMenuOpen(false)} className="pressable flex flex-col items-center gap-2 transition-opacity hover:opacity-70" style={{ color: "var(--text-secondary)" }}>
+            <Link
+              href="/#projects"
+              onClick={() => setMenuOpen(false)}
+              className="pressable flex items-center justify-center gap-2 rounded-xl py-2.5 transition hover:-translate-y-0.5"
+              style={{
+                color: "var(--text-secondary)",
+                backgroundColor:
+                  "color-mix(in srgb, var(--surface-soft) 52%, transparent)",
+              }}
+            >
               <FolderIcon />
-              <span className="type-body uppercase tracking-[0.08em]">Projects</span>
+              <span className="type-body font-medium">Projects</span>
             </Link>
           </nav>
 
-          <div
-            className="grid grid-cols-3 border-b py-4 text-center"
-            style={{ borderColor: "var(--border-strong)" }}
-          >
-            {profile.stats.map((stat) => (
-              <div key={stat.value}>
-                <div className="type-body font-mono font-bold" style={{ color: "var(--text)" }}>{stat.value}</div>
-                <div className="type-body mt-1 uppercase tracking-[0.04em]" style={{ color: "var(--text-muted)" }}>
-                  {stat.label[locale]}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-6 flex items-center justify-center gap-3">
+          <div className="mt-5 flex items-center justify-center gap-3">
             {[{
               href: profile.links.github,
               label: "GitHub",

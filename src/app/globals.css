@@ -33,6 +33,10 @@
   --hero-title-shadow: rgba(14, 165, 233, 0.72);
   --hero-title-shadow-soft: rgba(2, 132, 199, 0.16);
   --ring: rgba(56, 189, 248, 0.9);
+  --landscape-image: url("/backgrounds/landscape_Night.webp");
+  --wallpaper-overlay: rgba(4, 10, 18, 0.58);
+  --section-surface: rgba(8, 17, 28, 0.86);
+  --reading-surface: rgba(7, 16, 26, 0.94);
 }
 
 [data-theme="light"] {
@@ -62,6 +66,10 @@
   --hero-title-shadow: rgba(14, 165, 233, 0.34);
   --hero-title-shadow-soft: rgba(2, 132, 199, 0.10);
   --ring: rgba(2, 132, 199, 0.78);
+  --landscape-image: url("/backgrounds/landscape_Day.webp");
+  --wallpaper-overlay: rgba(245, 247, 250, 0.42);
+  --section-surface: rgba(237, 242, 247, 0.82);
+  --reading-surface: rgba(245, 247, 250, 0.93);
 }
 
 html {
@@ -70,6 +78,8 @@ html {
 }
 
 body {
+  position: relative;
+  isolation: isolate;
   margin: 0;
   background: var(--bg);
   color: var(--text);
@@ -80,9 +90,21 @@ body {
     color 300ms ease;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(var(--wallpaper-overlay), var(--wallpaper-overlay)),
+    var(--landscape-image);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 main {
-  background: var(--bg);
-  transition: background-color 300ms ease;
+  background: transparent;
 }
 
 .type-display {

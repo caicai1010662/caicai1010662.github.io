@@ -10,9 +10,9 @@ export default function Hero() {
       id="home"
       className="relative flex min-h-[100svh] items-center justify-center overflow-hidden px-6 text-center"
       style={{
-        backgroundColor: "var(--bg)",
+        backgroundColor: "transparent",
         backgroundImage:
-          "radial-gradient(circle at 18% 32%, var(--hero-glow-a), transparent 30%), radial-gradient(circle at 80% 14%, var(--hero-glow-b), transparent 28%), linear-gradient(180deg, var(--hero-start) 0%, var(--hero-mid) 72%, var(--hero-end) 100%)",
+          "linear-gradient(180deg, color-mix(in srgb, var(--bg) 18%, transparent), color-mix(in srgb, var(--bg) 42%, transparent)), radial-gradient(circle at 18% 32%, var(--hero-glow-a), transparent 30%), radial-gradient(circle at 80% 14%, var(--hero-glow-b), transparent 28%)",
       }}
     >
       <div

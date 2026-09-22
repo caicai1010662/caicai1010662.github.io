@@ -173,7 +173,7 @@ export default function Navbar() {
           </div>
 
           <nav
-            className="mt-7 grid grid-cols-3 border-y py-4 text-center"
+            className="mt-7 grid grid-cols-2 border-y py-4 text-center"
             style={{ borderColor: "var(--border-strong)" }}
           >
             <Link href="/#home" onClick={() => setMenuOpen(false)} className="pressable flex flex-col items-center gap-2 transition-opacity hover:opacity-70" style={{ color: "var(--text-secondary)" }}>
@@ -184,10 +184,6 @@ export default function Navbar() {
               <FolderIcon />
               <span className="type-body uppercase tracking-[0.08em]">Projects</span>
             </Link>
-            <a href={profile.links.resume} target="_blank" rel="noopener noreferrer" className="pressable flex flex-col items-center gap-2 transition-opacity hover:opacity-70" style={{ color: "var(--text-secondary)" }}>
-              <ResumeIcon />
-              <span className="type-body uppercase tracking-[0.08em]">Resume</span>
-            </a>
           </nav>
 
           <div

@@ -12,11 +12,11 @@ export default function Hero() {
       style={{
         backgroundColor: "transparent",
         backgroundImage:
-          "linear-gradient(180deg, color-mix(in srgb, var(--bg) 2%, transparent), color-mix(in srgb, var(--bg) 10%, transparent)), radial-gradient(circle at 18% 32%, var(--hero-glow-a), transparent 30%), radial-gradient(circle at 80% 14%, var(--hero-glow-b), transparent 28%)",
+          "linear-gradient(180deg, color-mix(in srgb, var(--bg) 0%, transparent), color-mix(in srgb, var(--bg) 4%, transparent)), radial-gradient(circle at 18% 32%, var(--hero-glow-a), transparent 30%), radial-gradient(circle at 80% 14%, var(--hero-glow-b), transparent 28%)",
       }}
     >
       <div
-        className="absolute inset-0 opacity-[0.7]"
+        className="absolute inset-0 opacity-[0.32]"
         style={{
           backgroundImage:
             "linear-gradient(var(--hero-grid) 1px, transparent 1px), linear-gradient(90deg, var(--hero-grid) 1px, transparent 1px)",

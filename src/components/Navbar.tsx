@@ -27,9 +27,18 @@ function FolderIcon() {
 
 function ResumeIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.7">
-      <path d="M6 3.5h8l4 4V20.5H6z" />
-      <path d="M14 3.5v5h4M9 13h6M9 16h5" />
+    <svg
+      viewBox="0 0 24 24"
+      className="h-[19px] w-[19px]"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M7 3.5h7l4 4v13H7z" />
+      <path d="M14 3.5v4h4" />
+      <path d="M10 11.5h5M10 14.5h5M10 17.5h3.5" />
     </svg>
   );
 }
@@ -44,9 +53,36 @@ function GitHubIcon() {
 
 function MailIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="none" stroke="currentColor" strokeWidth="1.7">
-      <rect x="3.5" y="5.5" width="17" height="13" rx="2" />
-      <path d="m4.5 7 7.5 6 7.5-6" />
+    <svg
+      viewBox="0 0 24 24"
+      className="h-[19px] w-[19px]"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="3.5" y="5.5" width="17" height="13" rx="2.25" />
+      <path d="m5 8 7 5 7-5" />
+    </svg>
+  );
+}
+
+function BilibiliIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className="h-[20px] w-[20px]"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="m8.5 4.5 2 2.5M15.5 4.5l-2 2.5" />
+      <rect x="4" y="7" width="16" height="12" rx="3" />
+      <path d="M8.5 11.5v2M15.5 11.5v2" />
+      <path d="M9 16h6" />
     </svg>
   );
 }

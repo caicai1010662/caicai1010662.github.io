@@ -23,7 +23,7 @@ export default function Footer() {
         }}
       />
 
-      <div className="mx-auto flex max-w-[1120px] flex-col items-center px-5 py-14 text-center md:py-16">
+      <div className="mx-auto flex max-w-[1120px] flex-col items-center px-5 py-10 text-center md:py-11">
         <h2
           className="text-[1.75rem] font-bold tracking-[-0.035em]"
           style={{ color: "var(--text)" }}
@@ -32,7 +32,7 @@ export default function Footer() {
         </h2>
 
         <p
-          className="type-body mt-3 max-w-xl"
+          className="type-body mt-2 max-w-xl"
           style={{ color: "var(--text-secondary)" }}
         >
           {locale === "zh"
@@ -42,7 +42,7 @@ export default function Footer() {
 
         <nav
           aria-label={locale === "zh" ? "页脚链接" : "Footer links"}
-          className="type-body mt-7 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 font-medium"
+          className="type-body mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-medium"
         >
           <a
             href={profile.links.github}
@@ -72,7 +72,7 @@ export default function Footer() {
         </nav>
 
         <div
-          className="mt-9 h-px w-28"
+          className="mt-6 h-px w-28"
           style={{
             background:
               "linear-gradient(90deg, transparent, var(--border-strong), transparent)",
@@ -80,13 +80,10 @@ export default function Footer() {
         />
 
         <div
-          className="type-body mt-7 space-y-1.5"
+          className="type-body mt-5"
           style={{ color: "var(--text-muted)" }}
         >
           <p>© {new Date().getFullYear()} Lizhen Fan</p>
-          <p className="text-[0.8rem] tracking-[0.04em]">
-            Next.js · GitHub Pages
-          </p>
         </div>
       </div>
     </footer>

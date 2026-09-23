@@ -10,34 +10,39 @@ export default function ProjectList() {
   return (
     <section
       id="projects"
-      className="relative px-5 pb-24 pt-16 md:pb-28 md:pt-20"
+      className="relative px-5 pb-28 pt-20 md:pb-32 md:pt-24"
       style={{
         background:
-          "linear-gradient(to bottom, transparent 0, var(--section-surface) 120px, var(--section-surface) 100%)",
+          "linear-gradient(to bottom, transparent 0, var(--section-surface) 140px, var(--section-surface) 100%)",
       }}
     >
-      <div className="mx-auto max-w-[1120px]">
-        <header
-          className="mb-9 border-b pb-5"
-          style={{ borderColor: "var(--border-strong)" }}
-        >
+      <div className="mx-auto max-w-[1160px]">
+        <header className="mb-12 max-w-2xl md:mb-14">
           <h2
-            className="type-heading font-bold"
-            style={{ color: "var(--text)" }}
+            className="font-bold tracking-[-0.035em]"
+            style={{
+              color: "var(--text)",
+              fontSize: "clamp(2rem, 4vw, 3.25rem)",
+              lineHeight: 1.06,
+            }}
           >
-            {locale === "zh" ? "造物记录" : "Build Notes"}
+            {locale === "zh" ? "精选项目" : "Selected Work"}
           </h2>
+
           <p
-            className="type-body mt-2"
+            className="type-body mt-4 max-w-xl"
             style={{ color: "var(--text-muted)" }}
           >
             {locale === "zh"
-              ? "一些已经做出来、正在做，或值得继续完善的项目。"
-              : "A few things I have built, am building, or want to keep improving."}
+              ? "从机械、控制、软件到 AI，一些已经做出来并持续完善的工程项目。"
+              : "Engineering work across mechanics, control, software, and AI — built, tested, and continuously refined."}
           </p>
         </header>
 
-        <div className="space-y-7">
+        <div
+          className="border-t"
+          style={{ borderColor: "var(--border-strong)" }}
+        >
           {projects.map((project) => (
             <ProjectCard key={project.slug} project={project} />
           ))}

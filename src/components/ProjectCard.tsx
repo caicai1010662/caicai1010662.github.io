@@ -18,11 +18,11 @@ export default function ProjectCard({ project }: { project: Project }) {
       >
         <div className="grid items-center gap-7 md:grid-cols-[48%_1fr] md:gap-10 lg:gap-14">
           <div
-            className="relative aspect-[16/10] overflow-hidden rounded-[14px]"
+            className="relative aspect-[16/10] overflow-hidden"
             style={{
               backgroundColor: "var(--surface-image)",
-              boxShadow:
-                "0 16px 42px color-mix(in srgb, var(--shadow) 42%, transparent)",
+              borderRadius: "var(--radius-md)",
+              boxShadow: "var(--shadow-soft)",
             }}
           >
             <img

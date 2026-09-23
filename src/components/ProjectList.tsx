@@ -16,7 +16,7 @@ export default function ProjectList() {
           "linear-gradient(to bottom, transparent 0, var(--section-surface) 140px, var(--section-surface) 100%)",
       }}
     >
-      <div className="mx-auto max-w-[1160px]">
+      <div className="site-container">
         <header className="mb-12 max-w-2xl md:mb-14">
           <h2
             className="font-bold tracking-[-0.035em]"

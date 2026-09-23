@@ -229,29 +229,15 @@ export default function Navbar() {
               }}
             />
 
-            <h2
-              className="mt-4 text-[1.7rem] font-bold tracking-[-0.035em]"
-              style={{ color: "var(--text)" }}
-            >
-              {profile.name[locale]}
-            </h2>
-
             <p
-              className="mt-1 text-[0.95rem] font-medium tracking-[0.03em]"
+              className="mt-4 text-[0.95rem] font-medium tracking-[0.03em]"
               style={{ color: "var(--accent)" }}
             >
               Lizhen Lab
             </p>
 
             <p
-              className="type-body mx-auto mt-5 max-w-[270px]"
-              style={{ color: "var(--text-secondary)" }}
-            >
-              {profile.title[locale]}
-            </p>
-
-            <p
-              className="type-body mx-auto mt-2 max-w-[270px]"
+              className="type-body mx-auto mt-4 max-w-[270px]"
               style={{ color: "var(--text-muted)" }}
             >
               {locale === "zh"
@@ -269,7 +255,7 @@ export default function Navbar() {
             >
               <HomeIcon />
               <span className="type-body font-medium tracking-[0.04em]">
-                Home
+                {locale === "zh" ? "首页" : "Home"}
               </span>
             </Link>
 
@@ -284,7 +270,7 @@ export default function Navbar() {
             >
               <FolderIcon />
               <span className="type-body font-medium tracking-[0.04em]">
-                Projects
+                {locale === "zh" ? "项目" : "Projects"}
               </span>
             </Link>
           </nav>

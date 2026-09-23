@@ -43,7 +43,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
         color: "var(--text)",
       }}
     >
-      <div className="mx-auto max-w-[1080px]">
+      <div className="site-container">
         <Link
           href="/#projects"
           className="type-body pressable inline-flex transition-opacity hover:opacity-70"
@@ -52,7 +52,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
           ← {locale === "zh" ? "返回项目" : "Back to projects"}
         </Link>
 
-        <header className="mx-auto mt-8 max-w-[860px] pb-6">
+        <header className="reading-container mt-8 pb-6">
           <h1
             className="type-display font-black"
             style={{ color: "var(--text)" }}
@@ -78,10 +78,12 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
         </header>
 
         <figure
-          className="mt-8 overflow-hidden rounded-xl border"
+          className="mt-8 overflow-hidden border"
           style={{
             borderColor: "var(--border)",
             backgroundColor: "var(--surface)",
+            borderRadius: "var(--radius-md)",
+            boxShadow: "var(--shadow-soft)",
           }}
         >
           <img
@@ -103,7 +105,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
           </figcaption>
         </figure>
 
-        <div className="mx-auto mt-14 max-w-[860px] space-y-14">
+        <div className="reading-container mt-14 space-y-14">
           <section>
             <h2 className="type-heading font-bold" style={{ color: "var(--text)" }}>
               {locale === "zh" ? "项目概述" : "Overview"}
@@ -135,10 +137,11 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
                 {facts.map((item) => (
                   <div
                     key={item.value + item.label.en}
-                    className="rounded-xl border px-4 py-4"
+                    className="border px-4 py-4"
                     style={{
                       borderColor: "var(--border)",
                       backgroundColor: "var(--surface)",
+                      borderRadius: "var(--radius-sm)",
                     }}
                   >
                     <div
@@ -200,12 +203,13 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
                 {evidence.map((item) => (
                   <div
                     key={item.value + item.label.en}
-                    className="rounded-xl border px-4 py-3"
+                    className="border px-4 py-3"
                     style={{
                       borderColor:
                         "color-mix(in srgb, var(--accent) 15%, transparent)",
                       backgroundColor:
                         "color-mix(in srgb, var(--accent) 4%, var(--surface))",
+                      borderRadius: "var(--radius-sm)",
                     }}
                   >
                     <div

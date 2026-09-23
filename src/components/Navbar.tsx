@@ -163,11 +163,12 @@ export default function Navbar() {
   }, []);
 
   const floatingButtonStyle = {
-    borderColor: "color-mix(in srgb, var(--accent) 30%, transparent)",
+    borderColor: "color-mix(in srgb, var(--accent) 22%, transparent)",
     backgroundColor:
-      "color-mix(in srgb, var(--surface-soft) 88%, transparent)",
+      "color-mix(in srgb, var(--surface-soft) 74%, transparent)",
     color: "var(--accent)",
-    boxShadow: "0 10px 30px var(--shadow)",
+    boxShadow:
+      "0 8px 22px color-mix(in srgb, var(--shadow) 55%, transparent)",
   };
 
   return (
@@ -177,13 +178,13 @@ export default function Navbar() {
           type="button"
           onClick={() => setMenuOpen((value) => !value)}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
-          className="pressable grid h-12 w-12 place-items-center rounded-full border backdrop-blur-md transition hover:scale-[1.04]"
+          className="pressable grid h-11 w-11 place-items-center rounded-full border backdrop-blur-sm transition hover:scale-[1.03]"
           style={floatingButtonStyle}
         >
-          <span className="relative block h-[18px] w-[22px]">
-            <span className={`absolute left-0 top-0 block h-[2px] w-[22px] rounded-full bg-current transition-transform duration-200 ${menuOpen ? "translate-y-[8px] rotate-45" : ""}`} />
-            <span className={`absolute left-0 top-[8px] block h-[2px] w-[22px] rounded-full bg-current transition-opacity duration-200 ${menuOpen ? "opacity-0" : ""}`} />
-            <span className={`absolute left-0 top-[16px] block h-[2px] w-[22px] rounded-full bg-current transition-transform duration-200 ${menuOpen ? "-translate-y-[8px] -rotate-45" : ""}`} />
+          <span className="relative block h-4 w-5">
+            <span className={`absolute left-0 top-0 block h-[2px] w-5 rounded-full bg-current transition-transform duration-200 ${menuOpen ? "translate-y-[7px] rotate-45" : ""}`} />
+            <span className={`absolute left-0 top-[7px] block h-[2px] w-5 rounded-full bg-current transition-opacity duration-200 ${menuOpen ? "opacity-0" : ""}`} />
+            <span className={`absolute left-0 top-[14px] block h-[2px] w-5 rounded-full bg-current transition-transform duration-200 ${menuOpen ? "-translate-y-[7px] -rotate-45" : ""}`} />
           </span>
         </button>
       </div>
@@ -193,10 +194,10 @@ export default function Navbar() {
           type="button"
           onClick={() => setSearchOpen(true)}
           aria-label={locale === "zh" ? "快速导航" : "Quick navigator"}
-          className="pressable grid h-12 w-12 place-items-center rounded-full border backdrop-blur-md transition hover:scale-[1.04]"
+          className="pressable grid h-11 w-11 place-items-center rounded-full border backdrop-blur-sm transition hover:scale-[1.03]"
           style={floatingButtonStyle}
         >
-          <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <svg className="h-[22px] w-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <circle cx="11" cy="11" r="7" />
             <path d="m20 20-3.4-3.4" />
           </svg>

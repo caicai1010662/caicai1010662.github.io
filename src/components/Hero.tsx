@@ -35,7 +35,7 @@ export default function Hero() {
         </h1>
 
         <div
-          className="mt-8 flex min-h-[64px] w-full max-w-[760px] items-center justify-center rounded-[14px] border px-6 py-3.5 sm:px-8"
+          className="mt-12 flex min-h-[64px] w-full max-w-[680px] items-center justify-center rounded-[14px] border px-6 py-3.5 sm:px-8"
           style={{
             borderColor:
               "color-mix(in srgb, var(--text) 14%, transparent)",

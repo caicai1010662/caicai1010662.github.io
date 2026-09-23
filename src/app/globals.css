@@ -37,6 +37,11 @@
   --wallpaper-overlay: rgba(4, 10, 18, 0.20);
   --section-surface: rgba(8, 17, 28, 0.46);
   --reading-surface: rgba(7, 16, 26, 0.68);
+  --drawer-bg: #181c24;
+  --drawer-text: #f8fafc;
+  --drawer-secondary: #cbd5e1;
+  --drawer-muted: #94a3b8;
+  --drawer-border: rgba(255, 255, 255, 0.11);
 }
 
 [data-theme="light"] {
@@ -70,6 +75,11 @@
   --wallpaper-overlay: rgba(245, 247, 250, 0.10);
   --section-surface: rgba(237, 242, 247, 0.40);
   --reading-surface: rgba(245, 247, 250, 0.66);
+  --drawer-bg: #f8fafc;
+  --drawer-text: #172033;
+  --drawer-secondary: #334155;
+  --drawer-muted: #526277;
+  --drawer-border: rgba(15, 23, 42, 0.14);
 }
 
 html {

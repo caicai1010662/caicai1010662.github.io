@@ -14,25 +14,25 @@ export default function BackToTop() {
     <button
       onClick={scrollToTop}
       aria-label="Back to top"
-      className={`pressable fixed bottom-7 right-7 z-50 grid h-14 w-14 place-items-center rounded-full border backdrop-blur-md transition-all duration-300 hover:-translate-y-1 ${visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-3 opacity-0"}`}
-      style={{
-        borderColor: "color-mix(in srgb, var(--accent) 55%, transparent)",
-        backgroundColor:
-          "color-mix(in srgb, var(--surface-soft) 95%, transparent)",
-        color: "var(--accent)",
-        boxShadow:
-          "0 0 0 1px color-mix(in srgb, var(--accent) 8%, transparent), 0 12px 35px var(--shadow)",
-      }}
+      className={`floating-control fixed bottom-5 right-5 z-50 transition-opacity duration-300 ${
+        visible
+          ? "pointer-events-auto opacity-100"
+          : "pointer-events-none opacity-0"
+      }`}
     >
       <svg
-        className="h-7 w-7"
+        className="h-[22px] w-[22px]"
         fill="none"
         stroke="currentColor"
-        strokeWidth={2.5}
+        strokeWidth={2.2}
         viewBox="0 0 24 24"
         aria-hidden
       >
-        <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M6 14.5 12 8.5l6 6"
+        />
       </svg>
     </button>
   );

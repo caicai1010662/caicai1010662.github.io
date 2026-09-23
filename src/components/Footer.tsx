@@ -8,7 +8,7 @@ export default function Footer() {
       }}
     >
       <div
-        className="type-body mx-auto flex max-w-[1120px] items-center justify-center px-5 py-5 text-center"
+        className="site-container type-body flex items-center justify-center px-5 py-5 text-center"
         style={{ color: "var(--text-muted)" }}
       >
         <p>© {new Date().getFullYear()} Lizhen Fan</p>

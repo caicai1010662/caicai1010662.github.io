@@ -88,7 +88,14 @@ function BilibiliIcon() {
 
 function SunIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.8">
+    <svg
+      viewBox="0 0 24 24"
+      className="h-7 w-7"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    >
       <circle cx="12" cy="12" r="4" />
       <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42" />
     </svg>
@@ -97,18 +104,44 @@ function SunIcon() {
 
 function MoonIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.8">
+    <svg
+      viewBox="0 0 24 24"
+      className="h-8 w-8"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M20.2 15.2A8.5 8.5 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z" />
     </svg>
   );
 }
 
-function LanguageIcon() {
+function LanguageSwapIcon({ locale }: { locale: "zh" | "en" }) {
+  const chineseFirst = locale === "zh";
+
   return (
-    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.7">
-      <circle cx="12" cy="12" r="9" />
-      <path d="M3.5 12h17M12 3c2.2 2.4 3.3 5.4 3.3 9S14.2 18.6 12 21M12 3C9.8 5.4 8.7 8.4 8.7 12s1.1 6.6 3.3 9" />
-    </svg>
+    <span className="relative block h-9 w-11 font-sans font-semibold leading-none">
+      <span
+        className={`absolute transition-all duration-200 ${
+          chineseFirst
+            ? "left-0.5 top-0 text-[1.35rem]"
+            : "bottom-0 right-0 text-[1.05rem] opacity-70"
+        }`}
+      >
+        中
+      </span>
+      <span
+        className={`absolute transition-all duration-200 ${
+          chineseFirst
+            ? "bottom-0 right-0 text-[1.05rem] opacity-70"
+            : "left-0.5 top-0 text-[1.45rem]"
+        }`}
+      >
+        A
+      </span>
+    </span>
   );
 }
 
@@ -261,55 +294,7 @@ export default function Navbar() {
             style={{ backgroundColor: "var(--border)" }}
           />
 
-          <div className="mt-6 flex items-center justify-center gap-8">
-            {[{
-              href: profile.links.github,
-              label: "GitHub",
-              icon: <GitHubIcon />,
-              external: true,
-              color: "#7657a7",
-            }, {
-              href: profile.links.resume,
-              label: locale === "zh" ? "简历" : "Resume",
-              icon: <ResumeIcon />,
-              external: true,
-              color: "#7c8dab",
-            }, {
-              href: profile.links.bilibili,
-              label: "Bilibili",
-              icon: <BilibiliIcon />,
-              external: true,
-              color: "#ff78a8",
-            }, {
-              href: profile.links.email,
-              label: locale === "zh" ? "邮箱" : "Email",
-              icon: <MailIcon />,
-              external: false,
-              color: "#12afe8",
-            }].map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                target={item.external ? "_blank" : undefined}
-                rel={item.external ? "noopener noreferrer" : undefined}
-                aria-label={item.label}
-                title={item.label}
-                className="group pressable grid h-10 w-10 place-items-center transition duration-200 hover:-translate-y-0.5 hover:brightness-110"
-                style={{ color: item.color }}
-              >
-                <span className="grid place-items-center transition-transform duration-200 group-hover:scale-[1.08]">
-                  {item.icon}
-                </span>
-              </a>
-            ))}
-          </div>
-
-          <div
-            className="mt-7 h-px w-full"
-            style={{ backgroundColor: "var(--border)" }}
-          />
-
-          <div className="mt-6 flex items-center justify-center gap-8">
+          <div className="mt-6 flex items-center justify-center gap-7">
             <button
               type="button"
               onClick={() =>
@@ -333,12 +318,13 @@ export default function Navbar() {
                     ? "暗色模式"
                     : "Dark mode"
               }
-              className="pressable grid h-9 w-9 place-items-center transition hover:-translate-y-0.5"
+              className="pressable grid h-12 w-12 place-items-center rounded-full transition duration-200 hover:-translate-y-0.5 hover:scale-[1.04]"
               style={{
-                color:
+                backgroundColor:
                   resolvedTheme === "light"
-                    ? "#f5b82e"
-                    : "var(--text-secondary)",
+                    ? "color-mix(in srgb, #f6c945 12%, transparent)"
+                    : "color-mix(in srgb, #162235 92%, transparent)",
+                color: resolvedTheme === "light" ? "#f2bd2f" : "#f8fafc",
               }}
             >
               {resolvedTheme === "light" ? <SunIcon /> : <MoonIcon />}
@@ -350,20 +336,15 @@ export default function Navbar() {
               aria-label={
                 locale === "zh" ? "切换至英文" : "Switch to Chinese"
               }
-              title={locale === "zh" ? "中文" : "English"}
-              className="pressable relative grid h-9 w-9 place-items-center transition hover:-translate-y-0.5"
+              title={
+                locale === "zh"
+                  ? "中文 / English"
+                  : "English / 中文"
+              }
+              className="pressable grid h-12 w-12 place-items-center transition duration-200 hover:-translate-y-0.5 hover:scale-[1.04]"
               style={{ color: "var(--text-secondary)" }}
             >
-              <LanguageIcon />
-              <span
-                className="absolute -bottom-1.5 -right-2 min-w-5 rounded-full px-1 text-[9px] font-bold leading-[18px]"
-                style={{
-                  backgroundColor: "var(--accent)",
-                  color: "#ffffff",
-                }}
-              >
-                {locale === "zh" ? "中" : "EN"}
-              </span>
+              <LanguageSwapIcon locale={locale} />
             </button>
           </div>
         </div>

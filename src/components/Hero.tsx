@@ -12,10 +12,10 @@ export default function Hero() {
       style={{ backgroundColor: "transparent" }}
     >
       <div
-        className="pointer-events-none absolute left-1/2 top-5 h-[15vh] w-px -translate-x-1/2 opacity-60"
+        className="pointer-events-none absolute left-1/2 top-5 h-[13vh] w-px -translate-x-1/2 opacity-35"
         style={{
           background:
-            "linear-gradient(to bottom, color-mix(in srgb, var(--text) 44%, transparent), transparent)",
+            "linear-gradient(to bottom, color-mix(in srgb, var(--text) 34%, transparent), transparent)",
         }}
       />
 
@@ -28,7 +28,7 @@ export default function Hero() {
             lineHeight: 0.96,
             letterSpacing: "-0.045em",
             textShadow:
-              "0 4px 24px color-mix(in srgb, var(--shadow) 62%, transparent)",
+              "0 2px 18px color-mix(in srgb, var(--shadow) 42%, transparent)",
           }}
         >
           Lizhen Lab
@@ -38,11 +38,11 @@ export default function Hero() {
           className="mt-12 flex min-h-[64px] w-full max-w-[680px] items-center justify-center rounded-[14px] border px-6 py-3.5 sm:px-8"
           style={{
             borderColor:
-              "color-mix(in srgb, var(--text) 14%, transparent)",
+              "color-mix(in srgb, var(--text) 9%, transparent)",
             background:
-              "linear-gradient(90deg, color-mix(in srgb, var(--surface-strong) 66%, transparent), color-mix(in srgb, var(--surface-strong) 54%, transparent))",
+              "linear-gradient(90deg, color-mix(in srgb, var(--surface-strong) 58%, transparent), color-mix(in srgb, var(--surface-strong) 48%, transparent))",
             boxShadow:
-              "0 14px 38px color-mix(in srgb, var(--shadow) 46%, transparent)",
+              "0 10px 30px color-mix(in srgb, var(--shadow) 30%, transparent)",
           }}
         >
           <p
@@ -67,13 +67,13 @@ export default function Hero() {
         style={{ color: "var(--accent)" }}
       >
         <span
-          className="h-[14vh] min-h-16 max-h-24 w-px opacity-60"
+          className="h-[12vh] min-h-14 max-h-20 w-px opacity-40"
           style={{
             background:
-              "linear-gradient(to bottom, transparent, color-mix(in srgb, var(--text) 36%, transparent), var(--accent))",
+              "linear-gradient(to bottom, transparent, color-mix(in srgb, var(--text) 24%, transparent), color-mix(in srgb, var(--accent) 72%, transparent))",
           }}
         />
-        <span className="h-3.5 w-3.5 rotate-45 border-b-2 border-r-2 border-current" />
+        <span className="h-3 w-3 rotate-45 border-b-2 border-r-2 border-current opacity-80" />
       </a>
     </section>
   );

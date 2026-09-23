@@ -71,15 +71,7 @@ export default function ProjectSearch({
         type="button"
         onClick={closeSearch}
         aria-label={locale === "zh" ? "关闭搜索" : "Close search"}
-        className="pressable fixed right-5 top-5 z-[90] grid h-12 w-12 place-items-center rounded-full border transition hover:scale-[1.04] sm:right-7 sm:top-7"
-        style={{
-          borderColor:
-            "color-mix(in srgb, var(--accent) 30%, transparent)",
-          backgroundColor:
-            "color-mix(in srgb, var(--surface-soft) 72%, transparent)",
-          color: "var(--accent)",
-          boxShadow: "0 10px 30px var(--shadow)",
-        }}
+        className="floating-control fixed right-5 top-5 z-[90] sm:right-7 sm:top-7"
       >
         <span className="relative block h-5 w-5">
           <span className="absolute left-0 top-[9px] block h-[2px] w-5 rotate-45 rounded-full bg-current" />
@@ -97,7 +89,7 @@ export default function ProjectSearch({
             borderColor: "var(--border-strong)",
             backgroundColor:
               "color-mix(in srgb, var(--surface-strong) 88%, transparent)",
-            boxShadow: "0 18px 55px var(--shadow)",
+            boxShadow: "var(--shadow-elevated)",
           }}
         >
           <svg
@@ -154,8 +146,11 @@ export default function ProjectSearch({
                   }}
                 >
                   <div
-                    className="h-[72px] w-[108px] shrink-0 overflow-hidden rounded-xl"
-                    style={{ backgroundColor: "var(--surface-image)" }}
+                    className="h-[72px] w-[108px] shrink-0 overflow-hidden"
+                    style={{
+                      backgroundColor: "var(--surface-image)",
+                      borderRadius: "var(--radius-sm)",
+                    }}
                   >
                     <img
                       src={project.cover}

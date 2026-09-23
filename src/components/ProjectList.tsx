@@ -12,20 +12,10 @@ export default function ProjectList() {
       id="projects"
       className="relative px-5 pb-24 pt-16 md:pb-28 md:pt-20"
       style={{
-        backgroundColor: "var(--section-surface)",
-        backgroundImage:
-          "radial-gradient(circle at 18% 0%, var(--hero-glow-a), transparent 32%)",
+        background:
+          "linear-gradient(to bottom, transparent 0, var(--section-surface) 120px, var(--section-surface) 100%)",
       }}
     >
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-14 -translate-y-full border-y backdrop-blur-[2px]"
-        style={{
-          borderColor: "var(--border)",
-          backgroundColor:
-            "color-mix(in srgb, var(--accent) 3.5%, transparent)",
-        }}
-      />
-
       <div className="mx-auto max-w-[1120px]">
         <header
           className="mb-9 border-b pb-5"

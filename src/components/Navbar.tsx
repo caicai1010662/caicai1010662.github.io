@@ -294,6 +294,54 @@ export default function Navbar() {
             style={{ backgroundColor: "var(--border)" }}
           />
 
+          <div className="mt-6 flex items-center justify-center gap-8">
+            {[{
+              href: profile.links.github,
+              label: "GitHub",
+              icon: <GitHubIcon />,
+              external: true,
+              color: "#7657a7",
+            }, {
+              href: profile.links.resume,
+              label: locale === "zh" ? "简历" : "Resume",
+              icon: <ResumeIcon />,
+              external: true,
+              color: "#7c8dab",
+            }, {
+              href: profile.links.bilibili,
+              label: "Bilibili",
+              icon: <BilibiliIcon />,
+              external: true,
+              color: "#ff78a8",
+            }, {
+              href: profile.links.email,
+              label: locale === "zh" ? "邮箱" : "Email",
+              icon: <MailIcon />,
+              external: false,
+              color: "#12afe8",
+            }].map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                target={item.external ? "_blank" : undefined}
+                rel={item.external ? "noopener noreferrer" : undefined}
+                aria-label={item.label}
+                title={item.label}
+                className="group pressable grid h-10 w-10 place-items-center transition duration-200 hover:-translate-y-0.5 hover:brightness-110"
+                style={{ color: item.color }}
+              >
+                <span className="grid place-items-center transition-transform duration-200 group-hover:scale-[1.08]">
+                  {item.icon}
+                </span>
+              </a>
+            ))}
+          </div>
+
+          <div
+            className="mt-7 h-px w-full"
+            style={{ backgroundColor: "var(--border)" }}
+          />
+
           <div className="mt-6 flex items-center justify-center gap-7">
             <button
               type="button"

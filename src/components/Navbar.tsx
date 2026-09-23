@@ -212,9 +212,9 @@ export default function Navbar() {
       <aside
         className={`fixed inset-y-0 left-0 z-[65] w-[360px] max-w-[92vw] border-r px-7 py-7 shadow-2xl transition-transform duration-300 ease-out ${menuOpen ? "translate-x-0" : "-translate-x-full"}`}
         style={{
-          borderColor: "var(--border-strong)",
-          backgroundColor: "var(--surface-strong)",
-          color: "var(--text)",
+          borderColor: "var(--drawer-border)",
+          backgroundColor: "var(--drawer-bg)",
+          color: "var(--drawer-text)",
         }}
       >
         <div className="flex h-full flex-col pt-7">
@@ -236,25 +236,27 @@ export default function Navbar() {
               Lizhen Lab
             </p>
 
-            <p
-              className="type-body mx-auto mt-4 max-w-[270px]"
-              style={{ color: "var(--text-muted)" }}
-            >
-              {locale === "zh"
-                ? "把想法做成真正可以运行的系统。"
-                : "Turning ideas into systems that actually work."}
-            </p>
+            <div className="mx-auto mt-4 flex min-h-[52px] max-w-[290px] items-center justify-center">
+              <p
+                className="type-body text-center"
+                style={{ color: "var(--drawer-secondary)" }}
+              >
+                {locale === "zh"
+                  ? "把想法做成真正可以运行的系统。"
+                  : "Build ideas into working systems."}
+              </p>
+            </div>
           </div>
 
-          <nav className="mt-8 grid grid-cols-2">
+          <nav className="mt-8 grid min-h-[86px] grid-cols-2">
             <Link
               href="/#home"
               onClick={() => setMenuOpen(false)}
-              className="pressable flex flex-col items-center gap-2 py-3 transition hover:-translate-y-0.5"
-              style={{ color: "var(--text-secondary)" }}
+              className="pressable flex flex-col items-center justify-center gap-2 py-3 transition hover:-translate-y-0.5"
+              style={{ color: "var(--drawer-secondary)" }}
             >
               <HomeIcon />
-              <span className="type-body font-medium tracking-[0.04em]">
+              <span className="type-body whitespace-nowrap font-medium tracking-[0.04em]">
                 {locale === "zh" ? "首页" : "Home"}
               </span>
             </Link>
@@ -262,14 +264,14 @@ export default function Navbar() {
             <Link
               href="/#projects"
               onClick={() => setMenuOpen(false)}
-              className="pressable flex flex-col items-center gap-2 border-l py-3 transition hover:-translate-y-0.5"
+              className="pressable flex flex-col items-center justify-center gap-2 border-l py-3 transition hover:-translate-y-0.5"
               style={{
-                borderColor: "var(--border)",
-                color: "var(--text-secondary)",
+                borderColor: "var(--drawer-border)",
+                color: "var(--drawer-secondary)",
               }}
             >
               <FolderIcon />
-              <span className="type-body font-medium tracking-[0.04em]">
+              <span className="type-body whitespace-nowrap font-medium tracking-[0.04em]">
                 {locale === "zh" ? "项目" : "Projects"}
               </span>
             </Link>
@@ -277,7 +279,7 @@ export default function Navbar() {
 
           <div
             className="mt-7 h-px w-full"
-            style={{ backgroundColor: "var(--border)" }}
+            style={{ backgroundColor: "var(--drawer-border)" }}
           />
 
           <div className="mt-6 flex items-center justify-center gap-8">
@@ -325,7 +327,7 @@ export default function Navbar() {
 
           <div
             className="mt-7 h-px w-full"
-            style={{ backgroundColor: "var(--border)" }}
+            style={{ backgroundColor: "var(--drawer-border)" }}
           />
 
           <div className="mt-6 flex items-center justify-center gap-7">
@@ -376,7 +378,7 @@ export default function Navbar() {
                   : "English / 中文"
               }
               className="pressable grid h-12 w-12 place-items-center transition duration-200 hover:-translate-y-0.5 hover:scale-[1.04]"
-              style={{ color: "var(--text-secondary)" }}
+              style={{ color: "var(--drawer-secondary)" }}
             >
               <LanguageSwapIcon locale={locale} />
             </button>

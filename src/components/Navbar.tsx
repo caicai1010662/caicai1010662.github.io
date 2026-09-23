@@ -32,7 +32,7 @@ function ResumeIcon() {
       className="h-7 w-7"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.85"
+      strokeWidth="1.9"
       strokeLinecap="round"
       strokeLinejoin="round"
     >
@@ -58,11 +58,11 @@ function MailIcon() {
       className="h-7 w-7"
       fill="none"
       stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="square"
-      strokeLinejoin="miter"
+      strokeWidth="1.9"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
-      <rect x="3.5" y="5.5" width="17" height="13" rx="0.6" />
+      <rect x="3.5" y="5.5" width="17" height="13" rx="1.2" />
       <path d="m4.5 7 7.5 6 7.5-6" />
     </svg>
   );
@@ -82,7 +82,6 @@ function BilibiliIcon() {
       <path d="m8.2 4.3 2.2 2.4M15.8 4.3l-2.2 2.4" />
       <rect x="4.2" y="7" width="15.6" height="11.8" rx="3.1" />
       <path d="M8.8 11.4v2.1M15.2 11.4v2.1" />
-      <path d="M9.1 16.1h5.8" />
     </svg>
   );
 }
@@ -268,25 +267,25 @@ export default function Navbar() {
               label: "GitHub",
               icon: <GitHubIcon />,
               external: true,
-              color: "#7356a5",
+              color: "#7657a7",
             }, {
               href: profile.links.resume,
               label: locale === "zh" ? "简历" : "Resume",
               icon: <ResumeIcon />,
               external: true,
-              color: "#7f8fb3",
+              color: "#7c8dab",
             }, {
               href: profile.links.bilibili,
               label: "Bilibili",
               icon: <BilibiliIcon />,
               external: true,
-              color: "#ff7aa8",
+              color: "#ff78a8",
             }, {
               href: profile.links.email,
               label: locale === "zh" ? "邮箱" : "Email",
               icon: <MailIcon />,
               external: false,
-              color: "#00aeef",
+              color: "#12afe8",
             }].map((item) => (
               <a
                 key={item.label}
@@ -295,10 +294,10 @@ export default function Navbar() {
                 rel={item.external ? "noopener noreferrer" : undefined}
                 aria-label={item.label}
                 title={item.label}
-                className="group pressable grid h-9 w-9 place-items-center transition duration-200 hover:-translate-y-0.5 hover:brightness-110"
+                className="group pressable grid h-10 w-10 place-items-center transition duration-200 hover:-translate-y-0.5 hover:brightness-110"
                 style={{ color: item.color }}
               >
-                <span className="grid place-items-center transition-transform duration-200 group-hover:scale-110">
+                <span className="grid place-items-center transition-transform duration-200 group-hover:scale-[1.08]">
                   {item.icon}
                 </span>
               </a>

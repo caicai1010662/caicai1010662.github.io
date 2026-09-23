@@ -162,15 +162,6 @@ export default function Navbar() {
     return () => window.removeEventListener("keydown", handleKey);
   }, []);
 
-  const floatingButtonStyle = {
-    borderColor: "color-mix(in srgb, var(--accent) 22%, transparent)",
-    backgroundColor:
-      "color-mix(in srgb, var(--surface-soft) 74%, transparent)",
-    color: "var(--accent)",
-    boxShadow:
-      "0 8px 22px color-mix(in srgb, var(--shadow) 55%, transparent)",
-  };
-
   return (
     <>
       <div className="fixed left-5 top-5 z-[70]">
@@ -178,8 +169,7 @@ export default function Navbar() {
           type="button"
           onClick={() => setMenuOpen((value) => !value)}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
-          className="pressable grid h-11 w-11 place-items-center rounded-full border backdrop-blur-sm transition hover:scale-[1.03]"
-          style={floatingButtonStyle}
+          className="floating-control"
         >
           <span className="relative block h-4 w-5">
             <span className={`absolute left-0 top-0 block h-[2px] w-5 rounded-full bg-current transition-transform duration-200 ${menuOpen ? "translate-y-[7px] rotate-45" : ""}`} />
@@ -194,8 +184,7 @@ export default function Navbar() {
           type="button"
           onClick={() => setSearchOpen(true)}
           aria-label={locale === "zh" ? "快速导航" : "Quick navigator"}
-          className="pressable grid h-11 w-11 place-items-center rounded-full border backdrop-blur-sm transition hover:scale-[1.03]"
-          style={floatingButtonStyle}
+          className="floating-control"
         >
           <svg className="h-[22px] w-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <circle cx="11" cy="11" r="7" />

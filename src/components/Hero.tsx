@@ -12,44 +12,45 @@ export default function Hero() {
       style={{ backgroundColor: "transparent" }}
     >
       <div
-        className="absolute left-1/2 top-5 h-[18vh] w-px -translate-x-1/2"
+        className="pointer-events-none absolute left-1/2 top-5 h-[15vh] w-px -translate-x-1/2 opacity-60"
         style={{
           background:
-            "linear-gradient(to bottom, color-mix(in srgb, var(--text) 58%, transparent), color-mix(in srgb, var(--text) 22%, transparent), transparent)",
+            "linear-gradient(to bottom, color-mix(in srgb, var(--text) 44%, transparent), transparent)",
         }}
       />
 
-      <div className="relative z-10 flex max-w-6xl -translate-y-[7vh] flex-col items-center">
+      <div className="relative z-10 flex w-full max-w-5xl -translate-y-[9vh] flex-col items-center">
         <h1
-          className="font-black"
+          className="font-extrabold"
           style={{
             color: "var(--text)",
-            fontSize: "clamp(4rem, 8vw, 6.5rem)",
-            lineHeight: 0.95,
-            letterSpacing: "-0.05em",
+            fontSize: "clamp(3.6rem, 7.2vw, 6rem)",
+            lineHeight: 0.96,
+            letterSpacing: "-0.045em",
             textShadow:
-              "3px 3px 0 var(--hero-title-shadow), 6px 6px 0 var(--hero-title-shadow-soft)",
+              "0 4px 24px color-mix(in srgb, var(--shadow) 62%, transparent)",
           }}
         >
           Lizhen Lab
         </h1>
 
         <div
-          className="mt-7 inline-flex max-w-[92vw] items-center justify-center rounded-full px-6 py-3 max-sm:rounded-2xl max-sm:px-5"
+          className="mt-8 flex min-h-[64px] w-full max-w-[760px] items-center justify-center rounded-[14px] border px-6 py-3.5 sm:px-8"
           style={{
-            backgroundColor:
-              "color-mix(in srgb, var(--surface-strong) 70%, transparent)",
-            border:
-              "1px solid color-mix(in srgb, var(--text) 12%, transparent)",
-            boxShadow: "0 10px 30px var(--shadow)",
+            borderColor:
+              "color-mix(in srgb, var(--text) 14%, transparent)",
+            background:
+              "linear-gradient(90deg, color-mix(in srgb, var(--surface-strong) 66%, transparent), color-mix(in srgb, var(--surface-strong) 54%, transparent))",
+            boxShadow:
+              "0 14px 38px color-mix(in srgb, var(--shadow) 46%, transparent)",
           }}
         >
           <p
-            className="text-center font-medium tracking-[0.05em] max-sm:whitespace-normal"
+            className="text-center font-medium tracking-[0.045em]"
             style={{
               color: "var(--text)",
-              fontSize: "clamp(0.98rem, 1.2vw, 1.12rem)",
-              lineHeight: 1.65,
+              fontSize: "clamp(0.96rem, 1.15vw, 1.08rem)",
+              lineHeight: 1.6,
             }}
           >
             {locale === "zh"
@@ -62,17 +63,17 @@ export default function Hero() {
       <a
         href="#projects"
         aria-label={locale === "zh" ? "查看项目" : "View projects"}
-        className="absolute bottom-7 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-3 transition-opacity hover:opacity-75"
+        className="absolute bottom-7 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2.5 transition-opacity hover:opacity-70"
         style={{ color: "var(--accent)" }}
       >
         <span
-          className="h-20 w-px"
+          className="h-[14vh] min-h-16 max-h-24 w-px opacity-60"
           style={{
             background:
-              "linear-gradient(to bottom, color-mix(in srgb, var(--text) 58%, transparent), color-mix(in srgb, var(--text) 22%, transparent), var(--accent))",
+              "linear-gradient(to bottom, transparent, color-mix(in srgb, var(--text) 36%, transparent), var(--accent))",
           }}
         />
-        <span className="h-[16px] w-[16px] rotate-45 border-b-[3px] border-r-[3px] border-current" />
+        <span className="h-3.5 w-3.5 rotate-45 border-b-2 border-r-2 border-current" />
       </a>
     </section>
   );

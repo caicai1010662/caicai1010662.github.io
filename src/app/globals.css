@@ -42,6 +42,15 @@
   --drawer-secondary: #cbd5e1;
   --drawer-muted: #94a3b8;
   --drawer-border: rgba(255, 255, 255, 0.11);
+  --layout-max: 1160px;
+  --reading-max: 860px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --shadow-soft:
+    0 14px 38px color-mix(in srgb, var(--shadow) 36%, transparent);
+  --shadow-elevated:
+    0 22px 60px color-mix(in srgb, var(--shadow) 52%, transparent);
 }
 
 [data-theme="light"] {
@@ -197,6 +206,25 @@ img {
 .floating-control:focus-visible {
   outline: 2px solid color-mix(in srgb, var(--accent) 72%, transparent);
   outline-offset: 3px;
+}
+
+.site-container {
+  width: 100%;
+  max-width: var(--layout-max);
+  margin-inline: auto;
+}
+
+.reading-container {
+  width: 100%;
+  max-width: var(--reading-max);
+  margin-inline: auto;
+}
+
+.surface-panel {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
 }
 
 .theme-surface {

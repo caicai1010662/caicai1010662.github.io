@@ -9,55 +9,62 @@ export default function ProjectCard({ project }: { project: Project }) {
 
   return (
     <article
-      className="group overflow-hidden rounded-2xl border transition duration-300 hover:-translate-y-1"
-      style={{
-        borderColor: "var(--border)",
-        backgroundColor: "var(--surface)",
-        boxShadow: "0 20px 60px var(--shadow)",
-      }}
+      className="group border-b"
+      style={{ borderColor: "var(--border-strong)" }}
     >
-      <Link href={`/projects/${project.slug}`} className="pressable block">
-        <div className="grid md:grid-cols-[42%_1fr]">
+      <Link
+        href={`/projects/${project.slug}`}
+        className="pressable block py-8 md:py-10"
+      >
+        <div className="grid items-center gap-7 md:grid-cols-[48%_1fr] md:gap-10 lg:gap-14">
           <div
-            className="relative min-h-[240px] overflow-hidden md:min-h-[270px]"
-            style={{ backgroundColor: "var(--surface-image)" }}
+            className="relative aspect-[16/10] overflow-hidden rounded-[14px]"
+            style={{
+              backgroundColor: "var(--surface-image)",
+              boxShadow:
+                "0 16px 42px color-mix(in srgb, var(--shadow) 42%, transparent)",
+            }}
           >
             <img
               src={project.cover}
               alt={project.coverAlt[locale]}
               loading="lazy"
-              className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
+              className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.025]"
             />
           </div>
 
-          <div className="flex min-w-0 flex-col justify-center px-6 py-7 md:px-8">
-            <h3
-              className="type-heading font-bold transition-opacity group-hover:opacity-80"
+          <div className="min-w-0 py-1">
+            <p
+              className="text-[0.78rem] font-semibold uppercase tracking-[0.13em]"
               style={{ color: "var(--accent)" }}
+            >
+              {project.category[locale]}
+            </p>
+
+            <h3
+              className="mt-3 font-bold tracking-[-0.03em] transition-colors duration-200 group-hover:text-[var(--accent)]"
+              style={{
+                color: "var(--text)",
+                fontSize: "clamp(1.5rem, 2.7vw, 2.2rem)",
+                lineHeight: 1.16,
+              }}
             >
               {project.title[locale]}
             </h3>
 
             <p
-              className="type-body mt-3"
-              style={{ color: "var(--text-muted)" }}
-            >
-              {project.category[locale]}
-            </p>
-
-            <p
-              className="type-body mt-5 line-clamp-3"
+              className="type-body mt-5 line-clamp-3 max-w-2xl"
               style={{ color: "var(--text-secondary)" }}
             >
               {project.value[locale]}
             </p>
 
             <span
-              className="type-body mt-6 inline-flex items-center gap-2 font-semibold transition group-hover:translate-x-1"
+              className="type-body mt-7 inline-flex items-center gap-2 font-semibold transition-transform duration-200 group-hover:translate-x-1"
               style={{ color: "var(--accent)" }}
             >
               {locale === "zh" ? "查看项目" : "View project"}
-              <span aria-hidden>→</span>
+              <span aria-hidden>↗</span>
             </span>
           </div>
         </div>
